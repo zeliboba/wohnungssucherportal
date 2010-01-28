@@ -29,6 +29,10 @@ class WGGesuchtFlatParser
       left_align_tables  = doc.search('//table[@align="left"]//td')
       flat[:neighbourhood] = decode_html_entities(left_align_tables[2].inner_html.match(/<b>(.+?)<\/b>/)[1].gsub(/<\/?[^>]*>/, "")).strip
       flat[:street]        = decode_html_entities(left_align_tables[3].inner_html.split("<b")[0]).strip
+      
+      images = doc.search("//img").each do |img|
+        p img['src']
+      end
       flat
     end
 

@@ -7,9 +7,18 @@
       var addressString = '<%= flat.full_address %>';
       geocoder.getLatLng(addressString, function(latLng) {
         map.setCenter(latLng, 15);
-        map.addOverlay(new GMarker(latLng, {'title': addressString }));          
+        map.addOverlay(new GMarker(latLng, {'title': addressString }));
       });
+
+      directions = new GDirections(map);
+      var betterplaceOfficeString = "Schlesische Straße 26, Berlin";
+      directions.load(
+        "from: " +  addressString + " to: " + betterplaceOfficeString,
+        {'travelMode': "G_TRAVEL_MODE_WALKING", 'locale': 'de_DE'}
+      );
+      //setTimeout("alert(directions.getDistance().meters)", 5000);
     }
+    
     </script>
     
   <body onload="initialize()" onunload="GUnload()">
