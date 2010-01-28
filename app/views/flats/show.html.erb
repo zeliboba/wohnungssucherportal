@@ -1,0 +1,35 @@
+<div id="navigation">
+  <%= link_to 'Edit', edit_flat_path(@flat) %> |
+  <%= link_to 'Destroy', @flat, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to 'Back', flats_path %>
+</div>
+
+<div id="left_col">
+  <div id="infos">
+    <h1><%=h @flat.priority %>: <%=h @flat.street %>, <%=h @flat.neighbourhood %></h1>
+    
+    <p>
+      <b><%=h @flat.rooms %></b> rooms,
+      <b><%=h @flat.square_meters %></b>m², 
+      <b>€<%=h @flat.price %></b>.
+    </p>
+    
+    <p>
+      Available from <b><%=h @flat.available_on %></b>
+      <% if @flat.available_until %> 
+        to <b><%=h @flat.available_until %></b>
+        (<%= available_months(@flat) %>).
+      <%end %>
+    </p>
+    
+    <p>Contact <b><%=h @flat.contact_person ? @flat.contact_person : 'them' %></b> at <b><%=h @flat.phone %></b>.</p>
+    
+    <% if @flat.url %>
+      <p><%= link_to('Original ad', h(@flat.url), {:popup => true}) %>.</p>
+    <% end %>
+  </div>
+</div>
+
+<%= render :partial => 'map', :locals => { :flat => @flat } %>
+
+

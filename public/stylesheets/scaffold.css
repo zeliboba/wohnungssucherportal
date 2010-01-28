@@ -1,0 +1,97 @@
+body { 
+	background-color: #fff; color: #333; 
+}
+
+body, p, ol, ul, td, input, select, textarea {
+  font-family: Gentium, verdana, arial, helvetica, sans-serif;
+  font-size:   18px;
+  line-height: 24px;
+}
+
+input, textarea {
+	padding: 5px;
+	width: 400px;
+}
+
+a { color: #000; }
+a:visited { color: #666; }
+a:hover { color: #fff; background-color:#000; }
+
+.fieldWithErrors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#errorExplanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 18px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#errorExplanation ul li {
+  font-size: 18px;
+  list-style: square;
+}
+
+th {
+	text-align:left;
+}
+th, td {
+	padding-right: 15px;
+}
+
+div#map {
+  position:absolute;
+  top:20px;
+  left: 450px;
+}
+div#infos {
+  width: 530px;
+}
+
+ul#flat_index {
+  margin-left: 0;
+  padding-left: 0;    
+}
+
+ul#flat_index li {
+  list-style-type:none;
+  margin-left: 0;
+  padding-left: 0;  
+  margin-top: 0.5em;
+  line-height: 1em;
+}
+
+small, small a, small a:visited {
+  font-family: sans-serif;
+  font-size:0.75em;
+  letter-spacing:0.02em;
+  color: #bbb;
+  text-decoration:none;
+}
+
+div#process_data {
+  position:absolute;
+  left:500px;
+  top:55px;
+}

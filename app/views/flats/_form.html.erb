@@ -1,0 +1,60 @@
+<%= f.error_messages %>
+
+<div id="process_data">
+  <p>
+    <%= f.label :priority %><br />
+    <%= f.text_field :priority %>
+  </p>
+  <% Flat::STATES.each do |state| %>
+    <%= radio_button("flat", "state", state) %> <%= state %><br />
+  <% end %>
+</div>
+
+<p>
+  <%= f.label :street %><br />
+  <%= f.text_field :street %>
+</p>
+<p>
+  <%= f.label :neighbourhood %><br />
+  <%= f.text_field :neighbourhood %>
+</p>
+<p>
+  <%= f.label :rooms %><br />
+  <%= f.text_field :rooms %>
+</p>
+<p>
+  <%= f.label :square_meters %><br />
+  <%= f.text_field :square_meters %>
+</p>
+<p>
+  <%= f.label :price %><br />
+  <%= f.text_field :price %>
+</p>
+<p>
+  <%= f.label :url %><br />
+  <%= f.text_field :url %>
+</p>
+
+<p>
+  <%= f.label :available_from %><br />
+  <%= f.date_select(:available_on, :order => [:month, :year], :use_month_numbers => true, :start_year => Time.now.year - 1) %>
+</p>
+<p>
+  <%= f.label :available_until %><br />
+  <%= f.date_select(:available_until, :order => [:month, :year], :use_month_numbers => true, :include_blank => true, :default => nil, :start_year => Time.now.year + 1)%>
+</p>
+
+<p>
+  <%= f.label :image_links %><br />
+  <%= f.text_area :image_links, {:style => 'height:100px'} %>
+</p>
+
+<p>
+  <%= f.label :contact_person %><br />
+  <%= f.text_field :contact_person %>
+</p>
+
+<p>
+  <%= f.label :phone %><br />
+  <%= f.text_field :phone %>
+</p>

@@ -1,0 +1,17 @@
+<div id="map">
+  <script type="text/javascript">
+    function initialize() {
+      map = initMap(800, 600);
+      // add marker and center map
+      var geocoder = new GClientGeocoder();
+      var addressString = '<%= flat.full_address %>';
+      geocoder.getLatLng(addressString, function(latLng) {
+        map.setCenter(latLng, 15);
+        map.addOverlay(new GMarker(latLng, {'title': addressString }));          
+      });
+    }
+    </script>
+    
+  <body onload="initialize()" onunload="GUnload()">
+    <div id="map_canvas" style="width: 800px; height: 600px; border: 1px solid #000"></div>
+</div>

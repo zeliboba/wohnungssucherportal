@@ -1,0 +1,21 @@
+<% javascript_tag do %>
+  var G_addresses = ["<%= @flats.map(&:full_address).join('", "') %>"];
+<% end %>
+
+<%= render :partial => 'overview_map', :locals => { :flats => @flats } %>
+
+<div id="flats">
+  sort by: <% Flat::SORT_OPTIONS.each do |name, value| %>
+    <%= link_to(name, flats_path(:order => value), :class => 'active') %>
+  <% end %>
+  
+  <b>|</b> <%= link_to 'New flat', new_flat_path %>
+  
+  <ul id="flat_index">
+    <%= render :partial => "flat", :collection => @flats %>
+  </ul>
+<div>
+  
+<br />
+
+

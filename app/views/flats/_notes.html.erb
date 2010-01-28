@@ -1,0 +1,26 @@
+<h2>Notes</h2>
+
+<% if @flat.notes.empty? %>
+  <i>There are notes for this flat yet.</i>
+<% else %>
+  <ul id="notes" style="width:450px;">  
+    <% @flat.notes.each do |note| %>
+      <li>
+        <b><%= note.note_type %></b> on <i style="color:#666; font-size:0.8em"><%= note.created_at %></i>
+        <%= note.text %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<!-- 
+<h3>Add Note</h3>
+
+<% form_remote_tag(:html => { :action => notes_path }) do %>
+  <%#= note_type_select %>
+
+  <div><%= submit_tag 'Save' %></div>
+  
+<% end %>
+
+-->

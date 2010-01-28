@@ -1,0 +1,11 @@
+<li>
+<%= link_to(h(flat.street), flat) %>, <%=h flat.neighbourhood %>
+<small><%= link_to 'edit', edit_flat_path(flat) %></small>
+<br />
+<b><%=h flat.square_meters %></b>m², 
+<b><%=h number_to_currency(flat.price, :unit => '€', :precision => 0) %></b>,
+<b><%=h flat.rooms %></b> rooms,
+<b><%=h number_to_currency(flat.square_meter_price, :unit => '€', :separator => ",", :precision => 0) %></b>/m².
+
+from <b><%=h flat.available_on.strftime("%d. %b") %></b>.
+</li>
