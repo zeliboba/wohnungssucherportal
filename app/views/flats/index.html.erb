@@ -5,11 +5,7 @@
 <%= render :partial => 'overview_map', :locals => { :flats => @flats } %>
 
 <div id="flats">
-  sort by: <% Flat::SORT_OPTIONS.each do |name, value| %>
-    <%= link_to(name, flats_path(:order => value), :class => 'active') %>
-  <% end %>
-  
-  <b>|</b> <%= link_to 'New flat', new_flat_path %>
+  <%= link_to 'Add flat', new_flat_path %>  
   
   <ul id="flat_index">
     <% @flats.group_by(&:state).each do |state, flats| %>
@@ -22,3 +18,9 @@
 <br />
 
 
+<p style="border-top:1px solid #666;padding-top:4px; font-size:14px">
+  Showing <%= @flats.size %> interesting flats (<%= link_to 'show all', all_flats_path %>). | sort list by: 
+  <% Flat::SORT_OPTIONS.each do |name, value| %>
+    <%= link_to(name, flats_path(:order => value)) %>
+  <% end %>
+</p>

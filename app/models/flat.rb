@@ -11,7 +11,6 @@ class Flat < ActiveRecord::Base
   # should not be in model
   SORT_OPTIONS = {
     'street' => 'street ASC',
-    'added' => 'created_at DESC',
     'm²' => 'square_meters DESC',
     'price' => 'price DESC',
     'cost' => 'price/square_meters DESC',
@@ -22,13 +21,17 @@ class Flat < ActiveRecord::Base
   
   validates_presence_of :street, :neighbourhood, :rooms, :square_meters, :price, :available_on, :url
   validates_numericality_of :rooms, :square_meters, :price
-  validates_uniqueness_of :street
+  
+  # try preventing duplicates by only allowing one flat with same size and price per street
+  validates_uniqueness_of :street, :scope => [:square_meters, :price], 
+    :message => "There's already a flat in this street with same size and price."
+  
   validate :available_until_must_be_after_available_on
   validates_inclusion_of :state, :in => STATES, :allow_nil => true
   
   named_scope :for_index, :conditions => ["state IN(NULL, 'new', 'interesting', 'contacted', 'visit_scheduled')"]
   named_scope :ordered, lambda { |*order|
-    { :order => order.flatten.first || 'priority ASC, square_meters DESC' }
+    { :order => order.flatten.first || 'square_meters DESC' }
   }
   named_scope :expired, :conditions => { :state => 'not_available' }
   

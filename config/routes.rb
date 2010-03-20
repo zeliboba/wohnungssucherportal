@@ -1,6 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :notes
 
+  map.all_flats 'flats/all', :controller => :flats, :id => 'all'
   map.resources :flats
 
   # The priority is based upon order of creation: first created -> highest priority.
