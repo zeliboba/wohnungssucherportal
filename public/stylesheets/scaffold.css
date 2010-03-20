@@ -5,12 +5,15 @@ body {
 body, p, ol, ul, td, input, select, textarea {
   font-family: Gentium, verdana, arial, helvetica, sans-serif;
   font-size:   18px;
-  line-height: 24px;
 }
 
 input, textarea {
 	padding: 5px;
 	width: 400px;
+}
+
+input[type=radio] {
+  width:auto;
 }
 
 a { color: #000; }
@@ -60,11 +63,6 @@ th, td {
 	padding-right: 15px;
 }
 
-div#map {
-  position:absolute;
-  top:20px;
-  left: 450px;
-}
 div#infos {
   width: 530px;
 }
@@ -94,4 +92,22 @@ div#process_data {
   position:absolute;
   left:500px;
   top:55px;
+}
+
+div#map {
+  position:absolute;
+  top:20px;
+  left: 550px;
+}
+
+div#flats {
+  width: 520px;
+}
+
+h3 {
+  border-bottom: 1px dotted #000;
+  margin-bottom:5px;
+}
+textarea#flat_comment {
+  height: 200px;
 }

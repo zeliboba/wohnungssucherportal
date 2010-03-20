@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091212131609) do
+ActiveRecord::Schema.define(:version => 20100320121214) do
 
   create_table "flats", :force => true do |t|
     t.string   "title"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20091212131609) do
     t.text     "image_links"
     t.integer  "priority"
     t.string   "state"
+    t.text     "comment"
   end
 
   create_table "notes", :force => true do |t|

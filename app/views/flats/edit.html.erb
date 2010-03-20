@@ -1,3 +1,6 @@
+<%= link_to 'Back to list', flats_path %> |
+<%= link_to 'Show', @flat %>
+
 <h1>Editing wohnung</h1>
 
 <% form_for(@flat) do |f| %>
@@ -6,6 +9,3 @@
     <%= f.submit 'Update' %>
   </p>
 <% end %>
-
-<%= link_to 'Show', @flat %> |
-<%= link_to 'Back', flats_path %>

@@ -12,7 +12,10 @@
   <b>|</b> <%= link_to 'New flat', new_flat_path %>
   
   <ul id="flat_index">
-    <%= render :partial => "flat", :collection => @flats %>
+    <% @flats.group_by(&:state).each do |state, flats| %>
+      <h3><%= state.humanize %></h3>
+      <%= render :partial => "flat", :collection => flats %>
+    <% end %>
   </ul>
 <div>
   

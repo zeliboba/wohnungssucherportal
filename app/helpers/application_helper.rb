@@ -3,4 +3,8 @@ module ApplicationHelper
   def betterplace_office_address
     "Schlesische Straße 26, Berlin"
   end
+  
+  def zwischenmiete_neukoelln_adress
+    "Weisestraße 53, Berlin"
+  end
 end

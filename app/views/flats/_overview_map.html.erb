@@ -1,16 +1,16 @@
 <div id="map">
   <script type="text/javascript">
   
-    function icon() {
+    function icon(color) {
       var icon = new GIcon(G_DEFAULT_ICON);
-      icon.image = "http://www.google.com/intl/en_us/mapfiles/ms/micons/green-dot.png";
+      icon.image = "http://www.google.com/intl/en_us/mapfiles/ms/micons/" + color + "-dot.png";
       icon.iconSize = new GSize(34, 34);
       icon.shadow = false;
       return icon;
     }
     
     function initialize() {
-      var map = initMap(800, 600);
+      var map = initMap(850, 750);
       var geocoder = new GClientGeocoder();
 
       // center map on Kreuzberg
@@ -22,10 +22,20 @@
       geocoder.getLatLng("<%= betterplace_office_address %>", function(latLng) {
         var markerOptions = {
           'title': "<%= betterplace_office_address %>",
-          'icon': icon()
+          'icon': icon('green')
         };
         var marker = new GMarker(latLng, markerOptions);
         map.addOverlay(marker);
+      });
+        
+      // add zwischenmiete_neukoelln_adress
+      geocoder.getLatLng("<%= zwischenmiete_neukoelln_adress %>", function(latLng) {
+        var markerOptions = {
+          'title': "<%= zwischenmiete_neukoelln_adress %>",
+          'icon': icon('yellow')
+        };
+        var marker = new GMarker(latLng, markerOptions);
+        map.addOverlay(marker);      
       });
 
       // add markers for flats

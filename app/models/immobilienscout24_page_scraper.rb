@@ -1,16 +1,8 @@
-require 'open-uri'
-require 'hpricot'
-require 'htmlentities'
-
-class WGGesuchtFlatParser
+class Immobilienscout24PageScraper < PageScraper
 
   class << self
 
-    def from_url(url)
-      hpricot_doc = open(url) { |f| Hpricot(f) }
-      from_hpricot(hpricot_doc, url)
-    end
-
+    # http://www.immobilienscout24.de/54848774?is24EC=IS24&ftc=8024LOGXXUA&_s_cclid=1269083509
     def from_hpricot(doc, url)
       flat = {}
       
@@ -36,12 +28,6 @@ class WGGesuchtFlatParser
       flat
     end
 
-    private
-    
-      def decode_html_entities(string)
-        HTMLEntities.new.decode(string)
-      end
-    
   end
   
 end

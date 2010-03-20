@@ -2,12 +2,19 @@
 
 <div id="process_data">
   <p>
+  Status<br />
+  <% Flat::STATES.each do |state| %>
+    <%= radio_button("flat", "state", state) %> <%= state.humanize %><br />
+  <% end %>
+  </p>
+  <p>
+    <%= f.label :comment %><br />
+    <%= f.text_area :comment%>
+  </p>
+  <p>
     <%= f.label :priority %><br />
     <%= f.text_field :priority %>
   </p>
-  <% Flat::STATES.each do |state| %>
-    <%= radio_button("flat", "state", state) %> <%= state %><br />
-  <% end %>
 </div>
 
 <p>
@@ -41,7 +48,7 @@
 </p>
 <p>
   <%= f.label :available_until %><br />
-  <%= f.date_select(:available_until, :order => [:month, :year], :use_month_numbers => true, :include_blank => true, :default => nil, :start_year => Time.now.year + 1)%>
+  <%= f.date_select(:available_until, :order => [:month, :year], :use_month_numbers => true, :include_blank => true, :default => nil, :start_year => Time.now.year)%>
 </p>
 
 <p>

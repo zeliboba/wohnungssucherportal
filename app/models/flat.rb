@@ -1,15 +1,21 @@
 class Flat < ActiveRecord::Base
   
-  STATES = %w(new called visited rejected not_available)
+  STATES = %w(
+    interesting
+    contacted
+    visit_scheduled
+    i_rejected
+    not_available
+  )
   
   # should not be in model
   SORT_OPTIONS = {
     'street' => 'street ASC',
     'added' => 'created_at DESC',
-    'prio' => 'priority ASC',
     'm²' => 'square_meters DESC',
     'price' => 'price DESC',
-    'cost' => 'price/square_meters DESC'
+    'cost' => 'price/square_meters DESC',
+    'available on' => 'available_on ASC'
   }
   
   has_many :notes, :order => 'created_at DESC'
@@ -18,9 +24,9 @@ class Flat < ActiveRecord::Base
   validates_numericality_of :rooms, :square_meters, :price
   validates_uniqueness_of :street
   validate :available_until_must_be_after_available_on
-  validates_inclusion_of :state, :in => STATES
+  validates_inclusion_of :state, :in => STATES, :allow_nil => true
   
-  named_scope :available, :conditions => ["state IN('new', 'available')"]
+  named_scope :for_index, :conditions => ["state IN(NULL, 'new', 'interesting', 'contacted', 'visit_scheduled')"]
   named_scope :ordered, lambda { |*order|
     { :order => order.flatten.first || 'priority ASC, square_meters DESC' }
   }
@@ -31,7 +37,7 @@ class Flat < ActiveRecord::Base
   end
   
   def full_address
-    "#{street}, Berlin, Germany"
+    "#{street}, #{neighbourhood}, Berlin, Germany"
   end
   
   def available_months
@@ -42,7 +48,7 @@ class Flat < ActiveRecord::Base
   class << self
     
     def from_url(url)
-      attributes = WGGesuchtFlatParser.from_url(url)
+      attributes = PageScraper.scrape(url)
       Flat.new(attributes)
     end
 

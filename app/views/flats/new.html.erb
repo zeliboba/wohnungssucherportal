@@ -1,9 +1,13 @@
 <h1>New flat</h1>
 
+<p>
+  <%= error_messages_for 'flat' %>
+</p>
+
 <% form_for(@flat) do |f| %>
   <p>
     <%= f.label :url %><br />
-    <%= f.text_field :url %>
+    <%= f.text_field :url, { :style => 'width: 800px'} %>
   </p>
   
   <p>

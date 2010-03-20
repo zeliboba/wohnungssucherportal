@@ -1,12 +1,7 @@
 class FlatsController < ApplicationController
 
   def index
-    @flats = Flat.available.ordered(params[:order])
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @flats }
-    end
+    @flats = Flat.for_index.ordered(params[:order])
   end
 
   def show
@@ -33,8 +28,9 @@ class FlatsController < ApplicationController
     if @flat.save
       flash[:notice] = 'flat was successfully created.'
       flash[:created_flat_id] = @flat.id
-      redirect_to flats_path
+      redirect_to edit_flat_path(@flat)
     else
+      flash[:error] = @flat.errors
       render :action => "new"
     end
   end
