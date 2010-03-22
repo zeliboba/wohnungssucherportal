@@ -38,5 +38,3 @@ Rails::Initializer.run do |config|
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
 end
-
-GOOGLE_MAPS_KEY = 'ABQIAAAAS2ODSKXqQCXk5UJB2A7kQhTJQa0g3IQ9GZqIMmInSLzwtGDKaBS0Ep9y5ICxDEjAI4yySmVPq1suTg'

@@ -15,3 +15,5 @@ config.action_controller.perform_caching             = false
 
 # Don't care if the mailer can't send
 config.action_mailer.raise_delivery_errors = false
+
+GOOGLE_MAPS_API_KEY = 'ABQIAAAAS2ODSKXqQCXk5UJB2A7kQhTJQa0g3IQ9GZqIMmInSLzwtGDKaBS0Ep9y5ICxDEjAI4yySmVPq1suTg'
