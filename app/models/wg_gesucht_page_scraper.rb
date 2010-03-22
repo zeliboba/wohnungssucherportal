@@ -5,7 +5,6 @@ class WGGesuchtPageScraper < PageScraper
     # http://www.wg-gesucht.de/wohnungen-in-Berlin-Prenzlauer-Berg.1994279.html
     def from_hpricot(doc, url)
       flat = {}
-      
       flat[:url] = url
       flat[:state] = Flat::STATES.first
 
@@ -17,8 +16,6 @@ class WGGesuchtPageScraper < PageScraper
       left_align_tables  = doc.search('//table[@align="left"]//td')
       flat[:neighbourhood] = decode_html_entities(left_align_tables[1].inner_html.match(/<b>(.+?)<\/b>/)[1].gsub(/<\/?[^>]*>/, "")).strip
       flat[:street]        = decode_html_entities(left_align_tables[2].inner_html.split("<b")[0]).strip
-      
-      p flat
       flat
     end
     

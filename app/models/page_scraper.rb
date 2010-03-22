@@ -8,7 +8,7 @@ class PageScraper
 
     def scrape(url)
       hpricot_doc = open(url) { |f| Hpricot(f) }
-      scraper = find_scraper(url)
+      scraper = find_scraper(url)      
       scraper.from_hpricot(hpricot_doc, url)
     end
 
