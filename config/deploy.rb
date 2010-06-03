@@ -3,6 +3,7 @@ set :repository,  "git@github.com:phillipoertel/wohnungssucherportal.git"
 
 set :scm, :git
 set :use_sudo, true
+set :deploy_via, :remote_cache
 
 role :web, "87.106.19.63" # Your HTTP server, Apache/etc
 role :app, "87.106.19.63" # This may be the same as your `Web` server
@@ -18,7 +19,7 @@ namespace :deploy do
   
   desc "Ensure www-data has the permissions for the files it needs"
   task :ensure_permissions do
-    chown_these = %w(config/environment.rb tmp).map { |f| File.join(current_path, f) } + ["#{shared_path}/log"]
+    chown_these = %w(config/environment.rb tmp).map { |f| File.join(current_path, f) }
     run "chown -R www-data:www-data #{chown_these.join(' ')}"
   end
   

@@ -1,4 +1,6 @@
-class Immobilienscout24PageScraper < PageScraper
+class PageScraper::Immobilienscout24 < PageScraper
+
+  scrapes 'immobilienscout24.de'
 
   class << self
 

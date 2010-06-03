@@ -1,4 +1,6 @@
-class WGGesuchtPageScraper < PageScraper
+class PageScraper::WGGesucht < PageScraper
+
+  scrapes 'wg-gesucht.de'
 
   class << self
 

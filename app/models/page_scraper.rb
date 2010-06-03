@@ -1,6 +1,7 @@
 require 'open-uri'
 require 'hpricot'
 require 'htmlentities'
+Dir.glob(File.join(Rails.root, 'app/models/page_scrapers/*.rb')).each { |f| require f }
 
 class PageScraper
 
@@ -8,17 +9,21 @@ class PageScraper
 
     def scrape(url)
       hpricot_doc = open(url) { |f| Hpricot(f) }
-      scraper = find_scraper(url)      
+      scraper = find_scraper(url).new
       scraper.from_hpricot(hpricot_doc, url)
     end
 
     private
-  
-      # meh.
+    
+      # used in the child classes to register as scraper for a domain
+      def scrapes(domain)
+        p "#{self} scrapes #{domain}"
+        @@scraper_registry ||= {}
+        @@scraper_registry[domain] = self
+      end
+      
       def find_scraper(url)
-        return WGGesuchtPageScraper if url.include?("wg-gesucht.de")
-        return Immobilienscout24PageScraper if url.include?("immobilienscout24.de")
-        raise "No known scraper for URLs like #{url}"
+        @@scraper_registry.find { |domain, scraper| url.include?(domain) }[1]
       end
       
       def decode_html_entities(string)
