@@ -13,3 +13,26 @@ function initMap(width, height) {
 	return map;
 }
 
+// FIXME don't pass in everything and the kitchen sink
+function addReferencePoints(map, geocoder, pointsArray) {
+  // add some city reference points
+  pointsArray.each(function(point) {
+    geocoder.getLatLng(point, function(latLng) {
+      var markerOptions = {
+        'title': point,
+        'icon': icon('green')
+      };
+      var marker = new GMarker(latLng, markerOptions);
+      map.addOverlay(marker);
+    });    
+  });
+}
+
+function icon(color) {
+  var icon = new GIcon(G_DEFAULT_ICON);
+  icon.image = "http://www.google.com/intl/en_us/mapfiles/ms/micons/" + color + "-dot.png";
+  icon.iconSize = new GSize(34, 34);
+  icon.shadow = false;
+  return icon;
+}
+

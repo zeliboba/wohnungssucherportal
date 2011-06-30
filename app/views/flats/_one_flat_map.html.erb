@@ -4,6 +4,7 @@
       var map = initMap(850, 750);
       // add marker and center map
       var geocoder = new GClientGeocoder();
+      addReferencePoints(map, geocoder, ["<%= amazon_muenchen %>"]);
       var addressString = '<%= flat.full_address %>';
       geocoder.getLatLng(addressString, function(latLng) {
         map.setCenter(latLng, 15);

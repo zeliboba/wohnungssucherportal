@@ -1,14 +1,6 @@
 <div id="map">
   <script type="text/javascript">
   
-    function icon(color) {
-      var icon = new GIcon(G_DEFAULT_ICON);
-      icon.image = "http://www.google.com/intl/en_us/mapfiles/ms/micons/" + color + "-dot.png";
-      icon.iconSize = new GSize(34, 34);
-      icon.shadow = false;
-      return icon;
-    }
-    
     function initialize() {
       var map = initMap(850, 750);
       var geocoder = new GClientGeocoder();
@@ -18,16 +10,8 @@
         map.setCenter(latLng, 13);
       });
 
-      // add some city reference points
-      geocoder.getLatLng("<%= amazon_muenchen %>", function(latLng) {
-        var markerOptions = {
-          'title': "<%= amazon_muenchen %>",
-          'icon': icon('green')
-        };
-        var marker = new GMarker(latLng, markerOptions);
-        map.addOverlay(marker);
-      });
-        
+      addReferencePoints(map, geocoder, ["<%= amazon_muenchen %>"]);
+      
       // add markers for flats
       G_addresses.each(function(address) {
         console.log(address);

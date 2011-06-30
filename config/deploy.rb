@@ -20,13 +20,13 @@ namespace :deploy do
   desc "Ensure required directories exist"
   task :ensure_directories do
     path = File.join(current_path, 'tmp')
-    Dir.mkdir(path) unless File.directory?(path)
+    run "mkdir -p #{path}"
   end
   
   desc "Ensure www-data has the permissions for the files it needs"
   task :ensure_permissions do
     chown_these = %w(config/environment.rb tmp).map { |f| File.join(current_path, f) }
-    run "chown -R www-data:www-data #{chown_these.join(' ')}"
+    run "sudo chown -R www-data:www-data #{chown_these.join(' ')}"
   end
   
   desc "Copy configuration files from shared into new release release"
