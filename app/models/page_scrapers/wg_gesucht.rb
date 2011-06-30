@@ -13,7 +13,7 @@ class PageScraper::WGGesucht < PageScraper
       flat = flat.merge(parse_data_table(doc))
       
       div_inhalt = doc.search("//div[@class='inhalt']")
-      flat[:title] = decode_html_entities(div_inhalt[0].children[1].inner_html).strip
+      flat[:title] = decode_html_entities(div_inhalt[0].search("//b[@class='gross']").inner_html).strip
       
       left_align_tables  = doc.search('//table[@align="left"]//td')
       flat[:neighbourhood] = decode_html_entities(left_align_tables[1].inner_html.match(/<b>(.+?)<\/b>/)[1].gsub(/<\/?[^>]*>/, "")).strip
@@ -33,20 +33,23 @@ class PageScraper::WGGesucht < PageScraper
     # FIXME this is a more reliable way to get the fields, use it
     # for the available_until and available_on fields.
     def parse_price_and_size(doc)
-      tds   = doc.search("//div[@class='box_hellblau']").search("//td")
+      tds   = doc.search("//div[@class='headlineLightblueInside']").search("//td")
+      p tds
       price = parse_total_price(tds)
+      p price
       size  = parse_size(tds)
+      p size
       [price, size]
     end
     
     def parse_total_price(tds)
-      td = tds.find { |td| td.inner_html =~ /Gesamtmiete/ }
-      td.following_siblings[0].inner_html.gsub(/[^0-9]/, '').to_i
+      td = tds.find { |td| td.inner_html =~ /&euro/ }
+      td.inner_html.gsub(/[^0-9]/, '').to_i
     end
     
     def parse_size(tds)
-      td = tds.find { |td| td.inner_html =~ /Gr&ouml;&szlig;e/ }
-      td.following_siblings[0].search("//b")[0].inner_html.gsub('m&sup2', '').to_i
+      td = tds.find { |td| td.inner_html =~ /m&sup2/ }
+      td.at("b").inner_html.gsub('m&sup2', '').to_i
     end
     
     # returns start and end date. end date is nil if wohnung unbefristet.

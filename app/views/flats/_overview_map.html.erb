@@ -14,14 +14,14 @@
       var geocoder = new GClientGeocoder();
 
       // center map on Kreuzberg
-      geocoder.getLatLng('Moritzplatz, Berlin', function(latLng) {
+      geocoder.getLatLng('Kleinhesseloher See, München', function(latLng) {
         map.setCenter(latLng, 13);
       });
 
       // add betterplace office
-      geocoder.getLatLng("<%= betterplace_office_address %>", function(latLng) {
+      geocoder.getLatLng("<%= amazon_muenchen %>", function(latLng) {
         var markerOptions = {
-          'title': "<%= betterplace_office_address %>",
+          'title': "<%= amazon_muenchen %>",
           'icon': icon('green')
         };
         var marker = new GMarker(latLng, markerOptions);

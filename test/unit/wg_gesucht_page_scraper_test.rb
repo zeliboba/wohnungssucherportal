@@ -4,7 +4,7 @@ class WGGesuchtPageScraperTest < ActiveRecord::TestCase
 
   test "from_hpricot for kommune flat" do
     url = "http://www.wg-gesucht.de/my_url"
-    flat = WGGesuchtPageScraper.from_hpricot(hpricot_doc_for('kommune'), url)
+    flat = PageScraper::WGGesucht.from_hpricot(hpricot_doc_for('kommune'), url)
     assert_equal url, flat.url
     assert_equal Flat::STATES.first, flat.state
     

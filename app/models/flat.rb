@@ -40,7 +40,7 @@ class Flat < ActiveRecord::Base
   end
   
   def full_address
-    "#{street}, #{neighbourhood}, Berlin, Germany"
+    "#{street}, #{neighbourhood}, Munich, Germany"
   end
   
   def available_months

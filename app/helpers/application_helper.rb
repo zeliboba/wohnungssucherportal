@@ -7,4 +7,8 @@ module ApplicationHelper
   def zwischenmiete_neukoelln_adress
     "Weisestraße 53, Berlin"
   end
+  
+  def amazon_muenchen
+    "Marcel-Breuer-Straße 12, München"
+  end
 end
