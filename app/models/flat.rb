@@ -30,7 +30,7 @@ class Flat < ActiveRecord::Base
   validates_inclusion_of :state, :in => STATES, :allow_nil => true
   
   named_scope :for_index, :conditions => [
-    "state IN(NULL, 'new', 'interesting', 'contacted', 'visit_scheduled') AND id >= 52"
+    "state IN(NULL, 'new', 'interesting', 'contacted', 'visit_scheduled') AND created_at >= '2011-01-01'"
   ]
   named_scope :ordered, lambda { |*order|
     { :order => order.flatten.first || 'square_meters DESC' }

@@ -1,9 +1,9 @@
+* map passt sich an die größe des browserfensters an
+
 * personalisierung - scope auf user
   - benutzeranmeldung und login
   - mit jedem flat die user id speichern
   
-* map passt sich an die größe des browserfensters an
-
 * stadt mit in der db speichern
   - hartcodierte städte aus code nehmen
 
@@ -12,3 +12,8 @@
   
 * eigene fixpunkte eingeben (z.b. arbeit, hauptbahnhof)
   - routing zwischen punkten mit km-anzeige und geschätzter fahrzeit
+  
+  
+DONE
+
+* eigene fixpunkte auch auf detailkarte anzeigen
