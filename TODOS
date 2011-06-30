@@ -4,10 +4,11 @@
   
 * map passt sich an die größe des browserfensters an
 
-* auto-zoom auf alle flats
-
 * stadt mit in der db speichern
   - hartcodierte städte aus code nehmen
+
+* auto-zoom auf alle flats
+
   
 * eigene fixpunkte eingeben (z.b. arbeit, hauptbahnhof)
   - routing zwischen punkten mit km-anzeige und geschätzter fahrzeit

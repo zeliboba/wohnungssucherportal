@@ -17,6 +17,12 @@ namespace :deploy do
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
   end
   
+  desc "Ensure required directories exist"
+  task :ensure_directories do
+    path = File.join(current_path, 'tmp')
+    Dir.mkdir(path) unless File.directory?(path)
+  end
+  
   desc "Ensure www-data has the permissions for the files it needs"
   task :ensure_permissions do
     chown_these = %w(config/environment.rb tmp).map { |f| File.join(current_path, f) }
@@ -30,6 +36,7 @@ namespace :deploy do
 
 end
 
+before "deploy:symlink", "deploy:ensure_directories"
 before "deploy:symlink", "deploy:ensure_permissions"
 after "deploy:symlink", "deploy:copy_config"
 before "deploy:migrate", "deploy:copy_config"
