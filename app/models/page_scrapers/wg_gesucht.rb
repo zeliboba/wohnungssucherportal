@@ -12,10 +12,7 @@ class PageScraper::WGGesucht < PageScraper
 
       flat = flat.merge(parse_data_table(doc))
       
-      div_inhalt = doc.search("//div[@class='inhalt']")
-      flat[:title] = decode_html_entities(div_inhalt[0].search("//b[@class='gross']").inner_html).strip
-      
-      left_align_tables  = doc.search('//table[@align="left"]//td')
+      left_align_tables    = doc.search('//table[@align="left"]//td')
       flat[:neighbourhood] = decode_html_entities(left_align_tables[1].inner_html.match(/<b>(.+?)<\/b>/)[1].gsub(/<\/?[^>]*>/, "")).strip
       flat[:street]        = decode_html_entities(left_align_tables[2].inner_html.split("<b")[0]).strip
       flat
@@ -26,7 +23,7 @@ class PageScraper::WGGesucht < PageScraper
         data[:price], data[:square_meters] = parse_price_and_size(doc)
         b_gross = doc.search("//b[@class='gross']")
         data[:available_on], data[:available_until] = parse_dates(b_gross)
-        data[:rooms] = b_gross.last.inner_html.gsub(/[^0-9]/, '').to_i
+        #data[:rooms] = b_gross.last.inner_html.gsub(/[^0-9]/, '').to_i
       end
     end
     

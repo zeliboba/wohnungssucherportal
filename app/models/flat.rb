@@ -19,8 +19,8 @@ class Flat < ActiveRecord::Base
   
   has_many :notes, :order => 'created_at DESC'
   
-  validates_presence_of :street, :neighbourhood, :rooms, :square_meters, :price, :available_on, :url
-  validates_numericality_of :rooms, :square_meters, :price
+  validates_presence_of :street, :neighbourhood, :square_meters, :price, :available_on, :url
+  validates_numericality_of :square_meters, :price
   
   # try preventing duplicates by only allowing one flat with same size and price per street
   validates_uniqueness_of :street, :scope => [:square_meters, :price], 
@@ -29,7 +29,9 @@ class Flat < ActiveRecord::Base
   validate :available_until_must_be_after_available_on
   validates_inclusion_of :state, :in => STATES, :allow_nil => true
   
-  named_scope :for_index, :conditions => ["state IN(NULL, 'new', 'interesting', 'contacted', 'visit_scheduled')"]
+  named_scope :for_index, :conditions => [
+    "state IN(NULL, 'new', 'interesting', 'contacted', 'visit_scheduled') AND id >= 52"
+  ]
   named_scope :ordered, lambda { |*order|
     { :order => order.flatten.first || 'square_meters DESC' }
   }
@@ -40,7 +42,7 @@ class Flat < ActiveRecord::Base
   end
   
   def full_address
-    "#{street}, #{neighbourhood}, Munich, Germany"
+    "#{street}, #{neighbourhood}, München, Deutschland"
   end
   
   def available_months

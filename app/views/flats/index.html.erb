@@ -1,5 +1,5 @@
 <% javascript_tag do %>
-  var G_addresses = ["<%= @flats.map(&:full_address).join('", "') %>"];
+  var G_addresses = ["<%= @flats.map(&:full_address).join(%(",\n")) %>"];
 <% end %>
 
 <%= render :partial => 'overview_map', :locals => { :flats => @flats } %>

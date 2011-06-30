@@ -1,6 +1,6 @@
 <div id="map">
   <script type="text/javascript">
-    function initialize() {
+    function initializeOneFlatMap() {
       var map = initMap(850, 750);
       // add marker and center map
       var geocoder = new GClientGeocoder();
@@ -10,17 +10,19 @@
         map.addOverlay(new GMarker(latLng, {'title': addressString }));
       });
 
+      /*
       directions = new GDirections(map);
-      var betterplaceOfficeString = "Schlesische Straße 26, Berlin";
+      var betterplaceOfficeString = '<%= betterplace_office_address %>';
       directions.load(
         "from: " +  addressString + " to: " + betterplaceOfficeString,
         {'travelMode': "G_TRAVEL_MODE_WALKING", 'locale': 'de_DE'}
       );
-      //setTimeout("alert(directions.getDistance().meters)", 5000);
+      setTimeout("alert(directions.getDistance().meters)", 5000);
+      */
     }
     
     </script>
     
-  <body onload="initialize()" onunload="GUnload()">
+  <body onload="initializeOneFlatMap()" onunload="GUnload()">
     <div id="map_canvas" style="width: 800px; height: 600px; border: 1px solid #000"></div>
 </div>
