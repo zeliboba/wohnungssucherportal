@@ -22,10 +22,10 @@
       geocoder.geocode({'address': address}, function(results, status) {
         var markerOptions = {
           'position': results[0].geometry.location,
-          'title': address
+          'title': address,
+          'map': map
         };
         var marker = new google.maps.Marker(markerOptions);
-        marker.setMap(map);      
       });
 
       /*
