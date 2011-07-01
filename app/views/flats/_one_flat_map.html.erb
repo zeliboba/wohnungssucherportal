@@ -1,14 +1,31 @@
 <div id="map">
   <script type="text/javascript">
-    function initializeOneFlatMap() {
-      var map = initMap(850, 750);
-      // add marker and center map
-      var geocoder = new GClientGeocoder();
+    function initialize() {
+      
+      // set up new map
+      var mapOptions = {
+        zoom: 13,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };  
+      map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+
+      // set center
+      var geocoder = new google.maps.Geocoder();
+      geocoder.geocode({'address': 'Kleinhesseloher See, München'}, function(results, status) {
+        map.setCenter(results[0].geometry.location);
+      });
+      
       addReferencePoints(map, geocoder, ["<%= amazon_muenchen %>"]);
-      var addressString = '<%= flat.full_address %>';
-      geocoder.getLatLng(addressString, function(latLng) {
-        map.setCenter(latLng, 15);
-        map.addOverlay(new GMarker(latLng, {'title': addressString }));
+      
+      var address = '<%= flat.full_address %>';
+      
+      geocoder.geocode({'address': address}, function(results, status) {
+        var markerOptions = {
+          'position': results[0].geometry.location,
+          'title': address
+        };
+        var marker = new google.maps.Marker(markerOptions);
+        marker.setMap(map);      
       });
 
       /*
@@ -24,6 +41,6 @@
     
     </script>
     
-  <body onload="initializeOneFlatMap()" onunload="GUnload()">
+  <body onload="initialize()">
     <div id="map_canvas" style="width: 800px; height: 600px; border: 1px solid #000"></div>
 </div>

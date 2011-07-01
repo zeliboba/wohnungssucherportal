@@ -1,28 +1,44 @@
-<div id="map">
-  <script type="text/javascript">
+<script type="text/javascript">
+
+map = false;
+
+function initialize() {
   
-    function initialize() {
-      var map = initMap(850, 750);
-      var geocoder = new GClientGeocoder();
+  // set up new map
+  var mapOptions = {
+    zoom: 13,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };  
+  map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+  
+  // set center
+  var geocoder = new google.maps.Geocoder();
+  geocoder.geocode({'address': 'Kleinhesseloher See, München'}, function(results, status) {
+    map.setCenter(results[0].geometry.location);
+  });
+  
+  addReferencePoints(map, geocoder, ["<%= amazon_muenchen %>"]);
 
-      // center map somewhere hardcoded
-      geocoder.getLatLng('Kleinhesseloher See, München', function(latLng) {
-        map.setCenter(latLng, 13);
-      });
+  // add markers for flats
+  G_addresses.each(function(address) {
+    geocoder.geocode({'address': address}, function(results, status) {
+      var markerOptions = {
+        'position': results[0].geometry.location,
+        'title': address
+      };
+      var marker = new google.maps.Marker(markerOptions);
+      marker.setMap(map);      
+    });
+  });
+  
+  /*
+  $('map_canvas').setStyle({width: "700px", height: "400px"});
+  google.maps.event.trigger(map, "resize");
+  */
+}
+</script>
 
-      addReferencePoints(map, geocoder, ["<%= amazon_muenchen %>"]);
-      
-      // add markers for flats
-      G_addresses.each(function(address) {
-        console.log(address);
-        geocoder.getLatLng(address, function(latLng) {
-          var marker = new GMarker(latLng, { 'title': address });
-          map.addOverlay(marker);          
-        });
-      });
-    }
-    </script>
-    
-  <body onload="initialize()" onunload="GUnload()">
-    <div id="map_canvas" style="width: 800px; height: 600px; border: 1px solid #000"></div>
+<div id="map">
+  <body onload="initialize()">
+    <div id="map_canvas" style="width: 850px; height: 750px; border: 1px solid #000;"></div>
 </div>
