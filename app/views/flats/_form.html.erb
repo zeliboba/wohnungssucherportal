@@ -13,7 +13,7 @@
   </p>
   <p>
     <%= f.label :priority %><br />
-    <%= f.text_field :priority %>
+    <%= f.select :priority, options_for_select([["1", 1], ["2", 2], ["3", 3]], @flat.priority || Flat::DEFAULT_PRIORITY) %>
   </p>
 </div>
 
