@@ -22,15 +22,24 @@
     </p>
 
     <p>
-      Comment: <%= simple_format(@flat.comment) %>
-    </p>
-
-    <p>
       Available from <b><%=h @flat.available_on %></b>
       <% if @flat.available_until %> 
         to <b><%=h @flat.available_until %></b>
         (<%= available_months(@flat) %>)
       <% end %>.
+    </p>
+    
+    <p>
+      Contact: <%= @flat.contact_person %> at <%= @flat.phone %>.
+    </p>
+
+    <p>
+      Added on: <%= l(@flat.created_at, :format => :long) %>.
+      <%# (<%= distance_of_time_in_words(@flat.created_at, Time.now) ). %>
+    </p>
+    
+    <p>
+      Last updated on: <%= l(@flat.updated_at, :format => :long) %>.
     </p>
     
     <p><%= link_to('Original ad', h(@flat.url), {:popup => true}) %>.</p>

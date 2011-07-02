@@ -19,7 +19,7 @@
 
 
 <p style="border-top:1px solid #666;padding-top:4px; font-size:14px">
-  Showing <%= @flats.size %> interesting flats (<%= link_to 'show all', all_flats_path %>). | sort list by: 
+  Showing <%= @flats.size %> flats (<%= link_to 'show all', all_flats_path %>). | sort list by: 
   <% Flat::SORT_OPTIONS.each do |name, value| %>
     <%= link_to(name, flats_path(:order => value)) %>
   <% end %>
