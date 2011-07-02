@@ -1,6 +1,10 @@
 <script type="text/javascript">
 
+// HACK - make a global var for debugging from console
 map = false;
+
+// HACK - make a global var
+G_markers = new Array();
 
 function initialize() {
   
@@ -20,17 +24,35 @@ function initialize() {
   addReferencePoints(map, geocoder, ["<%= amazon_muenchen %>"]);
 
   // add markers for flats
-  G_addresses.each(function(address) {
-    geocoder.geocode({'address': address}, function(results, status) {
+
+  G_addresses.each(function(flat) {
+    geocoder.geocode({'address': flat.address}, function(results, status) {
       var markerOptions = {
         'position': results[0].geometry.location,
-        'title': address,
-        'map': map
+        'title': flat.address,
+        'map': map,
+        'dbId': flat.dbId
       };
       var marker = new google.maps.Marker(markerOptions);
+      G_markers.push(marker);
     });
   });
   
+  // add highlighting of markers
+  // http://www.google.com/intl/en_us/mapfiles/ms/micons/orange-dot.png
+  $$('.street-name').each(function(link) {
+    link.observe('mouseover', function(event) {
+      var id = event.target.href.split('/').last();
+      var marker = G_markers.find(function(marker) { return (marker.dbId == id) });
+      marker.setIcon(icon('blue'));
+    });
+    link.observe('mouseout', function(event) {
+      var id = event.target.href.split('/').last();
+      var marker = G_markers.find(function(marker) { return (marker.dbId == id) });
+      marker.setIcon(icon('red'));
+    });
+  });
+    
   /*
   $('map_canvas').setStyle({width: "700px", height: "400px"});
   google.maps.event.trigger(map, "resize");
