@@ -8,14 +8,16 @@ class Flat < ActiveRecord::Base
     not_available
   )
   
-  # should not be in model
-  SORT_OPTIONS = {
-    'street' => 'street ASC',
-    'm²' => 'square_meters DESC',
-    'price' => 'price DESC',
-    'cost' => 'price/square_meters DESC',
-    'available on' => 'available_on ASC'
-  }
+  # should this be in the model?
+  SORT_OPTIONS = [
+    ['added on', 'created_at DESC'],
+    ['priority', 'priority ASC'],
+    ['street', 'street ASC'],
+    ['m²', 'square_meters DESC'],
+    ['price', 'price DESC'],
+    ['cost', 'price/square_meters DESC'],
+    ['available on', 'available_on ASC'],
+  ]
   
   DEFAULT_PRIORITY = 2
   
@@ -35,7 +37,7 @@ class Flat < ActiveRecord::Base
     "state IN(NULL, 'new', 'interesting', 'contacted', 'visit_scheduled') AND created_at >= '2011-01-01'"
   ]
   named_scope :ordered, lambda { |*order|
-    { :order => order.flatten.first || 'square_meters DESC' }
+    { :order => order.flatten.first || SORT_OPTIONS.first[1] }
   }
   named_scope :expired, :conditions => { :state => 'not_available' }
   

@@ -11,12 +11,29 @@
     <%= f.label :comment %><br />
     <%= f.text_area :comment%>
   </p>
+
   <p>
-    <%= f.label :priority %><br />
+    <%= f.label :contact_person %><br />
+    <%= f.text_field :contact_person %>
+  </p>
+
+  <p>
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone %>
+  </p>
+
+  <p>
+    <%= f.label :priority %>&nbsp;
     <%= f.select :priority, options_for_select([["1", 1], ["2", 2], ["3", 3]], @flat.priority || Flat::DEFAULT_PRIORITY) %>
   </p>
+  <p>
+    <%= f.submit (@flat.new_record? ? 'Create' : 'Update') %>
+  </p>
+
+  
 </div>
 
+<div id="base_data">
 <p>
   <%= f.label :street %><br />
   <%= f.text_field :street %>
@@ -37,31 +54,16 @@
   <%= f.label :price %><br />
   <%= f.text_field :price %>
 </p>
+
 <p>
-  <%= f.label :url %><br />
+  <%= f.label :available_from, "Availability" %><br />
+  from: <%= f.date_select(:available_on, :order => [:day, :month, :year], :use_month_numbers => true, :start_year => Time.now.year - 1) %>
+  &nbsp;until: <%= f.date_select(:available_until, :order => [:day, :month, :year], :use_month_numbers => true, :include_blank => true, :default => nil, :start_year => Time.now.year)%>
+</p>
+
+<p>
+  <%= f.label :url, link_to("Url", @flat.url) %><br />
   <%= f.text_field :url %>
 </p>
 
-<p>
-  <%= f.label :available_from %><br />
-  <%= f.date_select(:available_on, :order => [:day, :month, :year], :use_month_numbers => true, :start_year => Time.now.year - 1) %>
-</p>
-<p>
-  <%= f.label :available_until %><br />
-  <%= f.date_select(:available_until, :order => [:day, :month, :year], :use_month_numbers => true, :include_blank => true, :default => nil, :start_year => Time.now.year)%>
-</p>
-
-<p>
-  <%= f.label :image_links %><br />
-  <%= f.text_area :image_links, {:style => 'height:100px'} %>
-</p>
-
-<p>
-  <%= f.label :contact_person %><br />
-  <%= f.text_field :contact_person %>
-</p>
-
-<p>
-  <%= f.label :phone %><br />
-  <%= f.text_field :phone %>
-</p>
+</div>

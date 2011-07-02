@@ -90,8 +90,14 @@ small, small a, small a:visited {
 
 div#process_data {
   position:absolute;
+  left:20px;
+  top:90px;
+}
+
+div#base_data {
+  position:absolute;
   left:500px;
-  top:55px;
+  top:90px;
 }
 
 div#map {
