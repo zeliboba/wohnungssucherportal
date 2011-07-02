@@ -32,6 +32,10 @@
     <p>
       Contact: <%= @flat.contact_person %> at <%= @flat.phone %>.
     </p>
+    
+    <p>
+      Comment:<br /><%= @flat.comment %>
+    </p>
 
     <p>
       Added on: <%= l(@flat.created_at, :format => :long) %>.
