@@ -21,22 +21,25 @@ class FlatsController < ApplicationController
   end
   
   def new
-    p params
-    @flat = Flat.new
+    if !params[:url].blank?
+      @flat = Flat.from_url(params[:url])
+    else
+      @flat = Flat.new
+    end
+    @flat.state = Flat::STATES.first
   end
 
   def edit
-    defaults = {:available_on => Time.parse('01.01.2010'), :state => Flat::STATES.first}
     @flat = Flat.find(params[:id])
   end
 
   def create
-    @flat = Flat.from_url(params[:flat][:url])
+    @flat = Flat.new(params[:flat])
 
     if @flat.save
       flash[:notice] = 'flat was successfully created.'
       flash[:created_flat_id] = @flat.id
-      redirect_to edit_flat_path(@flat)
+      redirect_to flat_path(@flat)
     else
       flash[:error] = @flat.errors
       render :action => "new"

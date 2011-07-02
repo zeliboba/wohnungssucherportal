@@ -19,7 +19,7 @@ class Flat < ActiveRecord::Base
   
   has_many :notes, :order => 'created_at DESC'
   
-  validates_presence_of :street, :neighbourhood, :square_meters, :price, :available_on, :url
+  validates_presence_of :street, :neighbourhood, :square_meters, :price, :available_on
   validates_numericality_of :square_meters, :price
   
   # try preventing duplicates by only allowing one flat with same size and price per street
