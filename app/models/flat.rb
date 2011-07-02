@@ -17,6 +17,8 @@ class Flat < ActiveRecord::Base
     'available on' => 'available_on ASC'
   }
   
+  DEFAULT_PRIORITY = 2
+  
   has_many :notes, :order => 'created_at DESC'
   
   validates_presence_of :street, :neighbourhood, :square_meters, :price, :available_on
@@ -48,6 +50,11 @@ class Flat < ActiveRecord::Base
   def available_months
     return unless available_until
     ((available_until - available_on).to_i) / 30
+  end
+  
+  # flats can be entered manually or be created from a scraped url
+  def scraped?
+    !url.blank?
   end
   
   class << self

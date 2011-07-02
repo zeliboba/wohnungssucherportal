@@ -1,5 +1,6 @@
 <li>
 <%= link_to(h(flat.street), flat) %>, <%=h flat.neighbourhood %>
+<%= image_tag 'http://www.wg-gesucht.de/favicon.ico' if flat.scraped? %>
 <small><%= link_to 'edit', edit_flat_path(flat) %></small>
 <br />
 <b><%=h flat.square_meters %></b>m², 
