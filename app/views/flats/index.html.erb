@@ -5,7 +5,7 @@
 <%= render :partial => 'overview_map', :locals => { :flats => @flats } %>
 
 <div id="flats">
-  <%= link_to 'Add flat', new_flat_path %>  
+  <%= link_to 'Add flat', '/flats/prefill_url_form' %>  
   
   <ul id="flat_index">
     <% @flats.group_by(&:state).each do |state, flats| %>

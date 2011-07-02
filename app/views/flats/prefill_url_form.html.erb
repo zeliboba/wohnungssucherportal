@@ -1,0 +1,18 @@
+<h1>New flat</h1>
+
+<p>
+  <%= error_messages_for 'flat' %>
+</p>
+
+<% form_tag :action => 'new' do |f| %>
+  <p>
+    <%= label_tag :url, "URL for prefilling the form:" %><br />
+    <%= text_field_tag :url, {}, { :style => 'width: 800px'} %>
+  </p>
+  
+  <p>
+    <%= submit_tag 'Continue' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', flats_path %>

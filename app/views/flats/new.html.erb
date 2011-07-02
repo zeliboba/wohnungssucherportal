@@ -1,18 +1,11 @@
-<h1>New flat</h1>
+<%= link_to 'Back to list', flats_path %> |
+<%= link_to 'Show', @flat %>
 
-<p>
-  <%= error_messages_for 'flat' %>
-</p>
+<h1>Create Wohnung</h1>
 
 <% form_for(@flat) do |f| %>
+  <%= render :partial => 'form', :locals => { :f => f } %>
   <p>
-    <%= f.label :url %><br />
-    <%= f.text_field :url, { :style => 'width: 800px'} %>
-  </p>
-  
-  <p>
-    <%= f.submit 'Create' %>
+    <%= f.submit 'Update' %>
   </p>
 <% end %>
-
-<%= link_to 'Back', flats_path %>

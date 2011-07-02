@@ -17,12 +17,16 @@ class FlatsController < ApplicationController
     end
   end
 
+  def prefill_url_form
+  end
+  
   def new
-    defaults = {:available_on => Time.parse('01.01.2010'), :state => Flat::STATES.first}
-    @flat = Flat.new(defaults)
+    p params
+    @flat = Flat.new
   end
 
   def edit
+    defaults = {:available_on => Time.parse('01.01.2010'), :state => Flat::STATES.first}
     @flat = Flat.find(params[:id])
   end
 

@@ -1,6 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :notes
 
+  map.all_flats 'flats/prefill_url_form', :controller => :flats, :action => :prefill_url_form
   map.all_flats 'flats/all', :controller => :flats, :id => 'all'
   map.resources :flats
 
