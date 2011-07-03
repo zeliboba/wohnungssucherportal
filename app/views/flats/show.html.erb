@@ -39,11 +39,12 @@
 
     <p>
       Added on: <%= l(@flat.created_at, :format => :long) %>.
-      <%# (<%= distance_of_time_in_words(@flat.created_at, Time.now) ). %>
+        <i>(<%= distance_of_time_in_words(@flat.created_at, Time.now) %>)</i>.
     </p>
     
     <p>
-      Last updated on: <%= l(@flat.updated_at, :format => :long) %>.
+      Last updated on: <%= l(@flat.updated_at, :format => :long) %> 
+        <i>(<%= distance_of_time_in_words(@flat.updated_at, Time.now) %>)</i>.
     </p>
     
     <p><%= link_to('Original ad', h(@flat.url), {:popup => true}) %>.</p>
