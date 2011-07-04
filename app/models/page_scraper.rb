@@ -1,6 +1,5 @@
 require 'open-uri'
 require 'hpricot'
-require 'htmlentities'
 
 class PageScraper
 
