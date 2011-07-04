@@ -15,7 +15,8 @@
 * eigene fixpunkte eingeben (z.b. arbeit, hauptbahnhof)
   - routing zwischen punkten mit km-anzeige und geschätzter fahrzeit
   
-  
+* scraper auf XPath umstellen
+
 DONE
 
 * eigene fixpunkte auch auf detailkarte anzeigen
