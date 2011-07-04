@@ -1,3 +1,5 @@
+* (upgrade your app to Rails 2.3)
+
 * use bundler in Rails 2.3 app to manage gems:
   http://gembundler.com/rails23.html
 
@@ -21,3 +23,6 @@
   returning(x) {} ===> x.tap {}
   http://blog.rubybestpractices.com/posts/gregory/011-tap-that-hash.html
 
+* (fix remaining issues and deprecation notes)
+
+* change Rails gem version to 3.0.9

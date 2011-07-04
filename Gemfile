@@ -1,6 +1,6 @@
 source :rubygems
 
-gem "rails", "2.3.12"
+gem "rails", "3.0.9"
 
 gem "mysql", "2.8.1"
 gem "hpricot", "0.8.4"
