@@ -4,6 +4,6 @@
 
 <h1>Editing wohnung</h1>
 
-<% form_for(@flat) do |f| %>
+<%= form_for(@flat) do |f| %>
   <%= render :partial => 'form', :locals => { :f => f } %>
 <% end %>

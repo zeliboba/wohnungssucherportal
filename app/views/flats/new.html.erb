@@ -2,6 +2,6 @@
 
 <h1>Create Wohnung</h1>
 
-<% form_for(@flat) do |f| %>
+<%= form_for(@flat) do |f| %>
   <%= render :partial => 'form', :locals => { :f => f } %>
 <% end %>
