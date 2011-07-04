@@ -21,8 +21,6 @@ class Flat < ActiveRecord::Base
   
   DEFAULT_PRIORITY = 2
   
-  has_many :notes, :order => 'created_at DESC'
-  
   validates_presence_of :street, :neighbourhood, :square_meters, :price, :available_on
   validates_numericality_of :square_meters, :price
   
