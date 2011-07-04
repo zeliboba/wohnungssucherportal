@@ -31,13 +31,13 @@ class Flat < ActiveRecord::Base
   validate :available_until_must_be_after_available_on
   validates_inclusion_of :state, :in => STATES, :allow_nil => true
   
-  named_scope :for_index, :conditions => [
+  scope :for_index, :conditions => [
     "state IN(NULL, 'new', 'interesting', 'contacted', 'visit_scheduled') AND created_at >= '2011-01-01'"
   ]
-  named_scope :ordered, lambda { |*order|
+  scope :ordered, lambda { |*order|
     { :order => order.flatten.first || SORT_OPTIONS.first[1] }
   }
-  named_scope :expired, :conditions => { :state => 'not_available' }
+  scope :expired, :conditions => { :state => 'not_available' }
   
   def square_meter_price
     ((price / square_meters.to_f) * 100).round / 100.to_f
