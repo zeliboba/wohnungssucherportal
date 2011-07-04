@@ -19,7 +19,7 @@ class PageScraper::WGGesucht < PageScraper
     end
     
     def parse_data_table(doc)
-      returning({}) do |data|
+      {}.tap do |data|
         data[:price], data[:square_meters] = parse_price_and_size(doc)
         b_gross = doc.search("//b[@class='gross']")
         data[:available_on], data[:available_until] = parse_dates(b_gross)

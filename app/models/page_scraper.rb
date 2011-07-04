@@ -1,5 +1,6 @@
 require 'open-uri'
 require 'hpricot'
+require 'htmlentities'
 
 class PageScraper
 
@@ -16,7 +17,6 @@ class PageScraper
     
       # used in the child classes to register as scraper for a domain
       def scrapes(domain)
-        p "#{self} scrapes #{domain}"
         @@scraper_registry ||= {}
         @@scraper_registry[domain] = self
       end

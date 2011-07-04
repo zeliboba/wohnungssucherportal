@@ -1,0 +1,23 @@
+* use bundler in Rails 2.3 app to manage gems:
+  http://gembundler.com/rails23.html
+
+* remove vendor/rails
+  rm vendor/rails
+  remove RAILS_GEM_VERSION from environment.rb
+
+* update to latest Rails 2.3 version (2.3.12)
+
+* update rails scripts
+  rake rails:update
+  
+* rake/rdoctask is deprecated.  Use rdoc/task instead (in RDoc 2.4.2+)
+  in Gemfile:
+  gem "rdoc"
+  in Rakefile:
+  require 'rake/rdoctask' => require 'rdoc/task'
+  http://matthew.mceachen.us/blog/howto-fix-rake-rdoctask-is-deprecated-use-rdoc-task-instead-1169.html
+  
+* DEPRECATION WARNING: Kernel#returning has been deprecated in favor of Object#tap
+  returning(x) {} ===> x.tap {}
+  http://blog.rubybestpractices.com/posts/gregory/011-tap-that-hash.html
+

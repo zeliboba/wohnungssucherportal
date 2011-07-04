@@ -1,4 +1,11 @@
-* check if own translation file can be used
+* rails 3
+* rspec 2, capybara
+  write some acceptance tests
+* prototype => jquery
+* ruby 1.8.7 => 1.9.2
+  test each_with_object
+
+* use own translation file
 
 * map passt sich an die größe des browserfensters an
 
