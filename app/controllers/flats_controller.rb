@@ -1,11 +1,12 @@
 class FlatsController < ApplicationController
 
   def index
-    @flats = if (params[:id] == 'all')
-      Flat.all
-    else
-      Flat.for_index.ordered(params[:order])
-    end
+    @flats = Flat.for_index.ordered(params[:order])
+  end
+  
+  def all
+    @flats = Flat.all
+    render :action => 'index'
   end
 
   def show
