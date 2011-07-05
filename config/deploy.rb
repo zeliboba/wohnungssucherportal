@@ -41,3 +41,6 @@ before "deploy:symlink", "deploy:ensure_permissions"
 after "deploy:symlink", "deploy:copy_config"
 before "deploy:migrate", "deploy:copy_config"
 
+# have builder check and install gems after each update_code
+require 'bundler/capistrano'
+after "deploy:rollback:revision", "bundler:install"
