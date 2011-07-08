@@ -9,6 +9,7 @@ gem "mysql2", "0.2.11"
 gem "hpricot", "0.8.4"
 gem "htmlentities", "4.3.0"
 gem "rdoc"
+gem "rake", "0.9.2"
 
 group :development do
 #  gem "mongrel"
@@ -17,8 +18,9 @@ end
 # Use unicorn as the web server
 # gem 'unicorn'
 
-# Deploy with Capistrano
-# gem 'capistrano'
+group :development do
+  gem 'capistrano'
+end
 
 # To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
 # gem 'ruby-debug'
