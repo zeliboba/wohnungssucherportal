@@ -30,16 +30,16 @@ namespace :deploy do
   end
   
   desc "Copy configuration files from shared into new release release"
-  task :copy_config do
-    run "cp #{shared_path}/config/database.yml #{current_path}/config/"
+  task :copy_config, :except => { :no_release => true } do
+    #run "cp #{shared_path}/config/database.yml #{current_path}/config/"
+    run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
   end
 
 end
 
 before "deploy:symlink", "deploy:ensure_directories"
 before "deploy:symlink", "deploy:ensure_permissions"
-after "deploy:symlink", "deploy:copy_config"
-before "deploy:migrate", "deploy:copy_config"
+after "deploy:finalize_update", "deploy:copy_config"
 
 # have builder check and install gems after each update_code
 require 'bundler/capistrano'
