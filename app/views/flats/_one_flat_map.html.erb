@@ -9,24 +9,19 @@
       };  
       map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 
-      // set center
       var geocoder = new google.maps.Geocoder();
-      geocoder.geocode({'address': 'Kleinhesseloher See, München'}, function(results, status) {
-        map.setCenter(results[0].geometry.location);
-      });
-      
+
+      centerMap(map, geocoder);
       addReferencePoints(map, geocoder, ["<%= amazon_muenchen %>"]);
       
       var address = '<%= flat.full_address %>';
       
-      geocoder.geocode({'address': address}, function(results, status) {
         var markerOptions = {
-          'position': results[0].geometry.location,
+          'position': new google.maps.LatLng(<%= flat.latitude %>, <%= flat.longitude %>),
           'title': address,
           'map': map
         };
         var marker = new google.maps.Marker(markerOptions);
-      });
 
       /*
       directions = new GDirections(map);

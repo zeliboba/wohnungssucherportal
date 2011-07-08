@@ -20,3 +20,9 @@ function icon(color) {
     new google.maps.Size(32, 32)
   );
 }
+
+function centerMap(map, geocoder) {
+  geocoder.geocode({'address': 'Kleinhesseloher See, München'}, function(results, status) {
+    map.setCenter(results[0].geometry.location);
+  });
+}

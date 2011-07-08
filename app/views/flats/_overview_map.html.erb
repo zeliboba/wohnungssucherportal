@@ -17,10 +17,8 @@ function initialize() {
   
   // set center
   var geocoder = new google.maps.Geocoder();
-  geocoder.geocode({'address': 'Kleinhesseloher See, München'}, function(results, status) {
-    map.setCenter(results[0].geometry.location);
-  });
-  
+
+  centerMap(map, geocoder);  
   addReferencePoints(map, geocoder, ["<%= amazon_muenchen %>"]);
 
   // add markers for flats
