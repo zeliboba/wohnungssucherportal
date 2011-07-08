@@ -4,7 +4,7 @@
 map = false;
 
 // HACK - make a global var
-G_markers = new Array();
+G_markers = {};
 
 function initialize() {
   
@@ -26,15 +26,15 @@ function initialize() {
   // add markers for flats
 
   G_addresses.each(function(flat) {
-    geocoder.geocode({'address': flat.address}, function(results, status) {
+    geocoder.geocode({'address': flat.full_address}, function(results, status) {
+      if (!results) return; // the geocoder stops after 10 encodings within a few milliseconds.
       var markerOptions = {
         'position': results[0].geometry.location,
-        'title': flat.address,
-        'map': map,
-        'dbId': flat.dbId
+        'title': flat.full_address,
+        'map': map
       };
       var marker = new google.maps.Marker(markerOptions);
-      G_markers.push(marker);
+      G_markers[flat.id] = marker;
     });
   });
   
@@ -43,13 +43,11 @@ function initialize() {
   $$('.street-name').each(function(link) {
     link.observe('mouseover', function(event) {
       var id = event.target.href.split('/').last();
-      var marker = G_markers.find(function(marker) { return (marker.dbId == id) });
-      marker.setIcon(icon('blue'));
+      G_markers[id].setIcon(icon('blue'));
     });
     link.observe('mouseout', function(event) {
       var id = event.target.href.split('/').last();
-      var marker = G_markers.find(function(marker) { return (marker.dbId == id) });
-      marker.setIcon(icon('red'));
+      G_markers[id].setIcon(icon('red'));
     });
   });
     

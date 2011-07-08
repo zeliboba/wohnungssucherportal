@@ -6,7 +6,7 @@ module FlatsHelper
   
   def flats_as_json(flats)
     flats.map do |flat|
-      {:address => flat.full_address, :dbId => flat.id}
+      {:full_address => flat.full_address, :id => flat.id}
     end.to_json
   end
 end

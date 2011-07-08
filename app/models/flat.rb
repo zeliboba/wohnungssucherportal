@@ -34,6 +34,7 @@ class Flat < ActiveRecord::Base
   scope :for_index, :conditions => [
     "state IN(NULL, 'new', 'interesting', 'contacted', 'visit_scheduled') AND created_at >= '2011-01-01'"
   ]
+  
   scope :ordered, lambda { |*order|
     { :order => order.flatten.first || SORT_OPTIONS.first[1] }
   }
