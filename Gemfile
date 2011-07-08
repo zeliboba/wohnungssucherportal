@@ -18,7 +18,7 @@ end
 # Use unicorn as the web server
 # gem 'unicorn'
 
-group :development do
+group :deployment do
   gem 'capistrano'
 end
 
