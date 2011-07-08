@@ -1,5 +1,5 @@
-<%= javascript_tag do %>
-  var G_addresses = <%= flats_data_for_client(@flats).to_json.html_safe %>;
+<%raw= javascript_tag do %>
+  var G_addresses = <%= flats_as_json(@flats).html_safe %>;
 <% end %>
 
 <%= render :partial => 'overview_map', :locals => { :flats => @flats } %>

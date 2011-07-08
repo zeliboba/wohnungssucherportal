@@ -1,4 +1,11 @@
-* rails 3
+* production: 
+  fix database
+  set encoding: utf8
+  go to 1.9
+  got to mysql2
+
+
+---
 * rspec 2, capybara
   write some acceptance tests
 * prototype => jquery
@@ -29,3 +36,4 @@
 DONE
 
 * eigene fixpunkte auch auf detailkarte anzeigen
+* rails 3
