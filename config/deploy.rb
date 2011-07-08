@@ -7,7 +7,7 @@ set :deploy_via, :remote_cache
 
 role :web, "87.106.19.63" # Your HTTP server, Apache/etc
 role :app, "87.106.19.63" # This may be the same as your `Web` server
-role :db,  "87.106.19.63" # This is where Rails migrations will run
+role :db,  "87.106.19.63", :primary => true # This is where Rails migrations will run
 
 namespace :deploy do
   
