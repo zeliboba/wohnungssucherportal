@@ -10,6 +10,7 @@ gem "hpricot", "0.8.4"
 gem "htmlentities", "4.3.0"
 gem "rdoc"
 gem "rake", "0.9.2"
+gem "gmaps4rails"
 
 group :development do
 #  gem "mongrel"

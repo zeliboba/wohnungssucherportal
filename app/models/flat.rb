@@ -40,7 +40,9 @@ class Flat < ActiveRecord::Base
   }
   scope :expired, :conditions => { :state => 'not_available' }
   
-  def square_meter_price
+	acts_as_gmappable
+	
+	def square_meter_price
     ((price / square_meters.to_f) * 100).round / 100.to_f
   end
   
@@ -82,4 +84,9 @@ class Flat < ActiveRecord::Base
         errors.add_to_base('Avail until must be after avail on.')
       end
     end
+
+  	def gmaps4rails_address
+  	  "#{self.street}, München, Deutschland" 
+  	end
+
 end

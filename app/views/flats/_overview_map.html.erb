@@ -26,16 +26,13 @@ function initialize() {
   // add markers for flats
 
   G_addresses.each(function(flat) {
-    geocoder.geocode({'address': flat.full_address}, function(results, status) {
-      if (!results) return; // the geocoder stops after 10 encodings within a few milliseconds.
-      var markerOptions = {
-        'position': results[0].geometry.location,
-        'title': flat.full_address,
-        'map': map
-      };
-      var marker = new google.maps.Marker(markerOptions);
-      G_markers[flat.id] = marker;
-    });
+    var markerOptions = {
+      'position': new google.maps.LatLng(flat.latitude, flat.longitude),
+      'title': flat.full_address,
+      'map': map
+    };
+    var marker = new google.maps.Marker(markerOptions);
+    G_markers[flat.id] = marker;
   });
   
   // add highlighting of markers

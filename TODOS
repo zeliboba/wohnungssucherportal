@@ -1,8 +1,6 @@
 * production: 
-  fix database
-  set encoding: utf8
+  go to rvm
   go to 1.9
-  got to mysql2
 
 
 ---
@@ -37,3 +35,8 @@ DONE
 
 * eigene fixpunkte auch auf detailkarte anzeigen
 * rails 3
+* fix database
+* set encoding: utf8
+* got to mysql2
+* fix 10 marker limit in geocoder
+  => store geolocation in db
