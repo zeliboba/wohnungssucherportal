@@ -3,6 +3,7 @@
   write some acceptance tests
 * prototype => jquery
   organize JS code properly
+  backbone.js
 * ruby 1.8.7 => 1.9.2
   test each_with_object
 
