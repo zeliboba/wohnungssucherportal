@@ -19,7 +19,7 @@ function initialize() {
   var geocoder = new google.maps.Geocoder();
 
   centerMap(map, geocoder);  
-  addReferencePoints(map, geocoder, ["<%= amazon_muenchen %>"]);
+  addReferencePoints(map, geocoder, ["<%= amazon_muenchen %>", "<%= xenia_muenchen %>"]);
 
   // add markers for flats
   jQuery.each(G_addresses, function(index, flat) {
