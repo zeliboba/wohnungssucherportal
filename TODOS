@@ -11,6 +11,8 @@
   write some acceptance tests
   includung js
 
+* decent printing
+
 * consistency: all flats must have a visit date if they are in or after state "visit_scheduled"
   add a FSM?
 
@@ -39,7 +41,7 @@
 * immoscout scraper fixen
 
 * i18n auf deutsch
-
+* offline use
 
 DONE
 
