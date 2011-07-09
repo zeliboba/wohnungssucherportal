@@ -3,8 +3,9 @@ body {
 }
 
 body, p, ol, ul, td, input, select, textarea {
-  font-family: Gentium, verdana, arial, helvetica, sans-serif;
-  font-size:   18px;
+  font-family: Arial, Helvetica, Verdana, sans-serif;
+  font-size: 15px;
+  color: #443;
 }
 
 input, textarea {
@@ -27,19 +28,21 @@ a:hover { color: #fff; background-color:#000; }
 }
 
 #errorExplanation {
-  width: 400px;
+  width: 350px;
   border: 2px solid red;
   padding: 7px;
   padding-bottom: 12px;
   margin-bottom: 20px;
   background-color: #f0f0f0;
+  left: 950px;
+  position:relative;
 }
 
 #errorExplanation h2 {
   text-align: left;
   font-weight: bold;
   padding: 5px 5px 5px 15px;
-  font-size: 18px;
+  font-size: 1.2em;
   margin: -7px;
   background-color: #c00;
   color: #fff;
@@ -52,7 +55,7 @@ a:hover { color: #fff; background-color:#000; }
 }
 
 #errorExplanation ul li {
-  font-size: 18px;
+  font-size: 1.1em;
   list-style: square;
 }
 
@@ -111,9 +114,41 @@ div#flats {
 }
 
 h3 {
-  border-bottom: 1px dotted #000;
+  border-bottom: 1px dotted #55f;
   margin-bottom:5px;
+  color: #55f;
 }
 textarea#flat_comment {
   height: 200px;
+}
+
+p#sort-bar {
+  font-family: Arial, Verdana, Helvetica, sans-serif;
+  font-size:12px;
+  border-top: 1px dotted #999;
+  border-bottom: 1px dotted #999;
+  padding:4px; 
+  width:510px;
+}
+span#sort-options a:hover {
+ color: #fff; 
+ background-color:#000; 
+}
+span#sort-options {
+  font-weight:bold;
+}
+span#sort-options a[href] {
+  font-weight:normal;
+}
+
+div.field_with_errors {
+  display: inline;
+}
+
+p#flash-notice {
+  padding: 5px;
+  width: 510px;
+  background-color: #9FDD86;
+  border-left: 5px solid green;
+  color: green;
 }

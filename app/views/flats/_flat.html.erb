@@ -8,5 +8,5 @@
 <b><%=h flat.rooms %></b> rooms,
 <b><%=h number_to_currency(flat.square_meter_price, :unit => '€', :separator => ",", :precision => 0) %></b>/m²
 
-starting <b><%=h flat.available_on.strftime("%B") %></b>.
+<b><%=h priority_as_number(flat.priority) %></b>
 </li>

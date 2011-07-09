@@ -4,8 +4,11 @@
 
 <%= render :partial => 'overview_map', :locals => { :flats => @flats } %>
 
+
+<%= link_to 'Add flat', '/flats/prefill_url_form' %>  
+<%= render :partial => 'sort_bar' %>
+
 <div id="flats">
-  <%= link_to 'Add flat', '/flats/prefill_url_form' %>  
   
   <ul id="flat_index">
     <% @flats.group_by(&:state).each do |state, flats| %>
@@ -14,13 +17,3 @@
     <% end %>
   </ul>
 <div>
-  
-<br />
-
-
-<p style="border-top:1px solid #666;padding-top:4px; font-size:14px">
-  Showing <%= @flats.size %> flats (<%= link_to 'show all', all_flats_path %>). | sort list by: 
-  <% Flat::SORT_OPTIONS.each do |name, value| %>
-    <%= link_to(name, flats_path(:order => value)) %>
-  <% end %>
-</p>

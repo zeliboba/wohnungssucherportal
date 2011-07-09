@@ -24,7 +24,11 @@
 
   <p>
     <%= f.label :priority %>&nbsp;
-    <%= f.select :priority, options_for_select([["1", 1], ["2", 2], ["3", 3]], @flat.priority || Flat::DEFAULT_PRIORITY) %>
+    <% 1.upto(3) do |i| %>
+      <%= f.radio_button :priority, i %>
+      <%= f.label :priority, i, :value => i %>
+    <% end %>
+    
   </p>
   <p>
     <%= f.submit(@flat.new_record? ? 'Create' : 'Update') %>

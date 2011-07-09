@@ -27,7 +27,8 @@ class FlatsController < ApplicationController
     else
       @flat = Flat.new(:available_on => Time.parse('01.08.2011'))
     end
-    @flat.state = Flat::STATES.first
+    @flat.priority = Flat::DEFAULT_PRIORITY
+    @flat.state    = Flat::STATES.first
   end
 
   def edit

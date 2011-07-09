@@ -11,17 +11,17 @@ class Flat < ActiveRecord::Base
   # should this be in the model?
   SORT_OPTIONS = [
     ['added on', 'created_at DESC'],
-    ['priority', 'priority ASC'],
-    ['street', 'street ASC'],
+    ['available on', 'available_on ASC'],
+    ['cost', 'price/square_meters DESC'],
     ['m²', 'square_meters DESC'],
     ['price', 'price DESC'],
-    ['cost', 'price/square_meters DESC'],
-    ['available on', 'available_on ASC'],
+    ['priority', 'priority ASC'],
+    ['street', 'street ASC'],
   ]
   
   DEFAULT_PRIORITY = 2
   
-  validates_presence_of :street, :neighbourhood, :square_meters, :price, :available_on
+  validates_presence_of :street, :neighbourhood, :square_meters, :price, :available_on, :priority
   validates_numericality_of :square_meters, :price
   
   # try preventing duplicates by only allowing one flat with same size and price per street

@@ -7,8 +7,8 @@
 <div id="left_col">
   <div id="infos">
     <h1>
-      <%=h @flat.neighbourhood %><br />
-      <%=h @flat.street %>
+      <%=h @flat.neighbourhood %> <br />
+      <%=h @flat.street %> 
     </h1>
     
     <p>
@@ -38,7 +38,7 @@
     </p>
 
     <p>
-      Added on: <%= l(@flat.created_at, :format => :long) %>.
+      Added on: <%= l(@flat.created_at, :format => :long) %>
         <i>(<%= time_ago_in_words(@flat.created_at) %>)</i>.
     </p>
     
@@ -47,6 +47,10 @@
         <i>(<%= time_ago_in_words(@flat.updated_at) %>)</i>.
     </p>
     
+    <p>
+      Priority <%= priority_as_number(@flat.priority) %>
+    </p>
+      
     <p><%= link_to('Original ad', @flat.url, :target => '_blank') %>.</p>
   </div>
 </div>

@@ -10,4 +10,8 @@ module FlatsHelper
         :latitude => flat.latitude, :longitude => flat.longitude }
     end.to_json
   end
+  
+  def priority_as_number(priority)
+    priority ? ['➀', '➁', '➂'][priority - 1] : ''
+  end
 end

@@ -12,6 +12,7 @@ feature "Creating a flat" do
     fill_in('Price', :with => '300')
     click_on('Create')
     page.should have_content('flat was successfully created.')
+    page.should have_content('Priority ➁')
   end
   
   scenario "i get a validation error when price info is missing" do
