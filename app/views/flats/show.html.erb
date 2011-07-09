@@ -34,7 +34,7 @@
     </p>
     
     <p>
-      Comment:<br /><%= simple_format(@flat.comment) %>
+      Comment:<br /><%=raw simple_format(auto_link(@flat.comment)) %>
     </p>
 
     <p>
