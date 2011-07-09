@@ -2,12 +2,13 @@
 #
 # Use this as the base for the locale file of your language.
 
-"en-US":
+en:
   date:
     formats:
       default: "%Y-%m-%d"
       short: "%b %d"
       long: "%B %d, %Y"
+      german: "%d.%m.%Y"
 
     day_names:
       - Sunday
@@ -64,6 +65,8 @@
       default: "%a, %d %b %Y %H:%M:%S %z"
       short: "%d %b %H:%M"
       long: "%B %d, %Y %H:%M"
+      # i know i know this is en.yml ... but we're not localized yet.
+      german: "%d.%m.%Y %H:%M"
     am: "am"
     pm: "pm"
 

@@ -33,8 +33,7 @@
 
   <p>
     <%= f.label :visit_at %><br />
-    <%= f.datetime_select(:visit_at, :order => [:day, :month, :year], 
-      :use_month_numbers => true, :include_blank => true, :start_year => Time.now.year) %>
+    <%= f.text_field :visit_at, :value => l(@flat.visit_at, :format => :german) %>
   </p>
 
   <p>
@@ -68,8 +67,10 @@
 
 <p>
   <%= f.label :available_from, "Availability" %><br />
-  from: <%= f.date_select(:available_on, :order => [:day, :month, :year], :use_month_numbers => true, :start_year => Time.now.year - 1) %>
-  &nbsp;until: <%= f.date_select(:available_until, :order => [:day, :month, :year], :use_month_numbers => true, :include_blank => true, :default => nil, :start_year => Time.now.year) %>
+  from: 
+    <%= f.text_field :available_on, :value => l(@flat.available_on, :format => :german) %>
+  &nbsp;until: 
+    <%= f.text_field :available_until, :value => (@flat.available_until && l(@flat.available_until, :format => :german)) %>
 </p>
 
 <p>

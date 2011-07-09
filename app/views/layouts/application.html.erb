@@ -2,9 +2,9 @@
 <html lang="<%= I18n.locale %>">
 <head>
   <title>Wohnungssucherportal</title>
-  <%= stylesheet_link_tag :all %>
+  <%= stylesheet_link_tag :all, :"jquery-ui", :"jquery-ui-timepicker-addon" %>
   <%= javascript_include_tag :defaults %>
-  <%= javascript_include_tag 'maps' %>
+  <%= javascript_include_tag 'jquery-ui-timepicker-addon', 'maps' %>
   <%= csrf_meta_tag %>
   <script src="http://maps.google.com/maps/api/js?sensor=true&amp;key=<%= GOOGLE_MAPS_API_KEY %>" type="text/javascript"></script>
 </head>

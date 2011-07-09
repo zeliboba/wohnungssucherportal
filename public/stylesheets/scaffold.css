@@ -158,5 +158,6 @@ time {
   font-weight:bold;
 }
 
-
-
+input#flat_available_on, input#flat_available_until {
+  width: 100px;
+}
