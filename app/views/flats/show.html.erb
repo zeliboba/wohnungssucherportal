@@ -6,52 +6,84 @@
 
 <div id="left_col">
   <div id="infos">
-    <h1>
-      <%= @flat.neighbourhood %> <br />
-      <%= @flat.street %> 
-    </h1>
     
-    <p>
-      <b><%= @flat.rooms %></b> rooms,
-      <b><%= @flat.square_meters %></b>m², 
-      <b>€<%= @flat.price %></b>.
-    </p>
+    <h2><%= @flat.street %></h2>
     
-    <p>
-      State: <b><%= @flat.state %></b>.
-    </p>
-
-    <p>
-      Available from <b><%= l(@flat.available_on, :format => :german) %></b>
-      <% if @flat.available_until %> 
-        to <b><%= l(@flat.available_until, :format => :german) %></b>
-        (<%= available_months(@flat) %>)
+    <table id="flat-data">
+      <thead>
+      <tr>
+        <th>neighbourhood</th>
+        <td><%= @flat.neighbourhood %></td>
+      </tr>
+      <% if @flat.rooms %>
+      <tr>
+        <th>number of rooms</th>
+        <td><%= @flat.rooms %></td>
+      </tr>
       <% end %>
-    </p>
+      <tr>
+        <th>size</th>
+        <td><%= @flat.square_meters %>m²</td>
+      </tr>
+      <tr id="separator">
+        <th>price</th>
+        <td>€<%= @flat.price %></td>
+      </tr>
+      </thead>
+      <tr>
+        <th>in state</th>
+        <td><%= @flat.state.humanize %></td>
+      </tr>
+      <tr>
+        <th>available</th>
+        <td>
+          from <b><%= l(@flat.available_on, :format => :german) %></b>
+          <% if @flat.available_until %> 
+            to <b><%= l(@flat.available_until, :format => :german) %></b>
+            (<%= available_months(@flat) %>)
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th>contact</th>
+        <td><%=raw auto_link(@flat.contact_person + " " + @flat.phone) %></td>
+      </tr>
+      <tr>
+        <th>added on</th>
+        <td><%= l(@flat.created_at, :format => :german) %>
+          <i>(<%= time_ago_in_words(@flat.created_at) %>)</i>
+        </td>
+      </tr>
+      <tr>
+        <th>last changed on</th>
+        <td><%= l(@flat.updated_at, :format => :german) %>
+          <i>(<%= time_ago_in_words(@flat.updated_at) %>)</i>
+        </td>
+      </tr>
+      <tr>
+        <th>visit at</th>
+        <td>
+          <% if @flat.visit_at %>
+            <%= l(@flat.visit_at, :format => :german) %> 
+            <i>(<%= distance_of_time_in_words_to_now(@flat.updated_at) %>)</i>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th>priority</th>
+        <td><%= priority_as_number(@flat.priority) %></td>
+      </tr>
+      <tr>
+        <td colspan="2"><%= link_to('read original ad', @flat.url, :target => '_blank') %></td>
+      </tr>
+      <tr>
+        <th colspan="2">Comments:</th>
+      </tr>
+      <tr>
+        <td colspan="2"><%=raw simple_format(auto_link(@flat.comment)) %></th>
+      </tr>
+    </table>
     
-    <p>
-      Contact: <%=raw auto_link(@flat.contact_person + " " + @flat.phone) %>
-    </p>
-    
-    <p>
-      Comment:<br /><%=raw simple_format(auto_link(@flat.comment)) %>
-    </p>
-
-    <p>
-      Added on: <%= l(@flat.created_at, :format => :german) %>
-        <i>(<%= time_ago_in_words(@flat.created_at) %>)</i>.
-    </p>
-    
-    <p>
-      Last updated on: <%= l(@flat.updated_at, :format => :german) %> 
-        <i>(<%= time_ago_in_words(@flat.updated_at) %>)</i>.
-    </p>
-    
-    <p>
-      Priority <%= priority_as_number(@flat.priority) %>
-    </p>
-      
-    <p><%= link_to('Original ad', @flat.url, :target => '_blank') %>.</p>
   </div>
 </div>
 
