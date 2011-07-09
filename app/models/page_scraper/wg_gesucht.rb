@@ -31,11 +31,8 @@ class PageScraper::WGGesucht < PageScraper
     # for the available_until and available_on fields.
     def parse_price_and_size(doc)
       tds   = doc.search("//div[@class='headlineLightblueInside']").search("//td")
-      p tds
       price = parse_total_price(tds)
-      p price
       size  = parse_size(tds)
-      p size
       [price, size]
     end
     

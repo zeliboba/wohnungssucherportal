@@ -47,7 +47,7 @@ class Flat < ActiveRecord::Base
   end
   
   def full_address
-    "#{street}, #{neighbourhood}, München, Deutschland"
+    "#{street}, München, Deutschland"
   end
   
   def available_months
@@ -81,7 +81,7 @@ class Flat < ActiveRecord::Base
     def available_until_must_be_after_available_on
       return true unless available_until
       if ((available_until - available_on).to_i) <= 1
-        errors.add_to_base('Avail until must be after avail on.')
+        errors.add(:base, 'Avail until must be after avail on.')
       end
     end
 

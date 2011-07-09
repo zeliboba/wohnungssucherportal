@@ -12,6 +12,16 @@ gem "rdoc"
 gem "rake", "0.9.2"
 gem "gmaps4rails"
 
+group :test do
+  gem "rspec"
+  gem "capybara"  
+  gem "autotest"
+end
+
+group :test, :development do
+  gem "rspec-rails"
+end
+
 group :development do
 #  gem "mongrel"
 end

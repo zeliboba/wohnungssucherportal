@@ -14,7 +14,7 @@ class FlatTest < ActiveRecord::TestCase
   
   test "full address" do
     flat = Flat.new(:street => 'Schlesische Straße 26')
-    assert_equal 'Schlesische Straße 26, Berlin, Germany', flat.full_address
+    assert_equal 'Schlesische Straße 26, München, Deutschland', flat.full_address
   end
   
   test "available one month" do
@@ -40,6 +40,6 @@ class FlatTest < ActiveRecord::TestCase
   test "availability must be sane -- start date is after end date" do
     flat = Flat.new(:available_on => Date.parse("01.11.2009"), :available_until => Date.parse("01.10.2009"))
     assert_equal false, flat.valid?
-    assert flat.errors.on(:base)
+    assert_not_equal [], flat.errors[:base]
   end
 end
