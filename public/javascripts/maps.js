@@ -1,7 +1,7 @@
 // FIXME don't pass in everything and the kitchen sink
 function addReferencePoints(map, geocoder, adressesArray) {
   // add some city reference points
-  adressesArray.each(function(address) {
+  jQuery.each(adressesArray, function(address) {
     geocoder.geocode({'address': address}, function(results, status) {
       var markerOptions = {
         'position': results[0].geometry.location,

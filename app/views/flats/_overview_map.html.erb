@@ -22,8 +22,7 @@ function initialize() {
   addReferencePoints(map, geocoder, ["<%= amazon_muenchen %>"]);
 
   // add markers for flats
-
-  G_addresses.each(function(flat) {
+  jQuery.each(G_addresses, function(flat) {
     var markerOptions = {
       'position': new google.maps.LatLng(flat.latitude, flat.longitude),
       'title': flat.full_address,
@@ -35,21 +34,15 @@ function initialize() {
   
   // add highlighting of markers
   // http://www.google.com/intl/en_us/mapfiles/ms/micons/orange-dot.png
-  $$('.street-name').each(function(link) {
-    link.observe('mouseover', function(event) {
-      var id = event.target.href.split('/').last();
-      G_markers[id].setIcon(icon('blue'));
-    });
-    link.observe('mouseout', function(event) {
-      var id = event.target.href.split('/').last();
-      G_markers[id].setIcon(icon('red'));
-    });
-  });
-    
-  /*
-  $('map_canvas').setStyle({width: "700px", height: "400px"});
-  google.maps.event.trigger(map, "resize");
-  */
+  //$('.street-name').mouseover(function(link) {
+  //  var id = event.target.href.split('/').last();
+  //  G_markers[id].setIcon(icon('blue'));
+  //});
+  //$('.street-name').bind("mouseout", function(link) {
+  //  var id = event.target.href.split('/').last();
+  //  G_markers[id].setIcon(icon('red'));
+  //});
+  
 }
 </script>
 
