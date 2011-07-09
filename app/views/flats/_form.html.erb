@@ -33,7 +33,7 @@
 
   <p>
     <%= f.label :visit_at %><br />
-    <%= f.text_field :visit_at, :value => l(@flat.visit_at, :format => :german) %>
+    <%= f.text_field :visit_at, :value => (@flat.visit_at && l(@flat.visit_at, :format => :german)) %>
   </p>
 
   <p>

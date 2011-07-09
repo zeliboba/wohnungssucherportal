@@ -22,11 +22,11 @@
     </p>
 
     <p>
-      Available from <b><%= @flat.available_on %></b>
+      Available from <b><%= l(@flat.available_on, :format => :german) %></b>
       <% if @flat.available_until %> 
-        to <b><%= @flat.available_until %></b>
+        to <b><%= l(@flat.available_until, :format => :german) %></b>
         (<%= available_months(@flat) %>)
-      <% end %>.
+      <% end %>
     </p>
     
     <p>
@@ -38,12 +38,12 @@
     </p>
 
     <p>
-      Added on: <%= l(@flat.created_at, :format => :long) %>
+      Added on: <%= l(@flat.created_at, :format => :german) %>
         <i>(<%= time_ago_in_words(@flat.created_at) %>)</i>.
     </p>
     
     <p>
-      Last updated on: <%= l(@flat.updated_at, :format => :long) %> 
+      Last updated on: <%= l(@flat.updated_at, :format => :german) %> 
         <i>(<%= time_ago_in_words(@flat.updated_at) %>)</i>.
     </p>
     
