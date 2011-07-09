@@ -14,7 +14,7 @@
     <% @flats.group_by(&:state).each do |state, flats| %>
       <h2><%= state.humanize %></h2>
       <% flats.each do |flat| %>
-        <li><%= render :partial => "flats/flat", :locals => { :flat => flat } %></li>
+        <li><%= render :partial => "flats/flat", :locals => { :flat => flat, :show_phone => false } %></li>
       <% end %>
     <% end %>
   </ul>

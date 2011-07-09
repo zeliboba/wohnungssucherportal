@@ -8,7 +8,7 @@
   <ol>
   <% flats.each do |flat| %>
     <li><time><%= l(flat.visit_at, :format => "%H:%M") %></time>
-    <%= render :partial => "flats/flat", :locals => { :flat => flat } %></li>
+    <%= render :partial => "flats/flat", :locals => { :flat => flat, :show_phone => true } %></li>
   <% end %>
   </ol>
 <% end %>

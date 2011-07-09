@@ -33,13 +33,10 @@ function initialize() {
   });
   
   // add highlighting of markers
-  $('.street-name').mouseover(function(event) {
+  $('.street-name').bind("mouseover mouseout", function(event) {
     var id = event.target.href.split('/').pop();
-    G_markers[id].setIcon(icon('blue'));
-  });
-  $('.street-name').bind("mouseout", function(event) {
-    var id = event.target.href.split('/').pop();
-    G_markers[id].setIcon(icon('red'));
+    var iconColor = (event.type == 'mouseover') ? 'blue' : 'red';
+    G_markers[id].setIcon(icon(iconColor));
   });
   
 }
