@@ -4,7 +4,9 @@
 <br />
 <b><%= flat.square_meters %></b>m², 
 <b><%= number_to_currency(flat.price, :unit => '€', :precision => 0) %></b>,
-<b><%= flat.rooms %></b> rooms,
+<% if flat.rooms %>
+  <b><%= flat.rooms %></b> rooms,
+<% end %>
 <b><%= number_to_currency(flat.square_meter_price, :unit => '€', :separator => ",", :precision => 0) %></b>/m²
 
 <% if show_phone %>
