@@ -47,7 +47,7 @@
         <i>(<%= time_ago_in_words(@flat.updated_at) %>)</i>.
     </p>
     
-    <p><%= link_to('Original ad', h(@flat.url), {:popup => true}) %>.</p>
+    <p><%= link_to('Original ad', @flat.url, :target => '_blank') %>.</p>
   </div>
 </div>
 

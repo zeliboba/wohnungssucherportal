@@ -16,6 +16,8 @@ group :test do
   gem "rspec"
   gem "capybara"  
   gem "autotest"
+  gem "launchy" # required for save_and_open_page in request specs
+  gem "database_cleaner" # to establish a known db state before running new tests
 end
 
 group :test, :development do
