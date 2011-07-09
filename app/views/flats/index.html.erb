@@ -4,15 +4,18 @@
 
 <%= render :partial => 'overview_map', :locals => { :flats => @flats } %>
 
-<%= link_to 'Add flat', '/flats/prefill_url_form' %>  
+<%= link_to 'Add flat', '/flats/prefill_url_form' %> | 
+<%= link_to 'Visits', '/visits' %>  
 <%= render :partial => 'sort_bar' %>
 
 <div id="flats">
   
   <ul id="flat_index">
     <% @flats.group_by(&:state).each do |state, flats| %>
-      <h3><%= state.humanize %></h3>
-      <%= render :partial => "flat", :collection => flats %>
+      <h2><%= state.humanize %></h2>
+      <% flats.each do |flat| %>
+        <li><%= render :partial => "flats/flat", :locals => { :flat => flat } %></li>
+      <% end %>
     <% end %>
   </ul>
 <div>

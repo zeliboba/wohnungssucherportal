@@ -4,12 +4,13 @@
   <p>
   Status<br />
   <% Flat::STATES.each do |state| %>
-    <%= radio_button("flat", "state", state) %> <%= state.humanize %><br />
+    <%= f.radio_button(:state, state) %> 
+    <%= f.label :state, state.humanize, :value => state.humanize %><br />
   <% end %>
   </p>
   <p>
     <%= f.label :comment %><br />
-    <%= f.text_area :comment%>
+    <%= f.text_area :comment %>
   </p>
 
   <p>
@@ -27,9 +28,15 @@
     <% 1.upto(3) do |i| %>
       <%= f.radio_button :priority, i %>
       <%= f.label :priority, i, :value => i %>
-    <% end %>
-    
+    <% end %>    
   </p>
+
+  <p>
+    <%= f.label :visit_at %><br />
+    <%= f.datetime_select(:visit_at, :order => [:day, :month, :year], 
+      :use_month_numbers => true, :include_blank => true, :start_year => Time.now.year) %>
+  </p>
+
   <p>
     <%= f.submit(@flat.new_record? ? 'Create' : 'Update') %>
   </p>
@@ -62,7 +69,7 @@
 <p>
   <%= f.label :available_from, "Availability" %><br />
   from: <%= f.date_select(:available_on, :order => [:day, :month, :year], :use_month_numbers => true, :start_year => Time.now.year - 1) %>
-  &nbsp;until: <%= f.date_select(:available_until, :order => [:day, :month, :year], :use_month_numbers => true, :include_blank => true, :default => nil, :start_year => Time.now.year)%>
+  &nbsp;until: <%= f.date_select(:available_until, :order => [:day, :month, :year], :use_month_numbers => true, :include_blank => true, :default => nil, :start_year => Time.now.year) %>
 </p>
 
 <p>

@@ -20,7 +20,8 @@ class Flat < ActiveRecord::Base
   scope :ordered, lambda { |*order|
     { :order => order.flatten.first || SORT_OPTIONS.first[1] }
   }
-  scope :expired, :conditions => { :state => 'not_available' }
+
+  scope :have_visits, where('visit_at IS NOT NULL').order('visit_at ASC')
   
 	acts_as_gmappable
 	

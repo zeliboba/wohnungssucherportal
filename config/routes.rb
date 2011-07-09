@@ -1,9 +1,13 @@
 Wohnungssucherportal::Application.routes.draw do
 
+  get "visits/index"
+
   resources :flats do
     get 'all', 'prefill_url_form', :on => :collection
   end
 
+  resource :visits
+  
   root :to => 'flats#index'
   
   # The priority is based upon order of creation:

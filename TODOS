@@ -10,7 +10,10 @@
 * rspec 2, capybara
   write some acceptance tests
   includung js
-  
+
+* consistency: all flats must have a visit date if they are in or after state "visit_scheduled"
+  add a FSM?
+
 * prototype => jquery
   organize JS code properly
   backbone.js
@@ -23,10 +26,8 @@
   - benutzeranmeldung und login
   - mit jedem flat die user id speichern
   
-* stadt mit in der db speichern
+* benutzung für beliebige städte ermöglichen
   - hartcodierte städte aus code nehmen
-
-* auto-zoom auf alle flats
 
 * eigene fixpunkte eingeben (z.b. arbeit, hauptbahnhof)
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110708203500) do
+ActiveRecord::Schema.define(:version => 20110709120222) do
 
   create_table "flats", :force => true do |t|
     t.string   "title"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20110708203500) do
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "gmaps"
+    t.datetime "visit_at"
   end
 
 end

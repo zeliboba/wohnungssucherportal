@@ -1,0 +1,14 @@
+<%= link_to 'Back to list', flats_path %>
+
+<h1>Visits</h1>
+
+<% @flats.group_by { |f| "#{f.visit_at.day}" }.each do |day, flats| %>
+  
+  <h2><%= l(flats.first.visit_at, :format => "%d.%m.%Y") %> <i><small>(<%= distance_of_time_in_words_to_now(flats.first.visit_at) %>)</small></i></h2>
+  <ol>
+  <% flats.each do |flat| %>
+    <li><%= l(flat.visit_at, :format => "%H:%M") %>
+    <%= render :partial => "flats/flat", :locals => { :flat => flat } %></li>
+  <% end %>
+  </ol>
+<% end %>
