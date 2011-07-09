@@ -7,14 +7,14 @@
 <div id="left_col">
   <div id="infos">
     <h1>
-      <%=h @flat.neighbourhood %> <br />
-      <%=h @flat.street %> 
+      <%= @flat.neighbourhood %> <br />
+      <%= @flat.street %> 
     </h1>
     
     <p>
-      <b><%=h @flat.rooms %></b> rooms,
-      <b><%=h @flat.square_meters %></b>m², 
-      <b>€<%=h @flat.price %></b>.
+      <b><%= @flat.rooms %></b> rooms,
+      <b><%= @flat.square_meters %></b>m², 
+      <b>€<%= @flat.price %></b>.
     </p>
     
     <p>
@@ -22,15 +22,15 @@
     </p>
 
     <p>
-      Available from <b><%=h @flat.available_on %></b>
+      Available from <b><%= @flat.available_on %></b>
       <% if @flat.available_until %> 
-        to <b><%=h @flat.available_until %></b>
+        to <b><%= @flat.available_until %></b>
         (<%= available_months(@flat) %>)
       <% end %>.
     </p>
     
     <p>
-      Contact: <%= @flat.contact_person %> at <%= @flat.phone %>.
+      Contact: <%=raw auto_link(@flat.contact_person + " " + @flat.phone) %>
     </p>
     
     <p>
