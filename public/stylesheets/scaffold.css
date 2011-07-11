@@ -109,11 +109,18 @@ div#map {
   left: 550px;
 }
 
-div#flats {
+ul.flats {
   width: 520px;
+  left: 0;
+  padding-left:0;
+}
+
+ul.flats li {
+  list-style-type: none;
 }
 
 h2 {
+  width: 520px;
   border-bottom: 1px dotted #55f;
   margin-bottom:5px;
   color: #55f;

@@ -8,13 +8,14 @@
   <%= csrf_meta_tag %>
   <script src="http://maps.google.com/maps/api/js?sensor=true&amp;key=<%= GOOGLE_MAPS_API_KEY %>" type="text/javascript"></script>
 </head>
-<body>
 
-<% if flash[:notice]%>
-  <p id="flash-notice"><%= flash[:notice] %></p>
-<% end %>
+<body<%=raw @initialize ? ' onload="initialize();"' : '' %>>
 
-<%= yield %>
+  <% if flash[:notice]%>
+    <p id="flash-notice"><%= flash[:notice] %></p>
+  <% end %>
+  
+  <%= yield %>
 
 </body>
 </html>

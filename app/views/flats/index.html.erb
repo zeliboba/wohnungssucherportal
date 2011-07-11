@@ -1,3 +1,5 @@
+<% @initialize = true %>
+
 <%= javascript_tag do %>
   var G_addresses = <%= flats_as_json(@flats).html_safe %>;
 <% end %>
@@ -5,17 +7,20 @@
 <%= render :partial => 'overview_map', :locals => { :flats => @flats } %>
 
 <%= link_to 'Add flat', '/flats/prefill_url_form' %> | 
-<%= link_to 'Visits', '/visits' %>  
+<%= link_to 'Visits', '/visits' %> | 
+<%= link_to "Sign in with Facebook", "/auth/facebook" %>
+
+
+
 <%= render :partial => 'sort_bar' %>
 
-<div id="flats">
-  
-  <ul id="flat_index">
-    <% @flats.group_by(&:state).each do |state, flats| %>
-      <h2><%= state.humanize %></h2>
-      <% flats.each do |flat| %>
-        <li><%= render :partial => "flats/flat", :locals => { :flat => flat, :show_phone => false } %></li>
-      <% end %>
-    <% end %>
+<h1 style="display: none;">Flats</h1>
+
+<% @flats.group_by(&:state).each do |state, flats| %>
+  <h2><%= state.humanize %></h2>
+  <ul class="flats" id="flats_<%= state.underscore %>">
+  <% flats.each do |flat| %>
+    <li><%= render :partial => "flats/flat", :locals => { :flat => flat, :show_phone => false } %></li>
+  <% end %>
   </ul>
-<div>
+<% end %>
