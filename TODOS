@@ -1,16 +1,15 @@
+* cap web disable
+* get rid of sudo
+
 * production: 
   go to rvm
   go to 1.9
-
-* fix invalid html
 
 * user auth davor; benutzer
 
 * rspec 2, capybara
   write some acceptance tests
   includung js
-
-* decent printing
 
 * consistency: all flats must have a visit date if they are in or after state "visit_scheduled"
   add a FSM?
@@ -53,3 +52,5 @@ DONE
 * got to mysql2
 * fix 10 marker limit in geocoder
   => store geolocation in db
+* fix invalid html (body tag)
+
