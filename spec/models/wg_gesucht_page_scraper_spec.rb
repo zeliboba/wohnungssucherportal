@@ -1,8 +1,8 @@
-require File.join(File.dirname(__FILE__), '../test_helper')
+require 'spec_helper'
 
-class WGGesuchtPageScraperTest < ActiveRecord::TestCase
+describe PageScraper::WGGesucht do
 
-  test "from_hpricot for kommune flat" do
+  it "parses basic attributes from given HTML page" do
     url = "http://www.wg-gesucht.de/my_url"
     flat = PageScraper::WGGesucht.from_hpricot(hpricot_doc_for('neue-bahnhofstrasse'), url)
     assert_equal url, flat[:url]
@@ -18,7 +18,7 @@ class WGGesuchtPageScraperTest < ActiveRecord::TestCase
   private
   
     def hpricot_doc_for(file)
-      open(File.join(Rails.root, "test/unit/test_data/#{file}.html")) { |f| Hpricot(f) }
+      open(File.join(File.dirname(__FILE__), "/test_data/#{file}.html")) { |f| Hpricot(f) }
     end
   
 end
