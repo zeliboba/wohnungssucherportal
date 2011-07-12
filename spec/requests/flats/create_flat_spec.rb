@@ -1,4 +1,4 @@
-require File.join(File.dirname(__FILE__), '../spec_helper')
+require File.join(File.dirname(__FILE__), '../../spec_helper')
 
 feature "Creating a flat" do
 
@@ -12,7 +12,8 @@ feature "Creating a flat" do
     fill_in('Price', :with => '300')
     click_on('Create')
     page.should have_content('flat was successfully created.')
-    page.should have_content('Priority ➁')
+    page.should have_content('priority')
+    page.should have_content('➁')
   end
   
   scenario "i get a validation error when price info is missing" do
@@ -23,7 +24,6 @@ feature "Creating a flat" do
     fill_in('Neighbourhood', :with => 'Westend')
     fill_in('Square meters', :with => '25')
     click_on('Create')
-    #save_and_open_page
     page.should have_content('2 errors prohibited this flat from being saved')
   end
   
