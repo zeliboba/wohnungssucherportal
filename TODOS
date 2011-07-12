@@ -1,15 +1,15 @@
-* cap web disable
-* get rid of sudo
+* get rid of sudo on deploy
 
-* production: 
-  go to rvm
-  go to 1.9
+* ruby 1.8.7 => 1.9.2
+  - go to rvm and 1.9 in production
 
 * user auth davor; benutzer
 
+* haml/sass
+
 * rspec 2, capybara
   write some acceptance tests
-  includung js
+  including js
 
 * consistency: all flats must have a visit date if they are in or after state "visit_scheduled"
   add a FSM?
@@ -18,14 +18,14 @@
   organize JS code properly
   backbone.js
   
-* ruby 1.8.7 => 1.9.2
-
 * map passt sich an die größe des browserfensters an
 
 * personalisierung - scope auf user
   - benutzeranmeldung und login
   - mit jedem flat die user id speichern
   
+LATER 
+
 * benutzung für beliebige städte ermöglichen
   - hartcodierte städte aus code nehmen
 
@@ -53,4 +53,4 @@ DONE
 * fix 10 marker limit in geocoder
   => store geolocation in db
 * fix invalid html (body tag)
-
+* cap web disable
