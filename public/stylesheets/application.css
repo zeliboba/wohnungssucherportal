@@ -137,6 +137,10 @@ h2 {
   margin-bottom:5px;
   color: #55f;
 }
+
+h2.passed, li.passed {
+  opacity: 0.3;
+}
 textarea#flat_comment {
   height: 200px;
 }

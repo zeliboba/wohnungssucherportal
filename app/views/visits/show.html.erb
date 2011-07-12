@@ -4,11 +4,15 @@
 
 <% @flats.group_by { |f| "#{f.visit_at.day}" }.each do |day, flats| %>
   
-  <h2><%= l(flats.first.visit_at, :format => "%d.%m.%Y") %> <i><small>(<%= distance_of_time_in_words_to_now(flats.first.visit_at) %>)</small></i></h2>
+  <%= content_tag(:h2, :class => (flats.first.visit_passed?) ? 'passed' : nil) do %>
+    <%= l(flats.first.visit_at, :format => "%d.%m.%Y (%a)") %>
+  <% end %>
   <ol>
   <% flats.each do |flat| %>
-    <li><time><%= l(flat.visit_at, :format => "%H:%M") %></time>
-    <%= render :partial => "flats/flat", :locals => { :flat => flat, :show_phone => true } %></li>
+    <%= content_tag(:li, :class => (flat.visit_passed?) ? 'passed' : nil) do %>
+      <time><%= l(flat.visit_at, :format => "%H:%M") %></time>
+      <%= render :partial => "flats/flat", :locals => { :flat => flat, :show_phone => true } %>
+    <% end %>  
   <% end %>
   </ol>
 <% end %>

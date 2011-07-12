@@ -59,6 +59,10 @@ class Flat < ActiveRecord::Base
     
   end
   
+  def visit_passed?
+    visit_at < Time.now
+  end
+  
   private 
   
     def available_until_must_be_after_available_on
