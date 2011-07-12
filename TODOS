@@ -1,5 +1,3 @@
-* one rake task to test it all
-
 * one cap task to run specs, push, and release
 
 * get rid of sudo on deploy
@@ -58,3 +56,5 @@ DONE
   => store geolocation in db
 * fix invalid html (body tag)
 * cap web disable
+* get rid of test directory; convert existing tests
+* one rake task to test it all
