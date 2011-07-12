@@ -1,3 +1,7 @@
+* one rake task to test it all
+
+* one cap task to run specs, push, and release
+
 * get rid of sudo on deploy
 
 * ruby 1.8.7 => 1.9.2
