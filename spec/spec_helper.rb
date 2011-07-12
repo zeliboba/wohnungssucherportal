@@ -39,4 +39,9 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
+  
+  # very nice. http://blog.plataformatec.com.br/2011/02/improving-your-tests-with-capybara-custom-selectors/
+  Capybara.add_selector(:li) do
+    xpath { |num| ".//li[#{num}]" }
+  end
 end
