@@ -15,7 +15,7 @@
 
 <h1 style="display: none;">Flats</h1>
 
-<% @flats.group_by(&:state).each do |state, flats| %>
+<div id="flat_list"><% @flats.group_by(&:state).each do |state, flats| %>
   <h2><%= state.humanize %></h2>
   <ul class="flats" id="flats_<%= state.underscore %>">
   <% flats.each do |flat| %>
@@ -23,3 +23,4 @@
   <% end %>
   </ul>
 <% end %>
+</div>

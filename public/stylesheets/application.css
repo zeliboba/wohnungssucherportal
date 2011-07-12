@@ -112,8 +112,18 @@ div#map_canvas {
   border-left: 1px solid #000;
 }
 
+div#flat_list {
+  position: absolute;
+  padding: 5px;
+  padding-left: 10px;
+  left: 0px;
+  top: 50px;
+  bottom: 0;
+  width: 535px;
+  overflow: auto;
+}
+
 ul.flats {
-  width: 520px;
   left: 0;
   padding-left:0;
 }
@@ -123,7 +133,6 @@ ul.flats li {
 }
 
 h2 {
-  width: 520px;
   border-bottom: 1px dotted #55f;
   margin-bottom:5px;
   color: #55f;
