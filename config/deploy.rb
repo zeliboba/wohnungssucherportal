@@ -26,7 +26,7 @@ namespace :deploy do
   desc "Ensure www-data has the permissions for the files it needs"
   task :ensure_permissions do
     chown_these = %w(config/environment.rb tmp).map { |f| File.join(current_path, f) }
-    run "sudo chown -R www-data:www-data #{chown_these.join(' ')}"
+    sudo "chown -R www-data:www-data #{chown_these.join(' ')}"
   end
   
   desc "Copy configuration files from shared into new release release"
@@ -36,6 +36,15 @@ namespace :deploy do
   end
 
 end
+
+#namespace :release do
+#  desc "Do a full release from local"
+#  task :rspec do
+#    ``
+#  end
+#  
+#  task :default => [:rspec, :push, :"deploy:migrations"]
+#end
 
 before "deploy:symlink", "deploy:ensure_directories"
 before "deploy:symlink", "deploy:ensure_permissions"
