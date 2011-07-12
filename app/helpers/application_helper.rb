@@ -8,4 +8,8 @@ module ApplicationHelper
   def xenia_muenchen
     "Gabelsbergerstrasse 48, München"
   end
+  
+  def circulo_salsa_muenchen
+    "Rosenheimer Straße 139, München"
+  end
 end
