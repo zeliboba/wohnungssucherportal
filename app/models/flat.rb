@@ -21,7 +21,7 @@ class Flat < ActiveRecord::Base
     { :order => order.flatten.first || SORT_OPTIONS.first[1] }
   }
 
-  scope :have_visits, where(%(visit_at >= "#{Time.now.to_s(:db)}")).order('visit_at ASC')
+  scope :have_visits, where(['visit_at IS NOT NULL']).order('visit_at DESC')
 
 	acts_as_gmappable
 	
