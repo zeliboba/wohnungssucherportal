@@ -18,6 +18,7 @@ group :test do
   gem "autotest"
   gem "launchy" # required for save_and_open_page in request specs
   gem "database_cleaner" # to establish a known db state before running new tests
+  gem "factory_girl_rails", "~> 1.1.rc1" # to generate model data for tests
 end
 
 group :test, :development do
