@@ -11,11 +11,6 @@ class FlatsController < ApplicationController
 
   def show
     @flat = Flat.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @flat }
-    end
   end
 
   def prefill_url_form

@@ -48,7 +48,7 @@
       </tr>
       <tr>
         <th>contact</th>
-        <td><%=raw auto_link(@flat.contact_person + " " + @flat.phone) %></td>
+        <td><%=raw auto_link("#{@flat.contact_person} #{@flat.phone}") %></td>
       </tr>
       <tr>
         <th>added on</th>
