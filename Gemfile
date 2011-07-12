@@ -12,23 +12,25 @@ gem "rdoc"
 gem "rake", "0.9.2"
 gem "gmaps4rails"
 
-group :development do
-  gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
-  gem 'guard-pow'
-  gem 'guard-bundler'
-  gem 'guard-livereload'
-  gem 'growl'
-  gem "rspec-rails"
-end
-
 group :test do
   gem "rspec"
   gem "capybara"  
   gem "autotest"
   gem "launchy" # required for save_and_open_page in request specs
   gem "database_cleaner" # to establish a known db state before running new tests
-  gem "factory_girl_rails", "1.1.rc1" # to generate model data for tests
-  gem "rspec-rails" # duplicated here from test env.
+  gem "factory_girl_rails", "~> 1.1.rc1" # to generate model data for tests
+end
+
+group :test, :development do
+  gem "rspec-rails"
+end
+
+group :development do
+  gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
+  gem 'guard-pow'
+  gem 'guard-bundler'
+  gem 'guard-livereload'
+  gem 'growl'
 end
 
 # Use unicorn as the web server

@@ -159,7 +159,7 @@ DEPENDENCIES
   capistrano
   capybara
   database_cleaner
-  factory_girl_rails (= 1.1.rc1)
+  factory_girl_rails (~> 1.1.rc1)
   gmaps4rails
   growl
   guard-bundler
