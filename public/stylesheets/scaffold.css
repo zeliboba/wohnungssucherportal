@@ -103,10 +103,13 @@ div#base_data {
   top:90px;
 }
 
-div#map {
+div#map_canvas {
   position:absolute;
-  top:20px;
+  top: 0px;
+  height:100%;
+  right: 0px; 
   left: 550px;
+  border-left: 1px solid #000;
 }
 
 ul.flats {
