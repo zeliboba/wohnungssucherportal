@@ -37,15 +37,6 @@ namespace :deploy do
 
 end
 
-#namespace :release do
-#  desc "Do a full release from local"
-#  task :rspec do
-#    ``
-#  end
-#  
-#  task :default => [:rspec, :push, :"deploy:migrations"]
-#end
-
 before "deploy:symlink", "deploy:ensure_directories"
 before "deploy:symlink", "deploy:ensure_permissions"
 after "deploy:finalize_update", "deploy:copy_config"
