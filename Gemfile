@@ -14,6 +14,7 @@ gem "gmaps4rails"
 
 group :test do
   gem "rspec"
+  gem "fuubar"
   gem "capybara"  
   gem "autotest"
   gem "launchy" # required for save_and_open_page in request specs

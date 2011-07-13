@@ -64,6 +64,10 @@ GEM
       factory_girl (~> 2.0.0.rc)
       railties (>= 3.0.0)
     ffi (1.0.9)
+    fuubar (0.0.5)
+      rspec (~> 2.0)
+      rspec-instafail (~> 0.1.4)
+      ruby-progressbar (~> 0.0.10)
     gmaps4rails (0.9.1)
       crack
     growl (1.0.3)
@@ -132,12 +136,14 @@ GEM
     rspec-core (2.6.4)
     rspec-expectations (2.6.0)
       diff-lcs (~> 1.1.2)
+    rspec-instafail (0.1.8)
     rspec-mocks (2.6.0)
     rspec-rails (2.6.1)
       actionpack (~> 3.0)
       activesupport (~> 3.0)
       railties (~> 3.0)
       rspec (~> 2.6.0)
+    ruby-progressbar (0.0.10)
     rubyzip (0.9.4)
     selenium-webdriver (0.2.2)
       childprocess (>= 0.1.9)
@@ -160,6 +166,7 @@ DEPENDENCIES
   capybara
   database_cleaner
   factory_girl_rails (~> 1.1.rc1)
+  fuubar
   gmaps4rails
   growl
   guard-bundler
