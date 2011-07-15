@@ -1,16 +1,17 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.9'
+gem 'rails', '3.1.0.rc4'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem "mysql2", "0.2.11"
+gem "mysql2", "~> 0.3.0"
 gem "hpricot", "0.8.4"
 gem "htmlentities", "4.3.0"
 gem "rdoc"
-gem "rake", "0.9.2"
+gem "rake", "0.8.7"
 gem "gmaps4rails"
+gem "rails_autolink", "1.0.2"
 
 group :test do
   gem "rspec"
