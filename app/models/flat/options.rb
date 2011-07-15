@@ -1,7 +1,8 @@
 module Flat::Options
   STATES = %w(
-    interesting
+    new
     contacted
+    schedule_visit
     visit_scheduled
     i_rejected
     not_available

@@ -10,7 +10,32 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110715134153) do
+ActiveRecord::Schema.define(:version => 20110715200458) do
+
+  create_table "_flats", :force => true do |t|
+    t.string   "title"
+    t.integer  "rooms"
+    t.integer  "square_meters"
+    t.string   "street"
+    t.integer  "price"
+    t.string   "url"
+    t.date     "available_on"
+    t.date     "available_until"
+    t.string   "phone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "neighbourhood"
+    t.string   "contact_person"
+    t.text     "image_links"
+    t.integer  "priority"
+    t.string   "state"
+    t.text     "comment"
+  end
+
+  create_table "_schema_migrations", :primary_key => "version", :force => true do |t|
+  end
+
+  add_index "_schema_migrations", ["version"], :name => "unique_schema_migrations", :unique => true
 
   create_table "flats", :force => true do |t|
     t.string   "title"
