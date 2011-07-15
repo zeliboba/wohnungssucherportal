@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110712225215) do
+ActiveRecord::Schema.define(:version => 20110715134153) do
 
   create_table "flats", :force => true do |t|
     t.string   "title"
@@ -35,5 +35,7 @@ ActiveRecord::Schema.define(:version => 20110712225215) do
     t.boolean  "gmaps"
     t.datetime "visit_at"
   end
+
+  add_index "flats", ["state"], :name => "index_flats_on_state"
 
 end
