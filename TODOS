@@ -16,6 +16,8 @@ FEATURE-IDEEN
 
 - einlesen von suchagenten-emails
 
+- use parallel_specs; spork
+
 * simple mobile app
   appcelerator
   
