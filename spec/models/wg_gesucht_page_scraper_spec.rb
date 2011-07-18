@@ -33,14 +33,19 @@ describe "it parses shared flats" do
     assert_equal "Occamstr 21", @flat[:street]
   end    
   
+  it "parses title" do
+    assert_equal "WG-Zimmer in gemütlicher 3er WG zur Zwischenmiete", @flat[:title]
+  end    
+  
+  # does not work for WGs, only for appartments
+  #it "parses rooms" do
+  #  assert_equal nil, @flat[:rooms]
+  #end
+  
   private
   
     def hpricot_doc_for(file)
       open(File.join(File.dirname(__FILE__), "/test_data/#{file}.html")) { |f| Hpricot(f) }
     end
-  
-end
-
-describe "it parses additional info on solo flats" do
   
 end
