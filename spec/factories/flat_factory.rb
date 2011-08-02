@@ -7,6 +7,10 @@ FactoryGirl.define do
     available_on Time.parse("2011-08-01")
     priority Flat::DEFAULT_PRIORITY
     state Flat::STATES[0]
+    # prevent geocoding of new records in tests
+    latitude 48.1672
+    longitude 11.5748
+    gmaps 1
   end
 end
 
