@@ -7,7 +7,7 @@ class PageScraper
   class << self
 
     def scrape(url)
-      anti_anti_scrape_headers = { 'User-Agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:5.0) Gecko/20100101 Firefox/5.0'}
+      anti_anti_scrape_headers = { 'User-Agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:5.0) Gecko/20100101 Firefox/5.0'}
       hpricot_doc = open(url, anti_anti_scrape_headers) { |f| Hpricot(f) }
       scraper = find_scraper(url)#.new
       scraper.from_hpricot(hpricot_doc, url)
