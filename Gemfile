@@ -15,7 +15,7 @@ gem "rails_autolink", "1.0.2"
 
 group :test do
   gem "rspec"
-  gem "fuubar"
+  gem "fuubar" # better rspec output formatter and immediate test result output
   gem "capybara"  
   gem "autotest"
   gem "launchy" # required for save_and_open_page in request specs
