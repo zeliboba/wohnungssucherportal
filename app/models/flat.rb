@@ -46,7 +46,7 @@ class Flat < ActiveRecord::Base
   class << self
     
     def from_url(url)
-      attributes = PageScraper.scrape(url)
+      attributes = PageScraper.scrape(url).attributes
       Flat.new(attributes)
     end
 

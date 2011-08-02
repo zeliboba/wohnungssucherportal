@@ -4,42 +4,42 @@ describe "it parses shared flats" do
 
   before(:all) do
     @url = "http://www.wg-gesucht.de/my_url"
-    @flat = PageScraper::WGGesucht.from_hpricot(hpricot_doc_for('occamstrasse'), @url)
+    @attributes = PageScraper::WGGesucht.new(hpricot_doc_for('occamstrasse'), @url).attributes
   end
   
   it "stores basic attributes in the flat model" do
-    assert_equal @url, @flat[:url]
-    assert_equal Flat::STATES.first, @flat[:state]
+    assert_equal @url, @attributes[:url]
+    assert_equal Flat::STATES.first, @attributes[:state]
   end
   
   it "parses square_meters" do
-    assert_equal 12, @flat[:square_meters]
+    assert_equal 12, @attributes[:square_meters]
   end
   
   it "parses dates" do
-    assert_equal Date.parse("01.08.2011"), @flat[:available_on]
-    assert_equal Date.parse("30.09.2011"), @flat[:available_until]
+    assert_equal Date.parse("01.08.2011"), @attributes[:available_on]
+    assert_equal Date.parse("30.09.2011"), @attributes[:available_until]
   end
   
   it "parses price" do
-    assert_equal 320, @flat[:price]      
+    assert_equal 320, @attributes[:price]      
   end
   
   it "parses neighbourhood" do
-    assert_equal "Schwabing-West", @flat[:neighbourhood]    
+    assert_equal "Schwabing-West", @attributes[:neighbourhood]    
   end
   
   it "parses street" do
-    assert_equal "Occamstr 21", @flat[:street]
+    assert_equal "Occamstr 21", @attributes[:street]
   end    
   
   it "parses title" do
-    assert_equal "WG-Zimmer in gemütlicher 3er WG zur Zwischenmiete", @flat[:title]
+    assert_equal "WG-Zimmer in gemütlicher 3er WG zur Zwischenmiete", @attributes[:title]
   end    
   
   # does not work for WGs, only for appartments
   #it "parses rooms" do
-  #  assert_equal nil, @flat[:rooms]
+  #  assert_equal nil, @attributes[:rooms]
   #end
   
   private
