@@ -37,9 +37,9 @@
         <td><%= @flat.state.humanize %></td>
       </tr>
       <tr>
-        <th>available</th>
+        <th>available from</th>
         <td>
-          from <b><%= l(@flat.available_on, :format => :german) %></b>
+           <b><%= l(@flat.available_on, :format => :german) %></b>
           <% if @flat.available_until %> 
             to <b><%= l(@flat.available_until, :format => :german) %></b>
             (<%= available_months(@flat) %>)
