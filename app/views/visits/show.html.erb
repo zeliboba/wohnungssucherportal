@@ -2,7 +2,7 @@
 
 <h1>Visits</h1>
 
-<% @flats.group_by { |f| "#{f.visit_at.day}" }.each do |day, flats| %>
+<% @flats.group_by { |f| "#{f.visit_at.strftime('%d%m%Y')}" }.each do |day, flats| %>
   
   <%= content_tag(:h2, :class => (flats.first.visit_passed?) ? 'passed' : nil) do %>
     <%= l(flats.first.visit_at, :format => "%d.%m.%Y (%a)") %>
