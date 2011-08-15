@@ -37,6 +37,14 @@ describe "it parses shared flats" do
     assert_equal "WG-Zimmer in gemütlicher 3er WG zur Zwischenmiete", @attributes[:title]
   end    
   
+  it "parses contact name" do
+    assert_equal "Lucia", @attributes[:contact_person]
+  end
+  
+  it "parses the description" do
+    assert_match /^Hi,/, @attributes[:description]
+  end
+  
   # does not work for WGs, only for appartments
   #it "parses rooms" do
   #  assert_equal nil, @attributes[:rooms]

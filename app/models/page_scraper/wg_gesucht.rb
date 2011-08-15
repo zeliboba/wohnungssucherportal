@@ -15,6 +15,10 @@ class PageScraper::WGGesucht < PageScraper
     @attributes[:price]         = parse_total_price
     @attributes[:square_meters] = parse_square_meters
     @attributes[:available_on], @attributes[:available_until] = parse_dates
+    
+    @attributes[:contact_person] = parse_contact_person
+    @attributes[:description]    = parse_description
+    
     # is not reliable
     #@attributes[:rooms]         = parse_rooms
   end
@@ -67,7 +71,18 @@ class PageScraper::WGGesucht < PageScraper
     rooms = blue_box.search('//b').last.inner_html.gsub(/[^0-9]/, '').to_i
     decode_strip(rooms)
   end
-
+  
+  def parse_contact_person
+    tds = contact_box.search("//td")
+    name_td = tds.find { |td| td.innerHTML == "Name:"}
+    decode_strip(name_td.next_sibling.children[0].innerHTML)
+  end
+  
+  def parse_description
+    tr = @doc.search("//tr").find { |tr| tr.innerHTML.include?("Anzeigentext:") }
+    decode_strip(tr.next_sibling.children[1].innerHTML)
+  end
+  
   private 
 
     # this is the blue box with "Zimmergröße", "Gesamtmiete", etc. in it.
@@ -77,6 +92,10 @@ class PageScraper::WGGesucht < PageScraper
     
     def ang_detail_box
       @ang_detail_box ||= @doc.search('//td[@class="detailPaddingCell ang_detail_box"]')
+    end
+    
+    def contact_box
+      @contact_box ||= @doc.search("//div[@class='box_hellorange']")
     end
     
     def decode_strip(string)
