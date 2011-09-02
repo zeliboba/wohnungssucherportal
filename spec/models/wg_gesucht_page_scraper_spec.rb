@@ -12,7 +12,7 @@ describe "it parses shared flats" do
     assert_equal Flat::STATES.first, @attributes[:state]
   end
   
-  it "parses square_meters" do
+  it "parses square_meters", :type => :smoke do
     assert_equal 12, @attributes[:square_meters]
   end
   

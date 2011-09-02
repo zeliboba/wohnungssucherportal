@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Flat do
-  it "square_meter_price calculation returns integer" do
+  it "square_meter_price calculation returns integer", :type => :smoke do
     flat = Flat.new(:square_meters => 60, :price => 600)
     assert_equal 10, flat.square_meter_price
   end

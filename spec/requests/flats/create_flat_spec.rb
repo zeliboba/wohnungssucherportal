@@ -2,7 +2,7 @@ require 'spec_helper'
 
 feature "Creating a flat" do
 
-  scenario "Creating a flat from scratch" do
+  scenario "Creating a flat from scratch", :type => :smoke do
     visit(root_path)
     click_on('Add flat')
     click_on('Continue')
