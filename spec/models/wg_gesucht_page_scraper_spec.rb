@@ -25,6 +25,14 @@ describe "it parses shared flats" do
     assert_equal 320, @attributes[:price]      
   end
   
+  it "parses city" do
+    assert_equal "München", @attributes[:city]    
+  end
+  
+  it "parses postal code" do
+    assert_equal "80802", @attributes[:postal_code]    
+  end
+  
   it "parses neighbourhood" do
     assert_equal "Schwabing-West", @attributes[:neighbourhood]    
   end

@@ -8,6 +8,8 @@ class PageScraper::WGGesucht < PageScraper
     @attributes[:url] = url
     @attributes[:state] = Flat::STATES.first
 
+    @attributes[:city]          = parse_city
+    @attributes[:postal_code]   = parse_postal_code
     @attributes[:neighbourhood] = parse_neighbourhood
     @attributes[:street]        = parse_street
     @attributes[:title]         = parse_title
@@ -56,6 +58,16 @@ class PageScraper::WGGesucht < PageScraper
     decode_strip(title)
   end
 
+  def parse_postal_code
+    tds = ang_detail_box.search("//td")
+    decode_strip(tds[1].inner_html.split("<br />")[0].split(" ")[0])
+  end
+  
+  def parse_city
+    tds = ang_detail_box.search("//td")
+    decode_strip(tds[1].inner_html.split("<br />")[0].split(" ")[1])
+  end
+  
   def parse_neighbourhood
     tds = ang_detail_box.search("//td")
     neighbourhood = tds[1].inner_html.match(/<b>(.+?)<\/b>/)[1].gsub(/<\/?[^>]*>/, "")
