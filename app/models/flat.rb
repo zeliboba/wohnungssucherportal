@@ -23,15 +23,18 @@ class Flat < ActiveRecord::Base
 
   scope :have_visits, where(['visit_at IS NOT NULL']).order('visit_at DESC')
 
-	acts_as_gmappable
-	
-	def square_meter_price
+  # FIXME it would be better to stub the request and have it run, than to prevent it completely
+  acts_as_gmappable(:process_geocoding => !Rails.env.test?)
+  
+  def square_meter_price
     ((price / square_meters.to_f) * 100).round / 100.to_f
   end
   
   def full_address
-    "#{street}, München, Deutschland"
+    city_with_postal = postal_code ? "#{postal_code} #{city}" : city
+    [street, city_with_postal, country].join(", ")
   end
+  alias :gmaps4rails_address :full_address
   
   def available_months
     return unless available_until
@@ -41,6 +44,14 @@ class Flat < ActiveRecord::Base
   # flats can be entered manually or be created from a scraped url
   def scraped?
     !url.blank?
+  end
+  
+  def visit_passed?
+    visit_at < Time.now
+  end
+  
+  def country
+    "Deutschland"
   end
   
   class << self
@@ -59,10 +70,6 @@ class Flat < ActiveRecord::Base
     
   end
   
-  def visit_passed?
-    visit_at < Time.now
-  end
-  
   private 
   
     def available_until_must_be_after_available_on
@@ -71,9 +78,5 @@ class Flat < ActiveRecord::Base
         errors.add(:base, 'Avail until must be after avail on.')
       end
     end
-
-  	def gmaps4rails_address
-  	  "#{self.street}, München, Deutschland" 
-  	end
 
 end

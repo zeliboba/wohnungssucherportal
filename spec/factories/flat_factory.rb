@@ -2,6 +2,8 @@ FactoryGirl.define do
   factory :flat do
     street "Kazmairstraße 42"
     neighbourhood "Westend"
+    postal_code "12345"
+    city "München"
     square_meters "25"
     price "300"
     available_on Time.parse("2011-08-01")
