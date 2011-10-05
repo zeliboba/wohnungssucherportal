@@ -37,11 +37,11 @@
         <td><%= @flat.state.humanize %></td>
       </tr>
       <tr>
-        <th>available from</th>
+        <th>availability</th>
         <td>
-           <b><%= l(@flat.available_on, :format => :german) %></b>
+           from <%= l(@flat.available_on, :format => :german) %>
           <% if @flat.available_until %> 
-            to <b><%= l(@flat.available_until, :format => :german) %></b>
+            to <%= l(@flat.available_until, :format => :german) %>
             (<%= available_months(@flat) %>)
           <% end %>
         </td>
@@ -49,18 +49,6 @@
       <tr>
         <th>contact</th>
         <td><%=raw auto_link("#{@flat.contact_person} #{@flat.phone}") %></td>
-      </tr>
-      <tr>
-        <th>added on</th>
-        <td><%= l(@flat.created_at, :format => :german) %>
-          <i>(<%= time_ago_in_words(@flat.created_at) %>)</i>
-        </td>
-      </tr>
-      <tr>
-        <th>last changed on</th>
-        <td><%= l(@flat.updated_at, :format => :german) %>
-          <i>(<%= time_ago_in_words(@flat.updated_at) %>)</i>
-        </td>
       </tr>
       <tr>
         <th>visit at</th>
