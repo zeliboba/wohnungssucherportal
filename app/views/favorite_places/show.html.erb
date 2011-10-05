@@ -1,0 +1,18 @@
+<p>
+  <b>Name:</b>
+  <%= @favorite_place.name %>
+</p>
+
+<p>
+  <b>Street:</b>
+  <%= @favorite_place.street %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @favorite_place.city %>
+</p>
+
+
+<%= link_to 'Edit', edit_favorite_place_path(@favorite_place) %> |
+<%= link_to 'Back', favorite_places_path %>

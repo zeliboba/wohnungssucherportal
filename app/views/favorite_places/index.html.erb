@@ -1,0 +1,27 @@
+<%= link_to 'Back to list', root_path %>
+
+<h1>Favorite places</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Street</th>
+    <th>City</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @favorite_places.each do |favorite_place| %>
+  <tr>
+    <td><%= favorite_place.name %></td>
+    <td><%= favorite_place.street %></td>
+    <td><%= favorite_place.city %></td>
+    <td><%= link_to 'Edit', edit_favorite_place_path(favorite_place) %></td>
+    <td><%= link_to 'Destroy', favorite_place, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Favorite place', new_favorite_place_path %>

@@ -11,8 +11,7 @@
       var geocoder = new google.maps.Geocoder();
   
       centerMap(map, geocoder);
-      <% ref_points = [amazon_muenchen, xenia_muenchen, circulo_salsa_muenchen] %>
-      addReferencePoints(map, geocoder, <%=raw ref_points.to_json %>);
+      addReferencePoints(map, geocoder, <%=raw FavoritePlace.all.map(&:full_address).to_json %>);
   
       var address = '<%= flat.full_address %>';
   

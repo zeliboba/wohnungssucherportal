@@ -1,5 +1,7 @@
 Wohnungssucherportal::Application.routes.draw do
 
+  resources :favorite_places
+
   get "visits/index"
 
   resources :flats do
