@@ -20,7 +20,7 @@ class FlatsController < ApplicationController
     if !params[:url].blank?
       @flat = Flat.from_url(params[:url])
     else
-      @flat = Flat.new(:available_on => Time.parse('01.08.2011'))
+      @flat = Flat.new(:available_on => Date.today.next_month.at_beginning_of_month)
     end
     @flat.priority = Flat::DEFAULT_PRIORITY
     @flat.state    = Flat::STATES.first
