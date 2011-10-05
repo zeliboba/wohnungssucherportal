@@ -1,37 +1,54 @@
-FEATURE-IDEEN
-- todos auf der startseite
+========== BACKLOG ==========
+
+* stub HTTP requests (wg-gesucht, geocoding)
+
+
+========== IDEEN ========== 
+
+* stadtviertel auf google map einrahmen
+* wg-gesucht such-url regelmaessig abfragen, neue scrapen; unregelmaessiges intervall
+
+* mehrbenutzer-fähigkeit
+  - user login
+  - flat scope auf user-id
+  - ? flat basisdaten nur 1x erfassen ?
+  - fixpunkte scopen und selber verwalten
+  
+* mehrstädte-fähigkeit
+  - städte aus dem HTML parsen und in DB speichern
+  - hard-coding entfernen
+  
+  - letzte lat/long und zoomstufe speichern
+  
+- todo-liste auf der startseite
   - visit seit letztem mal abgelaufen: "wie war der besuch?"
   - vor besuch: telefonnummer eintragen
 
 - email-korrespondenz bei der wohnungsseite
   - wie facebook
 
-- comments- und bearbeitungshistorie auf der wohnungsseite statt einem großen kommentar
+- timeline auf der wohnungsseite statt einem großen kommentar
+  => "Was ist hier der Stand?"
+  - hinzugefügt 
+  - bearbeitet
+  - status
+  - termin vereinbart
+  - mehrere kommentare
 
-- einlesen von suchagenten-emails
-
-- use parallel_specs; spork
-
-* simple mobile app
-  appcelerator
+* minimale mobile verwendbarkeit
   
 * get rid of sudo on deploy
 
 * ruby 1.8.7 => 1.9.2
   - go to rvm and 1.9 in production
 
-* user auth davor; benutzer
+* auf haml/sass umstellen
 
-* haml/sass
-
-* rspec 2, capybara
-  write some acceptance tests
-  including js
+* increase test coverage, including js
 
 * consistency: all flats must have a visit date if they are in or after state "visit_scheduled"
-  add a FSM?
 
-* prototype => jquery
+* auf 1-page-app umbauen?
   organize JS code properly
   backbone.js
   
@@ -40,8 +57,11 @@ FEATURE-IDEEN
 * personalisierung - scope auf user
   - benutzeranmeldung und login
   - mit jedem flat die user id speichern
+
+
   
-LATER 
+========== LATER ========== 
+
 
 * benutzung für beliebige städte ermöglichen
   - hartcodierte städte aus code nehmen
@@ -50,18 +70,24 @@ LATER
 
 * viertel-grenzen einblenden
 
-* routing zwischen fix punkten mit km-anzeige und geschätzter fahrzeit
-  (als tabelle "Entfernungen" anzeigen)
-  (nächste u-bahn; entfernungen zu fixpunken)
+* Verkehrsanbindung
+  * routing zu fix punkten mit km-anzeige und geschätzter fahrzeit (öffentlich, auto, rad, zu fuß)
+    - als tabelle "Entfernungen" anzeigen
+  * Entfernung zu Tram, Bus, U- und S-Bahn anzeigen)
   
-* scraper auf XPath umstellen
+* i18n auf deutsch
+* offline-verwendbarkeit
+
+* flats anhand der umkreise bewerten (Kevin)
+* Vermieter/Mitbewohner anhand des namens/email im web googlen (Kevin)
+
 * immoscout scraper fixen
 
-* i18n auf deutsch
-* offline use
+========== DONE ==========
 
-DONE
-
+* scraper auf XPath umstellen
+* prototype => jquery
+* rspec 2, capybara, write some acceptance tests
 * eigene fixpunkte auch auf detailkarte anzeigen
 * rails 3
 * fix database
