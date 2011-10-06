@@ -38,30 +38,21 @@
       </tr>
       <tr>
         <th>availability</th>
-        <td>
-           from <%= l(@flat.available_on, :format => :german) %>
-          <% if @flat.available_until %> 
-            to <%= l(@flat.available_until, :format => :german) %>
-            (<%= available_months(@flat) %>)
-          <% end %>
+        <td><%= @flat.availability %>
         </td>
       </tr>
       <tr>
         <th>contact</th>
-        <td><%=raw auto_link("#{@flat.contact_person} #{@flat.phone}") %></td>
+        <td><%=raw @flat.contact %></td>
       </tr>
       <tr>
         <th>visit at</th>
-        <td>
-          <% if @flat.visit_at %>
-            <%= l(@flat.visit_at, :format => :german) %> 
-            <i>(<%= distance_of_time_in_words_to_now(@flat.updated_at) %>)</i>
-          <% end %>
+        <td><%=raw @flat.visit_at %>
         </td>
       </tr>
       <tr>
         <th>priority</th>
-        <td><%= priority_as_number(@flat.priority) %></td>
+        <td><%= @flat.priority %></td>
       </tr>
       <tr>
         <td colspan="2"><%= link_to('read original ad', @flat.url, :target => '_blank') %></td>
@@ -70,7 +61,7 @@
         <th colspan="2">comments:</th>
       </tr>
       <tr>
-        <td colspan="2"><%=raw simple_format(auto_link(@flat.comment)) %></th>
+        <td colspan="2"><%=raw @flat.comment %></th>
       </tr>
     </table>
     

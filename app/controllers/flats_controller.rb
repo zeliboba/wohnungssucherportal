@@ -10,7 +10,7 @@ class FlatsController < ApplicationController
   end
 
   def show
-    @flat = Flat.find(params[:id])
+    @flat = FlatDecorator.find(params[:id])
   end
 
   def prefill_url_form
