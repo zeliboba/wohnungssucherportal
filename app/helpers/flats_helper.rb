@@ -5,4 +5,8 @@ module FlatsHelper
         :latitude => flat.latitude, :longitude => flat.longitude }
     end.to_json
   end
+  
+  def priority_as_number(flat)
+    FlatDecorator.new(flat).priority
+  end
 end
