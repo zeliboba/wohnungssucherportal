@@ -7,6 +7,6 @@ module FlatsHelper
   end
   
   def priority_as_number(flat)
-    FlatDecorator.new(flat).priority
+    FlatDecorator.decorate(flat).priority
   end
 end
