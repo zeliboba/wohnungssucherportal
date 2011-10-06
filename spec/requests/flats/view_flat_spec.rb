@@ -7,7 +7,6 @@ feature "Viewing flats" do
     visit(root_path)
     click_link(flat.street)
     page.should have_css('h2', :text => flat.street)
-    page.should have_content('last changed on')
   end
   
 end
