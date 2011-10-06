@@ -12,6 +12,7 @@ gem "rdoc"
 gem "rake", "0.8.7"
 gem "gmaps4rails"
 gem "rails_autolink", "1.0.2"
+gem "draper" # view models / decorators
 
 group :test do
   gem "rspec"
