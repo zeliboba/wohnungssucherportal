@@ -1,90 +1,145 @@
+========== VISION ==========
+
+Das Heinzelmänchen für die Wohnungssuche.
+"Elektrischer Makler", e-makler.de
+"Der gute Makler", guter-makler.de
+der-wohnungssucher.de
+
+*** Nimmt den Stress aus der Suche.
+
+- ich bekomme schnell einen Eindruck der Wohnung
+  - Basisdaten
+  - Lage, Verkehrsanbindung
+  - Umgebungskarte: Restaurants/Bars, Points of Interest
+  - Preiswert?
+  
+*** Gibt mir nen Vorsprung gegenüber anderen Wohnungssuchern
+
+- ich kann mehr Wohnungen gleichzeitig verfolgen
+- die Wohnungssuche kostet mich weniger Zeit und Nerven
+- ich kann schneller auf Angebote reagieren 
+
+*** Hilft mir, die Übersicht zu behalten.
+
+- "was war das nochmal für eine Wohnung?"
+  - Straße, Name der Kontaktperson, Foto, Generiertes Bild (Farbe&Muster)
+  
+- was steht als nächstes an?
+  - weitere infos einholen
+  - termin vereinbaren
+  - besichtigung
+  - bewertung: wie fand ich die wohnung  
+
+- Stellt alle Infos die in der "Lifetime" einer Wohnung zusammen kommen an einer Stelle dar
+  - Basisdaten der Wohnung und Lage
+  - Vereinbarter Termin
+  - Bewertung danach
+  - Kommunikation mit dem Vermieter
+  - Noch verfügbar
+  
+*** Automatisiert, was automatisiert werden kann.
+
+- merkt sich Besichtigungstermine und stellt sie dar
+  - stellt ihn als ical zur Verfügung
+
+- sucht für mich raus, wie "gut" die wohnung liegt
+  - entfernungen zu meinen favoriten
+  - entfernungen zu verkehrsanbindung
+
+- rechnet aus, wie teuer die wohnung ist (EUR/m2)
+
+- checkt regelmäßig, ob die Wohnung noch verfügbar ist
+ 
 ========== BACKLOG ==========
 
-* stub HTTP requests (wg-gesucht, geocoding)
+* Favoriten bei Eingabe geocoden und in JS per geokoordinaten darstellen, nicht per google maps call
 
+* Mehrbenutzer-Fähigkeit
+  - User-Login
+  - scoping von flats auf user
+  - scoping von fixpunkten auf user
+
+ Besichtigungstermine als Ical
 
 ========== IDEEN ========== 
 
-* stadtviertel auf google map einrahmen
-* wg-gesucht such-url regelmaessig abfragen, neue scrapen; unregelmaessiges intervall
+* Fotos der Wohnung übernehmen und darstellen
+* Ical-Kalender der Besichtigungstermine
+* Wohnungen miteinander vergleichen (Darstellung der Daten nebeneinander, und auf Karte)
+* EUR/m2 grafisch darstellen, relativ zu den anderen eingegebenen Wohnungen
+* Zeigt Umgebung der Wohnung an
+  - Essen und Ausgehen: Restaurants, Cafes, Bars aus Qype
+  - Einkaufen: Supermärkte, Geschäfte
+  - Verkehrsanbindung: S-, U-, Bus, Trambahn
+  - Points of Interest (Parks, bekannte Plätze)
+  - "Intelligent gezoomt" (Umkreis 300m, es sei denn, etwas wichtiges (U,S) läge dann außerhalb)
 
-* mehrbenutzer-fähigkeit
-  - user login
-  - flat scope auf user-id
-  - ? flat basisdaten nur 1x erfassen ?
-  - fixpunkte scopen und selber verwalten
-  
-* mehrstädte-fähigkeit
-  - städte aus dem HTML parsen und in DB speichern
-  - hard-coding entfernen
-  
-  - letzte lat/long und zoomstufe speichern
-  
-- todo-liste auf der startseite
+* Such-Agenten von WG-Gesucht automatisch importieren und Daten aktualisieren
+
+* Startseite: Todo-Liste
   - visit seit letztem mal abgelaufen: "wie war der besuch?"
   - vor besuch: telefonnummer eintragen
 
-- email-korrespondenz bei der wohnungsseite
+* Flat-Seite: Email-Korrespondenz mit Vermieter integriert
   - wie facebook
+  - keine eigene Email-Adresse nötig
 
-- timeline auf der wohnungsseite statt einem großen kommentar
+* Flat-Seite: Timeline auf der Wohnungsseite statt einem großen Kommentar
   => "Was ist hier der Stand?"
+  - "Mini-CRM" (telefoniert, ...)
   - hinzugefügt 
   - bearbeitet
   - status
+  - notizen anlegen
   - termin vereinbart
   - mehrere kommentare
 
-* minimale mobile verwendbarkeit
-  
-* get rid of sudo on deploy
+* Verkehrsanbindung der Flats darstellen
+  * Fahrzeit zu "Favoriten"
+    - mit km-anzeige und geschätzter Fahrzeit (öffentlich, auto, rad, zu fuß)
+  * Gehzeit zu nächster Tram, Bus, U- oder S-Bahn anzeigen
+  * Fahrzeit zur nächsten Autobahn-Auffahrt
+  * Entfernung zu "Points of Interest" in der Gegend automatisch berechnen
+    ("Marienplatz", "Englischer Garten", "Isar", "Westpark", "Olympiapark")
+  * Kneipendichte (gut bewertete aus qype holen)
+  * bei rollover route auf der Karte einblenden  
+* viertel-grenzen einblenden
+* eigene fixpunkte eingeben (z.b. arbeit, hauptbahnhof)
 
+
+========== TECHNISCHE TODOS ==========
+
+* stub HTTP requests (wg-gesucht, geocoding)
+* get rid of sudo on deploy
 * ruby 1.8.7 => 1.9.2
   - go to rvm and 1.9 in production
-
 * auf haml/sass umstellen
-
 * increase test coverage, including js
-
-* consistency: all flats must have a visit date if they are in or after state "visit_scheduled"
-
-* auf 1-page-app umbauen?
-  organize JS code properly
-  backbone.js
-  
-* map passt sich an die größe des browserfensters an
-
-* personalisierung - scope auf user
-  - benutzeranmeldung und login
-  - mit jedem flat die user id speichern
+* auf one-page-app umbauen
 
 
   
 ========== LATER ========== 
 
-
-* benutzung für beliebige städte ermöglichen
-  - hartcodierte städte aus code nehmen
-
-* eigene fixpunkte eingeben (z.b. arbeit, hauptbahnhof)
-
-* viertel-grenzen einblenden
-
-* Verkehrsanbindung
-  * routing zu fix punkten mit km-anzeige und geschätzter fahrzeit (öffentlich, auto, rad, zu fuß)
-    - als tabelle "Entfernungen" anzeigen
-  * Entfernung zu Tram, Bus, U- und S-Bahn anzeigen)
-  
+* stadtviertel auf der karte einrahmen
 * i18n auf deutsch
 * offline-verwendbarkeit
-
 * flats anhand der umkreise bewerten (Kevin)
 * Vermieter/Mitbewohner anhand des namens/email im web googlen (Kevin)
-
 * immoscout scraper fixen
+* mehrstädte-fähigkeit
+  - zoom halbwegs sinnvoll auf die stadt, in der gesucht wird
+  - letzte lat/long und zoomstufe speichern
+
+
 
 ========== DONE ==========
 
+* Flat-Seite: Wohnungsbeschreibung und Kommentar-Feld trennen
+* Flat-Seite: Darstellung der Flats-Daten überarbeiten
+* Favoriten aus DB lesen, UI zur Bearbeitung der favoriten
+* benutzung für beliebige städte ermöglichen; hartcodierte städte aus code nehmen
+* map passt sich an die größe des browserfensters an
 * scraper auf XPath umstellen
 * prototype => jquery
 * rspec 2, capybara, write some acceptance tests
@@ -100,3 +155,66 @@
 * get rid of test directory; convert existing tests
 * one rake task to test it all
 * one cap task to run specs, push, and release
+
+
+Aktionen mit einer Wohnung:
+- Karte und Infos ansehen/ergänzen
+  - formular zeigen
+- Termin vereinbaren
+  - kontaktdaten anzeigen
+  - termin abfragen und speichern
+- Vermieter kontaktieren
+  - kontaktdaten anzeigen
+  - notiz abfragen und speichern
+  - optional als "telefonisch nicht erreicht, später versuchen" markieren
+  - optional als "warte auf email-antwort" markieren
+- Notiz hinzufügen
+  - formular zeigen
+- "nicht mehr anzeigen"
+  - "warum" abfragen und speichern
+  - "Wenn Du möchtest kannst Du den Grund für das Ausblenden hier eintragen. So erinnerst 
+    Du dich später besser"
+  
+Startseite:
+"was ist zu tun?"
+  - was muss auf die todo-liste?
+    - infos einholen
+    - termin vereinbaren
+    - nachhaken, wenn vermieter nicht auf eine email oder mailbox-notiz antwortet
+    - nochmal versuchen, wenn ein vermieter telefonisch nicht erreichbar war
+    - nach wohnungsbesichtigung notizen machen 
+- Neu geholte
+  - Karte und Infos ansehen
+  - Vermieter kontaktieren
+  - Notiz hinzufügen
+  - "nicht mehr anzeigen"
+- "nächste Besichtigungen"
+  - 5 anzeigen, mindestens 1 Tag 
+- Status:
+  - neu
+  - entscheiden, ob kontaktiere
+  - will weitere infos
+  - warte auf antwort
+  - habe genug infos
+  - entscheiden, ob ich sie mir ansehe
+  - termin vereinbaren
+  - termin vereinbart
+  - wohnung besichtigt
+  - entscheiden, ob ich sie will
+  - wohnung uninteressant
+  - wohnung interessant
+  - wohnung nicht bekommen
+  - wohnung bekommen
+
+- (+) Workflow:
+  Neu => Angesehen => Kontaktiert => Termin vereinbart => Besichtigt => Zusage bekommen
+  
+State machine
+- states (one initial, several final)
+- transitions: changes of state
+- events: trigger transitions
+
+2D Table:
+X: current state
+Y: input event
+field value: next state (and action code)
