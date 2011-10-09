@@ -13,6 +13,8 @@ gem "rake", "0.8.7"
 gem "gmaps4rails"
 gem "rails_autolink", "1.0.2"
 gem "draper" # view models / decorators
+gem "rspec"
+gem "rspec-rails"
 
 group :test do
   gem "fuubar" # better rspec output formatter and immediate test result output
@@ -22,11 +24,6 @@ group :test do
   gem "database_cleaner" # to establish a known db state before running new tests
   gem "factory_girl_rails", "~> 1.1.rc1" # to generate model data for tests
   gem "rcov"
-end
-
-group :test, :development do
-  gem "rspec"
-  gem "rspec-rails"
 end
 
 group :development do
