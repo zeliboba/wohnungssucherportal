@@ -52,8 +52,6 @@ der-wohnungssucher.de
  
 ========== BACKLOG ==========
 
-* Favoriten bei Eingabe geocoden und in JS per geokoordinaten darstellen, nicht per google maps call
-
 * Mehrbenutzer-Fähigkeit
   - User-Login
   - scoping von flats auf user
@@ -135,6 +133,7 @@ der-wohnungssucher.de
 
 ========== DONE ==========
 
+* Favoriten bei Eingabe geocoden und in JS per geokoordinaten darstellen, nicht per google maps call
 * Flat-Seite: Wohnungsbeschreibung und Kommentar-Feld trennen
 * Flat-Seite: Darstellung der Flats-Daten überarbeiten
 * Favoriten aus DB lesen, UI zur Bearbeitung der favoriten
