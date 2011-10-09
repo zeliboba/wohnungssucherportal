@@ -1,0 +1,19 @@
+h1. BACKLOG
+
+* Mehrbenutzer-Fähigkeit
+  - User-Login
+  - scoping von flats auf user
+  - scoping von fixpunkten auf user
+
+* Besichtigungstermine als Ical
+
+
+h1. TECHNISCHE TODOS
+
+* stub HTTP requests (wg-gesucht, geocoding)
+* get rid of sudo on deploy
+* ruby 1.8.7 => 1.9.2
+  - go to rvm and 1.9 in production
+* auf haml/sass umstellen
+* increase test coverage, including js
+* auf one-page-app umbauen

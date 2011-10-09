@@ -1,0 +1,51 @@
+h1. Vision
+
+Das Heinzelmänchen für die Wohnungssuche.
+"Elektrischer Makler", e-makler.de
+"Der gute Makler", guter-makler.de
+der-wohnungssucher.de
+
+h2. Nimmt den Stress aus der Suche.
+
+- ich bekomme schnell einen Eindruck der Wohnung
+  - Basisdaten
+  - Lage, Verkehrsanbindung
+  - Umgebungskarte: Restaurants/Bars, Points of Interest
+  - Preiswert?
+
+h2. Gibt mir nen Vorsprung gegenüber anderen Wohnungssuchern
+
+- ich kann mehr Wohnungen gleichzeitig verfolgen
+- die Wohnungssuche kostet mich weniger Zeit und Nerven
+- ich kann schneller auf Angebote reagieren 
+
+h2. Hilft mir, die Übersicht zu behalten.
+
+- "was war das nochmal für eine Wohnung?"
+  - Straße, Name der Kontaktperson, Foto, Generiertes Bild (Farbe&Muster)
+  
+- was steht als nächstes an?
+  - weitere infos einholen
+  - termin vereinbaren
+  - besichtigung
+  - bewertung: wie fand ich die wohnung  
+
+- Stellt alle Infos die in der "Lifetime" einer Wohnung zusammen kommen an einer Stelle dar
+  - Basisdaten der Wohnung und Lage
+  - Vereinbarter Termin
+  - Bewertung danach
+  - Kommunikation mit dem Vermieter
+  - Noch verfügbar
+
+h2. Automatisiert, was automatisiert werden kann.
+
+- merkt sich Besichtigungstermine und stellt sie dar
+  - stellt ihn als ical zur Verfügung
+
+- sucht für mich raus, wie "gut" die wohnung liegt
+  - entfernungen zu meinen favoriten
+  - entfernungen zu verkehrsanbindung
+
+- rechnet aus, wie teuer die wohnung ist (EUR/m2)
+
+- checkt regelmäßig, ob die Wohnung noch verfügbar ist

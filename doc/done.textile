@@ -1,0 +1,23 @@
+h1. Done
+
+* Favoriten bei Eingabe geocoden und in JS per geokoordinaten darstellen, nicht per google maps call
+* Flat-Seite: Wohnungsbeschreibung und Kommentar-Feld trennen
+* Flat-Seite: Darstellung der Flats-Daten überarbeiten
+* Favoriten aus DB lesen, UI zur Bearbeitung der favoriten
+* benutzung für beliebige städte ermöglichen; hartcodierte städte aus code nehmen
+* map passt sich an die größe des browserfensters an
+* scraper auf XPath umstellen
+* prototype => jquery
+* rspec 2, capybara, write some acceptance tests
+* eigene fixpunkte auch auf detailkarte anzeigen
+* rails 3
+* fix database
+* set encoding: utf8
+* got to mysql2
+* fix 10 marker limit in geocoder
+  => store geolocation in db
+* fix invalid html (body tag)
+* cap web disable
+* get rid of test directory; convert existing tests
+* one rake task to test it all
+* one cap task to run specs, push, and release

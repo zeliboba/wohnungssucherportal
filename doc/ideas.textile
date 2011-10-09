@@ -1,64 +1,3 @@
-========== VISION ==========
-
-Das Heinzelmänchen für die Wohnungssuche.
-"Elektrischer Makler", e-makler.de
-"Der gute Makler", guter-makler.de
-der-wohnungssucher.de
-
-*** Nimmt den Stress aus der Suche.
-
-- ich bekomme schnell einen Eindruck der Wohnung
-  - Basisdaten
-  - Lage, Verkehrsanbindung
-  - Umgebungskarte: Restaurants/Bars, Points of Interest
-  - Preiswert?
-  
-*** Gibt mir nen Vorsprung gegenüber anderen Wohnungssuchern
-
-- ich kann mehr Wohnungen gleichzeitig verfolgen
-- die Wohnungssuche kostet mich weniger Zeit und Nerven
-- ich kann schneller auf Angebote reagieren 
-
-*** Hilft mir, die Übersicht zu behalten.
-
-- "was war das nochmal für eine Wohnung?"
-  - Straße, Name der Kontaktperson, Foto, Generiertes Bild (Farbe&Muster)
-  
-- was steht als nächstes an?
-  - weitere infos einholen
-  - termin vereinbaren
-  - besichtigung
-  - bewertung: wie fand ich die wohnung  
-
-- Stellt alle Infos die in der "Lifetime" einer Wohnung zusammen kommen an einer Stelle dar
-  - Basisdaten der Wohnung und Lage
-  - Vereinbarter Termin
-  - Bewertung danach
-  - Kommunikation mit dem Vermieter
-  - Noch verfügbar
-  
-*** Automatisiert, was automatisiert werden kann.
-
-- merkt sich Besichtigungstermine und stellt sie dar
-  - stellt ihn als ical zur Verfügung
-
-- sucht für mich raus, wie "gut" die wohnung liegt
-  - entfernungen zu meinen favoriten
-  - entfernungen zu verkehrsanbindung
-
-- rechnet aus, wie teuer die wohnung ist (EUR/m2)
-
-- checkt regelmäßig, ob die Wohnung noch verfügbar ist
- 
-========== BACKLOG ==========
-
-* Mehrbenutzer-Fähigkeit
-  - User-Login
-  - scoping von flats auf user
-  - scoping von fixpunkten auf user
-
- Besichtigungstermine als Ical
-
 ========== IDEEN ========== 
 
 * Fotos der Wohnung übernehmen und darstellen
@@ -104,19 +43,6 @@ der-wohnungssucher.de
 * viertel-grenzen einblenden
 * eigene fixpunkte eingeben (z.b. arbeit, hauptbahnhof)
 
-
-========== TECHNISCHE TODOS ==========
-
-* stub HTTP requests (wg-gesucht, geocoding)
-* get rid of sudo on deploy
-* ruby 1.8.7 => 1.9.2
-  - go to rvm and 1.9 in production
-* auf haml/sass umstellen
-* increase test coverage, including js
-* auf one-page-app umbauen
-
-
-  
 ========== LATER ========== 
 
 * stadtviertel auf der karte einrahmen
@@ -128,33 +54,6 @@ der-wohnungssucher.de
 * mehrstädte-fähigkeit
   - zoom halbwegs sinnvoll auf die stadt, in der gesucht wird
   - letzte lat/long und zoomstufe speichern
-
-
-
-========== DONE ==========
-
-* Favoriten bei Eingabe geocoden und in JS per geokoordinaten darstellen, nicht per google maps call
-* Flat-Seite: Wohnungsbeschreibung und Kommentar-Feld trennen
-* Flat-Seite: Darstellung der Flats-Daten überarbeiten
-* Favoriten aus DB lesen, UI zur Bearbeitung der favoriten
-* benutzung für beliebige städte ermöglichen; hartcodierte städte aus code nehmen
-* map passt sich an die größe des browserfensters an
-* scraper auf XPath umstellen
-* prototype => jquery
-* rspec 2, capybara, write some acceptance tests
-* eigene fixpunkte auch auf detailkarte anzeigen
-* rails 3
-* fix database
-* set encoding: utf8
-* got to mysql2
-* fix 10 marker limit in geocoder
-  => store geolocation in db
-* fix invalid html (body tag)
-* cap web disable
-* get rid of test directory; convert existing tests
-* one rake task to test it all
-* one cap task to run specs, push, and release
-
 
 Aktionen mit einer Wohnung:
 - Karte und Infos ansehen/ergänzen
