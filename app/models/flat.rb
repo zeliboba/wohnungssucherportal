@@ -26,6 +26,14 @@ class Flat < ActiveRecord::Base
   # FIXME it would be better to stub the request and have it run, than to prevent it completely
   acts_as_gmappable(:process_geocoding => !Rails.env.test?)
   
+  #state_machine :initial => :new do
+  #  state :viewed
+  #  state :contacted
+  #  state :visit_scheduled
+  #  state :visited
+  #  state :not_available
+  #end
+  
   def square_meter_price
     ((price / square_meters.to_f) * 100).round / 100.to_f
   end
