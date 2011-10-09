@@ -140,6 +140,7 @@ GEM
       thor (~> 0.14.6)
     rake (0.8.7)
     rb-fsevent (0.4.1)
+    rcov (0.9.11)
     rdoc (3.8)
     rspec (2.6.0)
       rspec-core (~> 2.6.0)
@@ -198,6 +199,7 @@ DEPENDENCIES
   rails_autolink (= 1.0.2)
   rake (= 0.8.7)
   rb-fsevent
+  rcov
   rdoc
   rspec
   rspec-rails

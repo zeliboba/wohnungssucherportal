@@ -4,3 +4,4 @@ log/*.log
 tmp/
 wohnungssucher_production.sql
 database.yml
+coverage
