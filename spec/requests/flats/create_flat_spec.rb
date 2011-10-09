@@ -17,16 +17,15 @@ feature "Creating a flat" do
     click_on('Create')
   end
   
-  scenario "Creating a flat from scratch", :type => :smoke do
+  scenario "Create a flat with all required attributes", :type => :smoke do
     go_to_create_form
     fill_form(Factory.build(:flat))
     page.should have_content('flat was successfully created.')
   end
   
-  scenario "I get a validation error when required info is missing" do
+  scenario "I get an error when required attributes are missing" do
     go_to_create_form
     fill_form(Factory.build(:flat, :street => nil, :price => nil))
-    show!
     page.should have_css('h2', :text => /error/)
   end
   
