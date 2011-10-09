@@ -11,16 +11,8 @@
       var geocoder = new google.maps.Geocoder();
   
       centerMap(map, geocoder);
-      addReferencePoints(map, geocoder, <%=raw FavoritePlace.all.map(&:full_address).to_json %>);
-  
-      var address = '<%= flat.full_address %>';
-  
-      var markerOptions = {
-          'position': new google.maps.LatLng(<%= flat.latitude %>, <%= flat.longitude %>),
-          'title': address,
-          'map': map
-      };
-      var marker = new google.maps.Marker(markerOptions);
+      placeMarkers(<%=raw FavoritePlace.all.to_json %>, 'green');
+      placeMarkers([<%=raw flat.model.to_json %>], 'red');
   }
 </script>
     

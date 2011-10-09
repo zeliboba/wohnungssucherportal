@@ -1,17 +1,16 @@
-// FIXME don't pass in everything and the kitchen sink
-function addReferencePoints(map, geocoder, addressesArray) {
-  // add some city reference points
-  jQuery.each(addressesArray, function(index, address) {
-    geocoder.geocode({'address': address}, function(results, status) {
-      var markerOptions = {
-        'position': results[0].geometry.location,
-        'title': address,
-        'icon': icon('green'),
-        'map': map
-      };
-      var marker = new google.maps.Marker(markerOptions);
-    });    
+function placeMarkers(addresses, markerColor) {
+  var markers = {};
+  jQuery.each(addresses, function(index, flat) {
+    var markerOptions = {
+      'position': new google.maps.LatLng(flat.latitude, flat.longitude),
+      'title': flat.name || flat.full_address,
+      'icon': icon(markerColor || 'red'),
+      'map': map
+    };
+    var marker = new google.maps.Marker(markerOptions);
+    markers[flat.id] = marker;
   });
+  return markers;  
 }
 
 function icon(color) {

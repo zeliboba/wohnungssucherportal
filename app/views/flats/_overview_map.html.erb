@@ -3,9 +3,6 @@
 // HACK - make a global var for debugging from console
 map = false;
 
-// HACK - make a global var
-G_markers = {};
-
 function initialize() {
   
   // set up new map
@@ -19,19 +16,11 @@ function initialize() {
   var geocoder = new google.maps.Geocoder();
 
   centerMap(map, geocoder);  
-  addReferencePoints(map, geocoder, <%=raw FavoritePlace.all.map(&:full_address).to_json %>);
-
-  // add markers for flats
-  jQuery.each(G_addresses, function(index, flat) {
-  var markerOptions = {
-    'position': new google.maps.LatLng(flat.latitude, flat.longitude),
-    'title': flat.full_address,
-    'map': map
-  };
-  var marker = new google.maps.Marker(markerOptions);
-  G_markers[flat.id] = marker;
-  });
   
+  placeMarkers(<%=raw FavoritePlace.all.to_json %>, 'green');
+  G_markers = placeMarkers(G_addresses, 'red');
+
+
   // add highlighting of markers
   $('.street-name').bind("mouseover mouseout", function(event) {
     var id = event.target.href.split('/').pop();
