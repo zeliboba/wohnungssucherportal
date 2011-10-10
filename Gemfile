@@ -15,6 +15,8 @@ gem "rails_autolink", "1.0.2"
 gem "draper" # view models / decorators
 gem "rspec"
 gem "rspec-rails"
+gem "haml-rails"
+gem "sass"
 
 group :test do
   gem "fuubar" # better rspec output formatter and immediate test result output

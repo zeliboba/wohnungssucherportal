@@ -11,16 +11,8 @@
 <%= link_to 'Edit favorite places', favorite_places_path %> | 
 
 
-<%= render :partial => 'sort_bar' %>
-
 <h1 style="display: none;">Flats</h1>
 
-<div id="flat_list"><% @flats.group_by(&:state).each do |state, flats| %>
-  <h2><%= state.humanize %></h2>
-  <ul class="flats" id="flats_<%= state.underscore %>">
-  <% flats.each do |flat| %>
-    <li><%= render :partial => "flats/flat", :locals => { :flat => flat, :show_phone => false } %></li>
-  <% end %>
-  </ul>
-<% end %>
-</div>
+<%= render :partial => 'flats_list' %>
+<%= render :partial => 'sort_bar' %>
+

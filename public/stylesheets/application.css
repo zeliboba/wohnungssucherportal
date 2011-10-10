@@ -129,58 +129,6 @@ div#map_canvas {
   border-left: 1px solid #000;
 }
 
-div#flat_list {
-  position: absolute;
-  padding: 5px;
-  padding-left: 10px;
-  left: 0px;
-  top: 63px;
-  bottom: 0;
-  width: 535px;
-  overflow: auto;
-}
-
-ul.flats {
-  left: 0;
-  padding-left:0;
-}
-
-ul.flats li {
-  list-style-type: none;
-}
-
-h2 {
-  border-bottom: 1px dotted #55f;
-  margin-bottom:5px;
-  color: #55f;
-}
-
-h2.passed, li.passed {
-  opacity: 0.3;
-}
-textarea#flat_comment {
-  height: 200px;
-}
-
-p#sort-bar {
-  font-family: Arial, Verdana, Helvetica, sans-serif;
-  font-size:12px;
-  border-top: 1px dotted #999;
-  border-bottom: 1px dotted #999;
-  padding:4px; 
-  width:510px;
-}
-span#sort-options a:hover {
- color: #fff; 
- background-color:#000; 
-}
-span#sort-options {
-  font-weight:bold;
-}
-span#sort-options a[href] {
-  font-weight:normal;
-}
-
 div.field_with_errors {
   display: inline;
 }

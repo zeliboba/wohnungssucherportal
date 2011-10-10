@@ -1,0 +1,7 @@
+#flats-list
+  - @flats.group_by(&:state).each do |state, flats|
+    %h2= state.humanize
+    %ul.flats{:id => "flats_#{state.underscore}"}
+      - flats.each do |flat|
+        %li
+          = render :partial => "flat", :locals => { :flat => flat, :show_phone => false }

@@ -1,0 +1,47 @@
+div#flats-list {
+  position: absolute;
+  left: 0px;
+  top: 30px;
+  bottom: 0;
+  padding: 5px;
+  padding-left: 10px;
+  width: 535px;
+  overflow: auto;
+}
+
+ul.flats {
+  left: 0;
+  padding-left:0;
+}
+
+ul.flats li {
+  list-style-type: none;
+}
+
+h2 {
+  border-bottom: 1px dotted #55f;
+  margin-bottom:5px;
+  color: #55f;
+}
+
+h2.passed, li.passed {
+  opacity: 0.3;
+}
+textarea#flat_comment {
+  height: 200px;
+}
+
+#sort-bar {
+  position: absolute;
+  bottom: 0;
+  margin-top: 30px;
+  font-family: Arial, Verdana, Helvetica, sans-serif;
+  font-size:12px;
+  border-top: 1px dotted #999;
+  padding: 4px; 
+  width: 510px;
+}
+
+#sort-bar, #sort-bar a {
+  color: #aaa;  
+}
