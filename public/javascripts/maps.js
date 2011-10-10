@@ -1,6 +1,6 @@
 function placeMarkers(addresses, markerColor) {
   var markers = {};
-  jQuery.each(addresses, function(index, flat) {
+  $(addresses).each(function(index, flat) {
     var markerOptions = {
       'position': new google.maps.LatLng(flat.latitude, flat.longitude),
       'title': flat.name || flat.full_address,
