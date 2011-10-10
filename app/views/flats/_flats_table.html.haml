@@ -14,13 +14,11 @@
           = link_to(flat, :class => "street-name") do
             = h(flat.street) + ","
             = flat.neighbourhood
-            - if flat.scraped?
-              = image_tag 'http://www.wg-gesucht.de/favicon.ico' 
 
       %td= flat.price
       %td= flat.square_meters
       %td= flat.square_meter_price.round
-      %td= flat.rooms
+      %td= flat.rooms ? flat.rooms : 'WG'
       %td= flat.priority
     
       / FIXME
