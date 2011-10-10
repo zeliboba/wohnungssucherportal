@@ -44,6 +44,9 @@ RSpec.configure do |config|
   Capybara.add_selector(:li) do
     xpath { |num| ".//li[#{num}]" }
   end
+  Capybara.add_selector(:tr) do
+    xpath { |num| ".//tr[#{num}]" }
+  end
   
   def show!
     save_and_open_page
