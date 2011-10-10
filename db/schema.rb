@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111005114838) do
+ActiveRecord::Schema.define(:version => 20111010153532) do
 
   create_table "favorite_places", :force => true do |t|
     t.string   "name"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(:version => 20111005114838) do
     t.text     "description"
     t.string   "postal_code"
     t.string   "city"
+    t.string   "subtitle"
   end
 
   add_index "flats", ["state"], :name => "index_flats_on_state"

@@ -53,7 +53,7 @@ textarea#flat_comment {
   padding-right: 0;  
   font-size: 14px;
   white-space: nowrap;
-  width: 45px;
+  width: 40px;
   height: 26px;
   font-weight: normal;
   text-align: right;
@@ -74,4 +74,9 @@ table.flats th {
 }
 .flats .street a {
   text-decoration: none;
+}
+
+.flats small {
+  display:block;
+  margin: 0;
 }

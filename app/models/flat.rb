@@ -2,8 +2,9 @@ class Flat < ActiveRecord::Base
   
   include Flat::Options
   
-  validates_presence_of :street, :neighbourhood, :square_meters, :price, :available_on, :priority
+  validates_presence_of :street, :square_meters, :price, :available_on, :priority
   validates_numericality_of :square_meters, :price
+  validates_length_of :subtitle, :maximum => 100
   
   # try preventing duplicates by only allowing one flat with same size and price per street
   validates_uniqueness_of :street, :scope => [:square_meters, :price], 

@@ -22,6 +22,7 @@ class FlatsController < ApplicationController
     else
       @flat = Flat.new(:available_on => Date.today.next_month.at_beginning_of_month)
     end
+    @flat.city     = "München"
     @flat.priority = Flat::DEFAULT_PRIORITY
     @flat.state    = Flat::STATES.first
   end
