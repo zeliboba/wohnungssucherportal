@@ -17,6 +17,7 @@ gem "rspec"
 gem "rspec-rails"
 gem "haml-rails"
 gem "sass"
+gem "omniauth"
 
 group :test do
   gem "fuubar" # better rspec output formatter and immediate test result output
@@ -26,6 +27,7 @@ group :test do
   gem "database_cleaner" # to establish a known db state before running new tests
   gem "factory_girl_rails", "~> 1.1.rc1" # to generate model data for tests
   gem "rcov"
+  gem "spork", "> 0.9.0.rc"
 end
 
 group :development do
