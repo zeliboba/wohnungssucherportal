@@ -1,0 +1,28 @@
+%table.flats
+  %tr
+    %th.state
+      %h2= state.humanize
+    %th €
+    %th m²
+    %th €/m²
+    %th rooms
+    %th prio
+  - flats.each do |flat|
+    %tr  
+      %td.street
+        .overflow
+          = link_to(flat, :class => "street-name") do
+            = h(flat.street) + ","
+            = flat.neighbourhood
+            - if flat.scraped?
+              = image_tag 'http://www.wg-gesucht.de/favicon.ico' 
+
+      %td= flat.price
+      %td= flat.square_meters
+      %td= flat.square_meter_price.round
+      %td= flat.rooms
+      %td= flat.priority
+    
+      / FIXME
+      /%td=raw flat.phone.blank? ? "<b style='color:#d00'><i>missing</i></b>" : flat.phone
+    

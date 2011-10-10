@@ -19,14 +19,12 @@ ul.flats li {
 }
 
 h2 {
-  border-bottom: 1px dotted #55f;
-  margin-bottom:5px;
+  font-size: 1em;
   color: #55f;
+  margin: 0;
+  padding: 0;
 }
 
-h2.passed, li.passed {
-  opacity: 0.3;
-}
 textarea#flat_comment {
   height: 200px;
 }
@@ -35,13 +33,45 @@ textarea#flat_comment {
   position: absolute;
   bottom: 0;
   margin-top: 30px;
-  font-family: Arial, Verdana, Helvetica, sans-serif;
-  font-size:12px;
   border-top: 1px dotted #999;
   padding: 4px; 
   width: 510px;
 }
 
 #sort-bar, #sort-bar a {
+  font-family: Arial, Verdana, Helvetica, sans-serif;
+  font-size: 13px;
   color: #aaa;  
+}
+
+.flats {
+  border-collapse: collapse;
+}
+.flats td,
+.flats th {
+  padding-left: 5px;
+  padding-right: 0;  
+  font-size: 14px;
+  white-space: nowrap;
+  width: 45px;
+  height: 26px;
+  font-weight: normal;
+  text-align: right;
+}
+
+table.flats th {
+  padding-top: 25px;
+  color: #999;
+}
+
+.flats .state,
+.flats .street {
+  text-align: left;
+}
+.flats .street div {
+  width: 300px;
+  overflow: hidden;  
+}
+.flats .street a {
+  text-decoration: none;
 }

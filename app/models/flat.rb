@@ -58,6 +58,10 @@ class Flat < ActiveRecord::Base
     visit_at < Time.now
   end
   
+  def city
+    "München"
+  end
+  
   def country
     "Deutschland"
   end
