@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :flat do
-    street "Kazmairstraße 42"
+    sequence(:street, 42) { |nr| "Kazmairstraße #{nr}" }
     neighbourhood "Westend"
     postal_code "12345"
     city "München"

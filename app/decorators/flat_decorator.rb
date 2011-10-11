@@ -20,18 +20,29 @@ class FlatDecorator < ApplicationDecorator
   end
 
   # overwrites the attribute
-  def priority
-    return unless model.priority
-    ['➀', '➁', '➂'][model.priority - 1]
-  end
-  
-  # overwrites the attribute
   def comment
     h.simple_format(h.auto_link(model.comment)) 
   end
   
   def contact
     h.auto_link("#{model.contact_person} #{model.phone}")
+  end
+  
+  def subtitle_with_contact
+    if model.subtitle.present? 
+      s = model.subtitle
+      s << ", Kontakt: #{model.contact_person}" if model.contact_person.present?
+    else
+      s = model.contact_person
+    end
+    s 
+  end
+  
+  def to_json
+    model.to_json(
+      :only => [:id, :latitude, :longitude], 
+      :methods => :full_address
+    )
   end
   
   private

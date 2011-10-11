@@ -15,7 +15,7 @@
           = link_to(flat, :class => "street-name") do
             = h(flat.street) + ","
             = flat.neighbourhood
-            %small= flat.subtitle
+            %small= flat.subtitle_with_contact
 
       %td= flat.price
       %td= flat.square_meters

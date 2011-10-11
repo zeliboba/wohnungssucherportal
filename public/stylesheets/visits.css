@@ -1,0 +1,7 @@
+h2.visits {
+  margin-top: 20px;
+  border-bottom: 1px dotted #55f;
+}
+ol.visits {
+  list-style-type: none;
+}

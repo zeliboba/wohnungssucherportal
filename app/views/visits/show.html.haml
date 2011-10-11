@@ -1,0 +1,14 @@
+= link_to 'Back to list', flats_path
+
+%h1 Visits
+
+- @flats.group_by { |f| f.visit_at.to_date }.each do |day, flats|
+  
+  %h2.visits{:class => (flats.first.visit_passed?) ? 'passed' : nil}
+    = l(flats.first.visit_at, :format => "%d.%m.%Y (%a)")
+    
+  %ol
+    - flats.reverse.each do |flat|
+      %li{:class => (flat.visit_passed?) ? 'passed' : nil}
+        %time= l(flat.visit_at, :format => "%H:%M")
+        = render :partial => "flat", :locals => { :flat => flat }

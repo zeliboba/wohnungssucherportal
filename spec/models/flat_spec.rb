@@ -13,17 +13,17 @@ describe Flat do
   
   describe "Full address formatting" do
     it "works with postal code" do
-      flat = Factory.build(:flat)
+      flat = Factory.build(:flat, :street => 'Kazmairstraße 42')
       assert_equal 'Kazmairstraße 42, 12345 München, Deutschland', flat.full_address
     end
 
     it "works without postal code" do
-      flat = Factory.build(:flat, :postal_code => nil)
+      flat = Factory.build(:flat, :street => 'Kazmairstraße 42', :postal_code => nil)
       assert_equal 'Kazmairstraße 42, München, Deutschland', flat.full_address
     end
 
     it "works using the alias for gmaps4rails" do
-      flat = Factory.build(:flat)
+      flat = Factory.build(:flat, :street => 'Kazmairstraße 42')
       assert_equal 'Kazmairstraße 42, 12345 München, Deutschland', flat.gmaps4rails_address
     end
 

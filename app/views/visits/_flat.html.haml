@@ -1,0 +1,15 @@
+= link_to(h(flat.street), flat, :class => "street-name")
+, 
+= flat.neighbourhood
+
+= image_tag 'http://www.wg-gesucht.de/favicon.ico' if flat.scraped?
+%small= link_to 'edit', edit_flat_path(flat)
+%br
+= "#{flat.square_meters}m²"
+= number_to_currency(flat.price, :unit => '€', :precision => 0)
+= number_to_currency(flat.square_meter_price, :unit => '€', :separator => ",", :precision => 0) + "/m²"
+-
+Phone: 
+=raw flat.phone.blank? ? "<b style='color:#d00'><i>missing</i></b>" : flat.phone
+
+= flat.priority

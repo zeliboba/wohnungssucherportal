@@ -1,7 +1,7 @@
 class FlatsController < ApplicationController
 
   def index
-    @flats = Flat.for_index.ordered(params[:order])
+    @flats = FlatDecorator.decorate(Flat.for_index.ordered(params[:order]))
   end
   
   def all
