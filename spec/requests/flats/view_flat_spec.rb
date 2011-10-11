@@ -2,6 +2,8 @@ require 'spec_helper'
 
 feature "Viewing flats" do
 
+  background { sign_in_with_form }
+
   scenario "clicking on a flat name shows me the details", :type => :smoke do
     flat = Factory.create(:flat)
     visit(root_path)

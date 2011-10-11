@@ -20,6 +20,8 @@ require 'spec_helper'
 
 describe FavoritePlacesController do
 
+  before(:each) { sign_in Factory.create(:user) }
+  
   # This should return the minimal set of attributes required to create a valid
   # FavoritePlace. As you add validations to FavoritePlace, be sure to
   # update the return value of this method accordingly.

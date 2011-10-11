@@ -8,6 +8,7 @@ feature "Visits" do
   end
   
   scenario "It formats future/past visits correctly", :type => :smoke do
+    sign_in_with_form
     visit(visits_path)
     page.should have_css('li.passed', :text => @flat_passed.street)
     page.should have_css('li', :text => @flat_future.street)

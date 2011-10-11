@@ -14,6 +14,8 @@ feature "Creating a flat" do
     click_on('Create')
   end
   
+  background { sign_in_with_form }
+  
   scenario "Create a flat with all required attributes", :type => :smoke do
     create_flat_with(Factory.build(:flat))
     page.should have_content('flat was successfully created.')

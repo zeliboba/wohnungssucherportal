@@ -15,10 +15,10 @@
 <body<%=raw @initialize ? ' onload="initialize();"' : '' %> id="<%= params[:controller] %>">
 
   <% if flash[:notice]%>
-    <p id="flash-notice"><%= flash[:notice] %></p>
+    <p id="flash-notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
   <% end %>
   
   <%= yield %>
-
 </body>
 </html>

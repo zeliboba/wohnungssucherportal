@@ -1,5 +1,7 @@
 Wohnungssucherportal::Application.routes.draw do
 
+  devise_for :users
+
   resources :favorite_places
 
   get "visits/index"

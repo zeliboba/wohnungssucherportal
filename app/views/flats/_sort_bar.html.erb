@@ -6,4 +6,6 @@
   <% end %>
   </span>
    | <i>showing <%= @flats.size %> flats (<%= link_to "show all #{Flat.count}", all_flats_path %>)</i>
+   | <%= link_to 'Sign out', destroy_user_session_path, :method => :delete, :class => 'sign-out' %>
+
 </p>

@@ -38,5 +38,14 @@ module Wohnungssucherportal
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+    
+    config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+    #   If you are deploying Rails 3.1 on Heroku, you may want to set:
+    #
+    #     config.assets.initialize_on_precompile = false
+    #
+    #   On config/application.rb forcing your application to not access the DB
+    #   or load models when precompiling your assets.
   end
 end

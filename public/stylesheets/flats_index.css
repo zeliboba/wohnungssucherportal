@@ -35,13 +35,19 @@ textarea#flat_comment {
   margin-top: 30px;
   border-top: 1px dotted #999;
   padding: 4px; 
-  width: 510px;
+  height: 15px;
+  background-color: #fff;
+  width: 530px;
 }
 
 #sort-bar, #sort-bar a {
   font-family: Arial, Verdana, Helvetica, sans-serif;
-  font-size: 13px;
+  font-size: 11px;
   color: #aaa;  
+}
+
+#sort-bar a.sign-out {
+  color: #f66;
 }
 
 .flats {
@@ -54,14 +60,14 @@ textarea#flat_comment {
   font-size: 14px;
   white-space: nowrap;
   width: 40px;
-  height: 26px;
+  height: 30px;
   font-weight: normal;
   text-align: right;
 }
 
 table.flats th {
   padding-top: 25px;
-  color: #999;
+  color: #aaa;
 }
 
 .flats .state,
