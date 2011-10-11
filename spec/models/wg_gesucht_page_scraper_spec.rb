@@ -4,7 +4,7 @@ describe "it parses shared flats" do
 
   before(:all) do
     @url = "http://www.wg-gesucht.de/my_url"
-    @attributes = PageScraper::WGGesucht.new(hpricot_doc_for('occamstrasse'), @url).attributes
+    @attributes = PageScraper::WGGesucht.new(hpricot_doc_for('rotwandstrasse'), @url).attributes
   end
   
   it "stores basic attributes in the flat model" do
@@ -13,16 +13,15 @@ describe "it parses shared flats" do
   end
   
   it "parses square_meters", :type => :smoke do
-    assert_equal 12, @attributes[:square_meters]
+    assert_equal 18, @attributes[:square_meters]
   end
   
   it "parses dates" do
-    assert_equal Date.parse("01.08.2011"), @attributes[:available_on]
-    assert_equal Date.parse("30.09.2011"), @attributes[:available_until]
+    assert_equal Date.parse("01.11.2011"), @attributes[:available_on]
   end
   
   it "parses price" do
-    assert_equal 320, @attributes[:price]      
+    assert_equal 400, @attributes[:price]      
   end
   
   it "parses city" do
@@ -30,27 +29,27 @@ describe "it parses shared flats" do
   end
   
   it "parses postal code" do
-    assert_equal "80802", @attributes[:postal_code]    
+    assert_equal "81539", @attributes[:postal_code]    
   end
   
   it "parses neighbourhood" do
-    assert_equal "Schwabing-West", @attributes[:neighbourhood]    
+    assert_equal "Obergiesing", @attributes[:neighbourhood]    
   end
   
   it "parses street" do
-    assert_equal "Occamstr 21", @attributes[:street]
+    assert_equal "Rotwandstr. 1", @attributes[:street]
   end    
   
   it "parses title" do
-    assert_equal "WG-Zimmer in gemütlicher 3er WG zur Zwischenmiete", @attributes[:title]
+    assert_equal "Super Lage!", @attributes[:title]
   end    
   
   it "parses contact name" do
-    assert_equal "Lucia", @attributes[:contact_person]
+    assert_equal "C. Mlynarcik", @attributes[:contact_person]
   end
   
   it "parses the description" do
-    assert_match /^Hi,/, @attributes[:description]
+    assert_match /^Hey ihr/, @attributes[:description]
   end
   
   # does not work for WGs, only for appartments

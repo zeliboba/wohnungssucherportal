@@ -92,7 +92,10 @@ class PageScraper::WGGesucht < PageScraper
   
   def parse_description
     tr = @doc.search("//tr").find { |tr| tr.innerHTML.include?("Anzeigentext:") }
-    decode_strip(tr.next_sibling.children[1].innerHTML)
+    begin
+      tr = tr.next_sibling
+    end while (tr.name != "tr")
+    decode_strip(tr.children[1].innerHTML)
   end
   
   private 
