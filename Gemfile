@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0.rc4'
+gem 'rails', '3.1.1'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -11,13 +11,13 @@ gem "htmlentities", "4.3.0"
 gem "rdoc"
 gem "rake", "0.8.7"
 gem "gmaps4rails"
-gem "rails_autolink", "1.0.2"
+gem "rails_autolink", "1.0.4"
 gem "draper" # view models / decorators
 gem "rspec"
 gem "rspec-rails"
 gem "haml-rails"
 gem "sass"
-gem "omniauth"
+gem "devise"
 
 group :test do
   gem "fuubar" # better rspec output formatter and immediate test result output
