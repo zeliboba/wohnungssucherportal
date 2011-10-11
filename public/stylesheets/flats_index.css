@@ -55,6 +55,7 @@ textarea#flat_comment {
 }
 .flats td,
 .flats th {
+  vertical-align: top;
   padding-left: 5px;
   padding-right: 0;  
   font-size: 14px;

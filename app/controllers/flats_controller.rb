@@ -1,11 +1,11 @@
 class FlatsController < ApplicationController
 
   def index
-    @flats = FlatDecorator.decorate(Flat.for_index.ordered(params[:order]))
+    @flats = FlatDecorator.decorate(current_user.flats.for_index.ordered(params[:order]))
   end
   
   def all
-    @flats = Flat.all
+    @flats = FlatDecorator.decorate(Flat.all)
     render :action => 'index'
   end
 
@@ -32,7 +32,7 @@ class FlatsController < ApplicationController
   end
 
   def create
-    @flat = Flat.new(params[:flat])
+    @flat = current_user.flats.new(params[:flat])
 
     if @flat.save
       flash[:notice] = 'flat was successfully created.'

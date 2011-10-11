@@ -2,7 +2,7 @@ class Flat < ActiveRecord::Base
   
   include Flat::Options
   
-  validates_presence_of :street, :square_meters, :price, :available_on, :priority
+  validates_presence_of :street, :square_meters, :price, :available_on, :priority, :user_id
   validates_numericality_of :square_meters, :price
   validates_length_of :subtitle, :maximum => 100
   
@@ -23,17 +23,11 @@ class Flat < ActiveRecord::Base
   }
 
   scope :have_visits, where(['visit_at IS NOT NULL']).order('visit_at DESC')
-
+  
+  belongs_to :user
+  
   # FIXME it would be better to stub the request and have it run, than to prevent it completely
   acts_as_gmappable(:process_geocoding => !Rails.env.test?)
-  
-  #state_machine :initial => :new do
-  #  state :viewed
-  #  state :contacted
-  #  state :visit_scheduled
-  #  state :visited
-  #  state :not_available
-  #end
   
   def square_meter_price
     ((price / square_meters.to_f) * 100).round / 100.to_f

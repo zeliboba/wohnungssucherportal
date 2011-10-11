@@ -13,12 +13,12 @@ RSpec.configure do |config|
   end
 
   def sign_in_with_form
-    puts "Sign in"
     visit(new_user_session_path)
     @sign_in_user = Factory.create(:user)
     fill_in('Email', :with => @sign_in_user.email)
     fill_in('Password', :with => @sign_in_user.password)
     click_on('Sign in')
+    @sign_in_user
   end
     
   include Devise::TestHelpers

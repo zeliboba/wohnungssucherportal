@@ -1,6 +1,7 @@
 class FavoritePlace < ActiveRecord::Base
 
   validates_presence_of :street, :city
+  belongs_to :user
   
   # FIXME it would be better to stub the request and have it run, than to prevent it completely
   acts_as_gmappable(:process_geocoding => !Rails.env.test?)

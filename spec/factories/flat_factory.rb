@@ -13,50 +13,6 @@ FactoryGirl.define do
     latitude 48.1672
     longitude 11.5748
     gmaps 1
-  end
-end
-
-
-__END__
-
-OLD SYNTAX
-
-Factory.sequence :email do |n|
-  "email#{n}@example.com"
-end
-
-Factory.define :user do |factory|
-  factory.name  { "Ron Burgundy" }
-  factory.email { Factory.next(:email) }
-end
-
-Factory.define :admin, :parent => :user do |factory|
-  factory.admin { true }
-end
-
-Factory.define :dog do |factory|
-  factory.name { "Baxter" }
-  factory.association(:owner, :factory => :user)
-end
-
-NEW SYNTAX
-
-FactoryGirl.define do
-  sequence :email do |n|
-    "email#{n}@example.com"
-  end
-
-  factory :user, :aliases => [:owner] do
-    name "Ron Burgundy"
-    email
-
-    factory :admin do
-      admin true
-    end
-  end
-
-  factory :dog do
-    name "Baxter"
-    owner
+    user
   end
 end
