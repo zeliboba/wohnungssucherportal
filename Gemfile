@@ -25,7 +25,7 @@ group :test do
   gem "autotest"
   gem "launchy" # required for save_and_open_page in request specs
   gem "database_cleaner" # to establish a known db state before running new tests
-  gem "factory_girl_rails", "~> 1.1.rc1" # to generate model data for tests
+  gem "factory_girl_rails" # to generate model data for tests
   gem "rcov"
   gem "spork", "> 0.9.0.rc"
 end
@@ -35,6 +35,8 @@ group :development do
   gem 'guard-pow'
   gem 'guard-bundler'
   gem 'guard-livereload'
+  gem 'guard-rspec'
+  gem 'guard-spork'
   gem 'growl'
 end
 
