@@ -13,8 +13,7 @@
       %td.street
         .overflow
           = link_to(flat, :class => "street-name") do
-            = h(flat.street) + ","
-            = flat.neighbourhood
+            = h(flat.street_with_neighbourhood)
             %small= flat.subtitle_with_contact
 
       %td= flat.price

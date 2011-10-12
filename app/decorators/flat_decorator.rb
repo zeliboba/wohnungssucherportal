@@ -45,6 +45,14 @@ class FlatDecorator < ApplicationDecorator
     )
   end
   
+  def street_with_neighbourhood
+    s = model.street
+    if model.neighbourhood.present? 
+      s << ", #{model.neighbourhood}"
+    end
+    s 
+  end
+  
   private
   
     def available_months
