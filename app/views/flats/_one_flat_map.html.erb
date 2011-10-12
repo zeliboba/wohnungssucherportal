@@ -11,7 +11,7 @@
       var geocoder = new google.maps.Geocoder();
   
       centerMap(map, geocoder);
-      placeMarkers(<%=raw FavoritePlace.all.to_json %>, 'green');
+      placeMarkers(<%=raw current_user.favorite_places.to_json %>, 'green');
       placeMarkers([<%=raw flat.model.to_json %>], 'red');
   }
 </script>

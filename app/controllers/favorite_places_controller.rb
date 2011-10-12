@@ -2,7 +2,7 @@ class FavoritePlacesController < ApplicationController
   # GET /favorite_places
   # GET /favorite_places.json
   def index
-    @favorite_places = FavoritePlace.all
+    @favorite_places = current_user.favorite_places
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +13,7 @@ class FavoritePlacesController < ApplicationController
   # GET /favorite_places/1
   # GET /favorite_places/1.json
   def show
-    @favorite_place = FavoritePlace.find(params[:id])
+    @favorite_place = current_user.favorite_places.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +24,7 @@ class FavoritePlacesController < ApplicationController
   # GET /favorite_places/new
   # GET /favorite_places/new.json
   def new
-    @favorite_place = FavoritePlace.new
+    @favorite_place = current_user.favorite_places.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,13 +34,13 @@ class FavoritePlacesController < ApplicationController
 
   # GET /favorite_places/1/edit
   def edit
-    @favorite_place = FavoritePlace.find(params[:id])
+    @favorite_place = current_user.favorite_places.find(params[:id])
   end
 
   # POST /favorite_places
   # POST /favorite_places.json
   def create
-    @favorite_place = FavoritePlace.new(params[:favorite_place])
+    @favorite_place = current_user.favorite_places.new(params[:favorite_place])
 
     respond_to do |format|
       if @favorite_place.save
@@ -56,7 +56,7 @@ class FavoritePlacesController < ApplicationController
   # PUT /favorite_places/1
   # PUT /favorite_places/1.json
   def update
-    @favorite_place = FavoritePlace.find(params[:id])
+    @favorite_place = current_user.favorite_places.find(params[:id])
 
     respond_to do |format|
       if @favorite_place.update_attributes(params[:favorite_place])
@@ -72,7 +72,7 @@ class FavoritePlacesController < ApplicationController
   # DELETE /favorite_places/1
   # DELETE /favorite_places/1.json
   def destroy
-    @favorite_place = FavoritePlace.find(params[:id])
+    @favorite_place = current_user.favorite_places.find(params[:id])
     @favorite_place.destroy
 
     respond_to do |format|

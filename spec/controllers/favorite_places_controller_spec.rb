@@ -20,18 +20,27 @@ require 'spec_helper'
 
 describe FavoritePlacesController do
 
-  before(:each) { sign_in Factory.create(:user) }
+  before(:all)  { @user = Factory.create(:user) }
+  before(:each) { sign_in @user }
   
   # This should return the minimal set of attributes required to create a valid
   # FavoritePlace. As you add validations to FavoritePlace, be sure to
   # update the return value of this method accordingly.
-  def valid_attributes
-    Factory.attributes_for(:favorite_place)
+  def valid_attributes(opts = {:with_user => false})
+    attributes = Factory.attributes_for(:favorite_place)
+  end
+  
+  # valid_attributes is used for two things:
+  # 1) submitting params
+  # 2) creating a new record inside the test
+  # only supply the user for 2), otherwise tests doing 1) may work although the code doesn't
+  def valid_attributes_with_user_id
+    valid_attributes.merge(:user_id => @user.id)
   end
 
   describe "GET index" do
     it "assigns all favorite_places as @favorite_places" do
-      favorite_place = FavoritePlace.create! valid_attributes
+      favorite_place = FavoritePlace.create! valid_attributes_with_user_id
       get :index
       assigns(:favorite_places).should eq([favorite_place])
     end
@@ -39,7 +48,7 @@ describe FavoritePlacesController do
 
   describe "GET show" do
     it "assigns the requested favorite_place as @favorite_place" do
-      favorite_place = FavoritePlace.create! valid_attributes
+      favorite_place = FavoritePlace.create! valid_attributes_with_user_id
       get :show, :id => favorite_place.id.to_s
       assigns(:favorite_place).should eq(favorite_place)
     end
@@ -54,7 +63,7 @@ describe FavoritePlacesController do
 
   describe "GET edit" do
     it "assigns the requested favorite_place as @favorite_place" do
-      favorite_place = FavoritePlace.create! valid_attributes
+      favorite_place = FavoritePlace.create! valid_attributes_with_user_id
       get :edit, :id => favorite_place.id.to_s
       assigns(:favorite_place).should eq(favorite_place)
     end
@@ -65,7 +74,7 @@ describe FavoritePlacesController do
       it "creates a new FavoritePlace" do
         expect {
           post :create, :favorite_place => valid_attributes
-        }.to change(FavoritePlace, :count).by(1)
+        }.to change(@user.favorite_places, :count).by(1)
       end
 
       it "assigns a newly created favorite_place as @favorite_place" do
@@ -100,7 +109,7 @@ describe FavoritePlacesController do
   describe "PUT update" do
     describe "with valid params" do
       it "updates the requested favorite_place" do
-        favorite_place = FavoritePlace.create! valid_attributes
+        favorite_place = FavoritePlace.create! valid_attributes_with_user_id
         # Assuming there are no other favorite_places in the database, this
         # specifies that the FavoritePlace created on the previous line
         # receives the :update_attributes message with whatever params are
@@ -110,13 +119,14 @@ describe FavoritePlacesController do
       end
 
       it "assigns the requested favorite_place as @favorite_place" do
-        favorite_place = FavoritePlace.create! valid_attributes
+        favorite_place = FavoritePlace.create! valid_attributes_with_user_id
         put :update, :id => favorite_place.id, :favorite_place => valid_attributes
         assigns(:favorite_place).should eq(favorite_place)
       end
 
       it "redirects to the favorite_place" do
-        favorite_place = FavoritePlace.create! valid_attributes
+        puts valid_attributes[:user].to_yaml
+        favorite_place = FavoritePlace.create! valid_attributes_with_user_id
         put :update, :id => favorite_place.id, :favorite_place => valid_attributes
         response.should redirect_to(favorite_place)
       end
@@ -124,7 +134,7 @@ describe FavoritePlacesController do
 
     describe "with invalid params" do
       it "assigns the favorite_place as @favorite_place" do
-        favorite_place = FavoritePlace.create! valid_attributes
+        favorite_place = FavoritePlace.create! valid_attributes_with_user_id
         # Trigger the behavior that occurs when invalid params are submitted
         FavoritePlace.any_instance.stub(:save).and_return(false)
         put :update, :id => favorite_place.id.to_s, :favorite_place => {}
@@ -132,7 +142,7 @@ describe FavoritePlacesController do
       end
 
       it "re-renders the 'edit' template" do
-        favorite_place = FavoritePlace.create! valid_attributes
+        favorite_place = FavoritePlace.create! valid_attributes_with_user_id
         # Trigger the behavior that occurs when invalid params are submitted
         FavoritePlace.any_instance.stub(:save).and_return(false)
         put :update, :id => favorite_place.id.to_s, :favorite_place => {}
@@ -143,14 +153,14 @@ describe FavoritePlacesController do
 
   describe "DELETE destroy" do
     it "destroys the requested favorite_place" do
-      favorite_place = FavoritePlace.create! valid_attributes
+      favorite_place = FavoritePlace.create! valid_attributes_with_user_id
       expect {
         delete :destroy, :id => favorite_place.id.to_s
       }.to change(FavoritePlace, :count).by(-1)
     end
 
     it "redirects to the favorite_places list" do
-      favorite_place = FavoritePlace.create! valid_attributes
+      favorite_place = FavoritePlace.create! valid_attributes_with_user_id
       delete :destroy, :id => favorite_place.id.to_s
       response.should redirect_to(favorite_places_url)
     end

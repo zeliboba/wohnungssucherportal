@@ -17,7 +17,7 @@ function initialize() {
 
   centerMap(map, geocoder);  
   
-  placeMarkers(<%=raw FavoritePlace.all.to_json %>, 'green');
+  placeMarkers(<%=raw current_user.favorite_places.to_json %>, 'green');
   G_markers = placeMarkers(G_addresses, 'red');
 
 
