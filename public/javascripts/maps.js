@@ -21,7 +21,7 @@ function icon(color) {
 }
 
 function centerMap(map, geocoder) {
-  geocoder.geocode({'address': 'Kleinhesseloher See, München'}, function(results, status) {
+  geocoder.geocode({'address': 'Marienplatz, München'}, function(results, status) {
     map.setCenter(results[0].geometry.location);
   });
 }
