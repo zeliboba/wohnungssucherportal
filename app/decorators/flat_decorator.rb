@@ -1,3 +1,5 @@
+# a view-model to encapsulate view-related logic. 
+# replaces most helpers in an OO way.
 class FlatDecorator < ApplicationDecorator
 
   decorates :flat

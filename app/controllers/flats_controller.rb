@@ -5,7 +5,7 @@ class FlatsController < ApplicationController
   end
   
   def all
-    @flats = FlatDecorator.decorate(Flat.all)
+    @flats = FlatDecorator.decorate(current_user.flats.all)
     render :action => 'index'
   end
 
