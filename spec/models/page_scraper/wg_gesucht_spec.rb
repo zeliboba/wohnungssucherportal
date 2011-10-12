@@ -52,7 +52,7 @@ end
 
 module WGGesuchtPageScraperSpecHelper  
   def scraped_attributes(html_file)
-    PageScraper::WGGesucht.new(hpricot_doc_for(html_file), @url).attributes
+    PageScraper::WGGesucht.new(hpricot_doc_for(html_file)).attributes
   end
   private
     def hpricot_doc_for(file)
@@ -63,7 +63,6 @@ end
 describe "Scraping the standard HTML" do
   include WGGesuchtPageScraperSpecHelper
   before(:all) do
-    @url        = "http://www.wg-gesucht.de/my_url"
     @attributes = scraped_attributes('rotwandstrasse_standard')
   end  
   it_behaves_like "wg gesucht page scraping spec"
@@ -72,7 +71,6 @@ end
 describe "Scraping a variation of the HTML" do
   include WGGesuchtPageScraperSpecHelper
   before(:all) do
-    @url        = "http://www.wg-gesucht.de/my_url"
     @attributes = scraped_attributes('rotwandstrasse_variation')
   end  
   it_behaves_like "wg gesucht page scraping spec"

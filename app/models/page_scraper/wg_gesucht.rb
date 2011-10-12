@@ -2,10 +2,9 @@ class PageScraper::WGGesucht < PageScraper
 
   scrapes 'wg-gesucht.de'
   
-  def initialize(doc, url)
+  def initialize(doc)
     @doc = doc
     @attributes = {}
-    #@attributes[:url] = url
     @attributes[:state] = Flat::STATES.first
 
     @attributes[:city]          = parse_city
