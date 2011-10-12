@@ -1,4 +1,4 @@
-set :application, "wohnungssucherportal"
+set :application, "flats"
 set :repository,  "git@github.com:phillipoertel/wohnungssucherportal.git"
 
 set :scm, :git
