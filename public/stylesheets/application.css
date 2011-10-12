@@ -132,12 +132,21 @@ div.field_with_errors {
   display: inline;
 }
 
-p#flash-notice {
+p.flash {
   padding: 5px;
   width: 510px;
+}
+p#flash-notice {
   background-color: #9FDD86;
   border-left: 5px solid green;
   color: green;
+}
+
+p#flash-error, 
+p#flash-alert {
+  background-color: #EDCBD1;
+  border-left: 5px solid #d00;
+  color: #d00;
 }
 
 time {

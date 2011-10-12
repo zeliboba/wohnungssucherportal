@@ -17,13 +17,16 @@ feature "Creating a flat" do
   background { sign_in_with_form }
   
   scenario "Create a flat with all required attributes", :type => :smoke do
-    create_flat_with(Factory.build(:flat))
-    page.should have_content('flat was successfully created.')
+    flat = Factory.build(:flat)
+    create_flat_with(flat)
+    page.should have_flash("successfully created")
+     # check that I can see the flat, i.e. it was correctly assigned to user me
+    page.should have_content(flat.street)
   end
   
   scenario "I get an error when required attributes are missing" do
     create_flat_with(Factory.build(:flat, :street => nil))
-    page.should have_css('h2', :text => /error/)
+    page.should have_flash("can't be blank")
   end
   
 end

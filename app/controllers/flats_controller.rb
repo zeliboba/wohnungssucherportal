@@ -10,7 +10,9 @@ class FlatsController < ApplicationController
   end
 
   def show
-    @flat = FlatDecorator.find(params[:id])
+    @flat = FlatDecorator.decorate(current_user.flats.find(params[:id]))
+  rescue ActiveRecord::RecordNotFound
+    redirect_to flats_path, :alert => "The requested flat could not be found."
   end
 
   def prefill_url_form
@@ -35,9 +37,7 @@ class FlatsController < ApplicationController
     @flat = current_user.flats.new(params[:flat])
 
     if @flat.save
-      flash[:notice] = 'flat was successfully created.'
-      flash[:created_flat_id] = @flat.id
-      redirect_to flat_path(@flat)
+      redirect_to @flat, :notice => 'Flat was successfully created.'
     else
       flash[:error] = @flat.errors
       render :action => "new"

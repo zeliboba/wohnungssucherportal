@@ -23,3 +23,12 @@ RSpec.configure do |config|
     
   include Devise::TestHelpers
 end
+
+RSpec::Matchers.define :have_flash do |expected_message|
+  match do |actual|
+    page.should have_css('p.flash', :text => expected_message)
+  end
+  failure_message_for_should do |actual|
+    "expected flash message '#{expected_message}', but none found."
+  end
+end
