@@ -5,7 +5,7 @@ class PageScraper::WGGesucht < PageScraper
   def initialize(doc, url)
     @doc = doc
     @attributes = {}
-    @attributes[:url] = url
+    #@attributes[:url] = url
     @attributes[:state] = Flat::STATES.first
 
     @attributes[:city]          = parse_city
@@ -91,13 +91,10 @@ class PageScraper::WGGesucht < PageScraper
   end
   
   def parse_description
-    tr = @doc.search("//tr").find { |tr| tr.innerHTML.include?("Anzeigentext:") }
-    Rails.logger.debug "Loop #{tr}"
-    begin
-      Rails.logger.debug "Loop #{tr.next_sibling}"
-      tr = tr.next_sibling
-    end while (tr.name != "tr")
-    decode_strip(tr.children[1].innerHTML)
+    td = @doc.search("//td[@class='detailPaddingCell']")[1]
+    text_children = td.children.reject { |c| %w(script div).include?(c.name) }
+    desc = text_children.join("\n").gsub(/\s*<br \/>\s*/, "\n\n")
+    decode_strip(desc)
   end
   
   private 

@@ -1,6 +1,7 @@
 require 'open-uri'
 require 'hpricot'
 require 'htmlentities'
+require 'iconv'
 
 class PageScraper
 
@@ -10,8 +11,10 @@ class PageScraper
 
     def scrape(url)
       anti_anti_scrape_headers = { 'User-Agent' => "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:5.0) Gecko/20100101 Firefox/5.0"}
-      hpricot_doc = open(url, anti_anti_scrape_headers) { |f| Hpricot(f) }
-      find_scraper(url).new(hpricot_doc, url)
+      f = open(url, anti_anti_scrape_headers)
+      f.rewind
+      doc = Hpricot(Iconv.conv('utf-8', f.charset, f.readlines.join("\n")))
+      find_scraper(url).new(doc, url)
     end
 
     private

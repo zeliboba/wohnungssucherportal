@@ -65,7 +65,7 @@ class Flat < ActiveRecord::Base
     
     def from_url(url)
       attributes = PageScraper.scrape(url).attributes
-      Flat.new(attributes)
+      Flat.new(attributes.merge(:url => url))
     end
 
     private
