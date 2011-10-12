@@ -14,5 +14,6 @@ FactoryGirl.define do
     longitude 11.5748
     gmaps 1
     user
+    subtitle "Mr Lodge, ****"
   end
 end
