@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature "Viewing flats" do
+feature "Showing flats" do
 
   background { @user = sign_in_with_form }
 

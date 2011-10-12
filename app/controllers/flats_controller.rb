@@ -1,5 +1,9 @@
 class FlatsController < ApplicationController
 
+  rescue_from 'ActiveRecord::RecordNotFound' do
+    redirect_to flats_path, :alert => "The requested flat could not be found."
+  end
+  
   def index
     @flats = FlatDecorator.decorate(current_user.flats.for_index.ordered(params[:order]))
   end
@@ -11,8 +15,6 @@ class FlatsController < ApplicationController
 
   def show
     @flat = FlatDecorator.decorate(current_user.flats.find(params[:id]))
-  rescue ActiveRecord::RecordNotFound
-    redirect_to flats_path, :alert => "The requested flat could not be found."
   end
 
   def prefill_url_form
@@ -30,7 +32,7 @@ class FlatsController < ApplicationController
   end
 
   def edit
-    @flat = Flat.find(params[:id])
+    @flat = current_user.flats.find(params[:id])
   end
 
   def create
@@ -45,7 +47,7 @@ class FlatsController < ApplicationController
   end
 
   def update
-    @flat = Flat.find(params[:id])
+    @flat = current_user.flats.find(params[:id])
 
     respond_to do |format|
       if @flat.update_attributes(params[:flat])
@@ -60,7 +62,7 @@ class FlatsController < ApplicationController
   end
 
   def destroy
-    @flat = Flat.find(params[:id])
+    @flat = current_user.flats.find(params[:id])
     @flat.destroy
 
     respond_to do |format|
