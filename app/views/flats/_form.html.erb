@@ -13,8 +13,8 @@
   <p>
     <%= f.label :priority %>&nbsp;
     <% ['great', 'ok', 'so-so'].each_with_index do |text, i| %>
-      <%= f.radio_button :priority, i %>
-      <%= f.label :priority, text, :value => i %>
+      <%= f.radio_button :priority, (i + 1) %>
+      <%= f.label :priority, text, :value => (i + 1) %>
     <% end %>    
   </p>
 
@@ -84,6 +84,11 @@
   <p>
     <%= f.label :phone %><br />
     <%= f.text_field :phone %>
+  </p>
+
+  <p>
+    <%= f.label :url %><br />
+    <%= f.text_field :url %>
   </p>
 
   <p>
