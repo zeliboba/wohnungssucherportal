@@ -39,7 +39,8 @@ class FlatsController < ApplicationController
     @flat = current_user.flats.new(params[:flat])
 
     if @flat.save
-      redirect_to @flat, :notice => 'Flat was successfully created.'
+      flash[:created_flat_id] = @flat.id
+      redirect_to flats_path, :notice => 'Flat was successfully created.'
     else
       flash[:error] = @flat.errors
       render :action => "new"
@@ -52,7 +53,7 @@ class FlatsController < ApplicationController
     respond_to do |format|
       if @flat.update_attributes(params[:flat])
         flash[:notice] = 'flat was successfully updated.'
-        format.html { redirect_to(@flat) }
+        format.html { redirect_to(flats_path) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -66,7 +67,7 @@ class FlatsController < ApplicationController
     @flat.destroy
 
     respond_to do |format|
-      format.html { redirect_to(flats_url) }
+      format.html { redirect_to(flats_path) }
       format.xml  { head :ok }
     end
   end

@@ -4,24 +4,23 @@
       %h2= state.humanize
     %th €
     %th m²
-    %th €/m²
-    %th rooms
+    %th.rooms rooms
+    %th.avail avail
     %th prio
     
   - flats.each do |flat|
-    %tr  
+    %tr{:class => (flash[:created_flat_id].to_i == flat.id) ? 'just-created' : nil}  
       %td.street
         .overflow
-          = link_to(flat, :class => "street-name") do
+          = link_to(edit_flat_path(flat), :class => "street-name") do
             = h(flat.street_with_neighbourhood)
             %small= flat.subtitle_with_contact
 
       %td= flat.price
       %td= flat.square_meters
-      %td= flat.square_meter_price.round
       %td= flat.rooms ? flat.rooms : 'WG'
+      %td= flat.start_date_with_duration
       %td= flat.priority
     
       / FIXME
       /%td=raw flat.phone.blank? ? "<b style='color:#d00'><i>missing</i></b>" : flat.phone
-    

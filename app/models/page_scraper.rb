@@ -14,7 +14,7 @@ class PageScraper
       f = open(url, anti_anti_scrape_headers)
       f.rewind
       doc = Hpricot(Iconv.conv('utf-8', f.charset, f.readlines.join("\n")))
-      find_scraper(url).new(doc, url)
+      find_scraper(url).new(doc)
     end
 
     private

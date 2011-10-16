@@ -1,3 +1,5 @@
 #flats-list
   - @flats.group_by(&:state).each do |state, flats|
     = render :partial => "flats_table", :locals => { :flats => flats, :state => state, :show_phone => false }
+  = flash.to_yaml
+  

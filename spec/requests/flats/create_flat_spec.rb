@@ -25,7 +25,7 @@ feature "Creating a flat" do
   end
   
   scenario "I get an error when required attributes are missing" do
-    create_flat_with(Factory.build(:flat, :street => nil))
+    create_flat_with(Factory.build(:flat, :price => nil))
     page.should have_flash("can't be blank")
   end
   

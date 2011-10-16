@@ -19,4 +19,4 @@
           %p.flash{:id => "flash-#{what}"}
             = flash[what].respond_to?(:full_messages) ? flash[what].full_messages.join("<br />") : flash[what]
 
-      = yield
+      = yield      

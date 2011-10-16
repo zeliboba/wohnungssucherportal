@@ -66,6 +66,10 @@ textarea#flat_comment {
   text-align: right;
 }
 
+table.flats tr.just-created th,
+table.flats tr.just-created td {
+  background-color: #C9DFAF;
+}
 table.flats th {
   padding-top: 25px;
   color: #aaa;
@@ -75,8 +79,12 @@ table.flats th {
 .flats .street {
   text-align: left;
 }
+.flats .avail,
+.flats .rooms {
+  width: 60px;
+}
 .flats .street div {
-  width: 300px;
+  width: 250px;
   overflow: hidden;  
 }
 .flats .street a {

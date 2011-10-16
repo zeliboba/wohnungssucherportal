@@ -2,7 +2,7 @@ class Flat < ActiveRecord::Base
   
   include Flat::Options
   
-  validates_presence_of :street, :square_meters, :price, :available_on, :priority, :user_id
+  validates_presence_of :price, :available_on, :priority, :user_id
   validates_numericality_of :square_meters, :price
   validates_length_of :subtitle, :maximum => 100
   
@@ -19,7 +19,7 @@ class Flat < ActiveRecord::Base
   ]
   
   scope :ordered, lambda { |*order|
-    { :order => order.flatten.first || SORT_OPTIONS.first[1] }
+    { :order => order.flatten.first || "state, priority" }
   }
 
   scope :have_visits, where(['visit_at IS NOT NULL']).order('visit_at DESC')

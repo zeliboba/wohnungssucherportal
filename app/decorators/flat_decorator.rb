@@ -78,11 +78,23 @@ class FlatDecorator < ApplicationDecorator
   end
   
   def street_with_neighbourhood
-    s = model.street
+    s = model.street.present? ? model.street : "?"
     if model.neighbourhood.present? 
-      s << ", #{model.neighbourhood}"
+      s << ", #{model.neighbourhood.split("-").first}"
     end
     s 
+  end
+  
+  def start_date_with_duration
+    s = I18n.l(available_on, :format => "%d.%m.")
+    unless available_months == "unlimited"
+      s << "/#{model.available_months}"
+    end
+    s
+  end
+  
+  def id
+    model.id
   end
   
   private

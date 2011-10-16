@@ -1,6 +1,7 @@
 module Flat::Options
   STATES = %w(
     new
+    contact
     contacted
     schedule_visit
     visit_scheduled

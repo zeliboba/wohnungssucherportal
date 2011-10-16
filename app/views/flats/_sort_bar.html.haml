@@ -1,0 +1,11 @@
+%p#sort-bar
+  sort by: 
+  %span#sort-options
+    - Flat::SORT_OPTIONS.each do |name, value|
+      = link_to_unless_current(name, flats_path(:order => value))
+  |
+  %i
+    = "showing #{@flats.size} flats "
+    =raw "(" + link_to("show all #{current_user.flats.count}", all_flats_path) + ")"
+  | 
+  = link_to('Sign out', destroy_user_session_path, :method => :delete, :class => 'sign-out')
