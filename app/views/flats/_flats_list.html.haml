@@ -1,4 +1,6 @@
 #flats-list
-  - @flats.group_by(&:state).each do |state, flats|
-    = render :partial => "flats_table", :locals => { :flats => flats, :state => state, :show_phone => false }
+  - Flat::STATES.each do |state|
+    - flats = @flats.select { |flat| flat.state == state }
+    - unless flats.empty?
+      = render :partial => "flats_table", :locals => { :flats => flats, :show_phone => false }
   

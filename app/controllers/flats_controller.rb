@@ -40,7 +40,7 @@ class FlatsController < ApplicationController
 
     if @flat.save
       flash[:created_flat_id] = @flat.id
-      redirect_to flats_path, :notice => 'Flat was successfully created.'
+      redirect_to flats_path, :notice => 'Flat created.'
     else
       flash[:error] = @flat.errors
       render :action => "new"
@@ -52,7 +52,7 @@ class FlatsController < ApplicationController
 
     respond_to do |format|
       if @flat.update_attributes(params[:flat])
-        flash[:notice] = 'flat was successfully updated.'
+        flash[:notice] = 'Flat updated.'
         format.html { redirect_to(flats_path) }
         format.xml  { head :ok }
       else
