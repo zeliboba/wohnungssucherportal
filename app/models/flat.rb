@@ -19,7 +19,7 @@ class Flat < ActiveRecord::Base
   ]
   
   scope :ordered, lambda { |*order|
-    { :order => order.flatten.first || "state, priority" }
+    { :order => order.flatten.first || "state, created_at DESC" }
   }
 
   scope :have_visits, where(['visit_at IS NOT NULL']).order('visit_at DESC')

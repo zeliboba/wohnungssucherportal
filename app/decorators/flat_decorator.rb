@@ -63,7 +63,7 @@ class FlatDecorator < ApplicationDecorator
   def subtitle_with_contact
     if model.subtitle.present? 
       s = model.subtitle
-      s << ", Kontakt: #{model.contact_person}" if model.contact_person.present?
+      s << ", #{model.contact_person}" if model.contact_person.present?
     else
       s = model.contact_person
     end
