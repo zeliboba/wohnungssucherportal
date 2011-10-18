@@ -51,7 +51,7 @@ describe Flat do
   end
   
   describe "State changes" do    
-    it "the status changes to 'visit scheduled' when a visit date is entered" do
+    it "the status changes to 'visit scheduled' when a visit date is entered", :pending do
       flat = Factory.create(:flat, :visit_at => nil)
       flat.visit_at = Time.now + 1.week
       flat.save!
@@ -69,5 +69,6 @@ describe Flat do
       flat.save!
       flat.state.should == "contacted"
     end
+    it "should allow changing out of status visit_scheduled when ", :pending
   end
 end

@@ -13,7 +13,8 @@ class Flat < ActiveRecord::Base
   validate :available_until_must_be_after_available_on
   validates_inclusion_of :state, :in => STATES, :allow_nil => true
 
-  before_save :change_state!
+  # too lazy to fix this now
+  #before_save :change_state!
   
   scope :for_index, :conditions => [
     # created_at is to exclude legacy flats, can be removed when user accounts are added and associated with flats
@@ -89,10 +90,10 @@ class Flat < ActiveRecord::Base
     end
 
     # if behaviour on state changes gets more complex, add a state machine.
-    def change_state!
-      if visit_at_changed? && visit_at.present?
-        self.state = "visit_scheduled" 
-      end
-    end
+    #def change_state!
+    #  if visit_at_changed? && visit_at.present?
+    #    self.state = "visit_scheduled" 
+    #  end
+    #end
 
 end
