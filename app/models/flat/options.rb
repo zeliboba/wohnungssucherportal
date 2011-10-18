@@ -3,8 +3,9 @@ module Flat::Options
     new
     contact
     contacted
-    schedule_visit
+    want_to_visit
     visit_scheduled
+    visited
     i_rejected
     not_available
   )
