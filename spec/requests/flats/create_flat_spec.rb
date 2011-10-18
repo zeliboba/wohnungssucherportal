@@ -19,7 +19,7 @@ feature "Creating a flat" do
   scenario "Create a flat with all required attributes", :type => :smoke do
     flat = Factory.build(:flat)
     create_flat_with(flat)
-    page.should have_flash("successfully created")
+    page.should have_flash("created")
      # check that I can see the flat, i.e. it was correctly assigned to user me
     page.should have_content(flat.street)
   end
