@@ -1,9 +1,5 @@
 <% @initialize = true %>
 
-<%= javascript_tag do %>
-  var G_addresses = [<%=raw @flats.map(&:to_json).join(', ') %>];
-<% end %>
-
 <%= render :partial => 'overview_map', :locals => { :flats => @flats } %>
 
 <%= link_to 'Add flat', '/flats/prefill_url_form' %> | 

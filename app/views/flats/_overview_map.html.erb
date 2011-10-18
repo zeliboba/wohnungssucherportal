@@ -1,8 +1,5 @@
 <script type="text/javascript">
 
-// HACK - make a global var for debugging from console
-map = false;
-
 function initialize() {
   
   // set up new map
@@ -17,17 +14,14 @@ function initialize() {
 
   centerMap(map, geocoder);  
   
-  placeMarkers(<%=raw current_user.favorite_places.to_json %>, 'green');
-  G_markers = placeMarkers(G_addresses, 'red');
-
-
-  // add highlighting of markers
-  $('.street-name').bind("mouseover mouseout", function(event) {
-    var id = event.target.href.split('/').pop();
-    var iconColor = (event.type == 'mouseover') ? 'blue' : 'red';
-    G_markers[id].setIcon(icon(iconColor));
-  });
+  // pass server data to js
+  var favoritePlaces = <%=raw current_user.favorite_places.to_json %>;
+  var addresses      = [<%=raw @flats.map(&:to_json).join(', ') %>];
   
+  placeMarkers(favoritePlaces, 'green');
+  var flatMarkers = placeMarkers(addresses, 'red');
+
+  initMarkerHighlighting(flatMarkers);
 }
 </script>
 
