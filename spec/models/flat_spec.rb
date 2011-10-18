@@ -50,17 +50,24 @@ describe Flat do
     assert_not_equal [], flat.errors[:base]
   end
   
-  describe "State changes" do
-    it "should change status to 'visit scheduled' when a visit date was entered" do
+  describe "State changes" do    
+    it "the status changes to 'visit scheduled' when a visit date is entered" do
       flat = Factory.create(:flat, :visit_at => nil)
       flat.visit_at = Time.now + 1.week
       flat.save!
       flat.state.should == 'visit_scheduled'
     end
-    it "should not change status when visit date wasn't changed" do
+    it "the status doesn't change when visit date isn't changed" do
       flat = Factory.create(:flat, :visit_at => nil)
       flat.save!
       flat.state.should == "new"
+    end
+    it "the status doesn't change when visit date isn't changed to nil" do
+      flat = Factory.create(:flat, :visit_at => Time.now + 1.day)
+      flat.visit_at = nil
+      flat.state = "contacted"
+      flat.save!
+      flat.state.should == "contacted"
     end
   end
 end

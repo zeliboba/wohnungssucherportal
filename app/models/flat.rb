@@ -90,7 +90,7 @@ class Flat < ActiveRecord::Base
 
     # if behaviour on state changes gets more complex, add a state machine.
     def change_state!
-      if visit_at_changed?
+      if visit_at_changed? && visit_at.present?
         self.state = "visit_scheduled" 
       end
     end
