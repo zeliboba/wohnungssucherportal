@@ -3,6 +3,7 @@ module Flat::Options
     new
     contact
     contacted
+    contacted_2nd_time
     want_to_visit
     visit_scheduled
     visited

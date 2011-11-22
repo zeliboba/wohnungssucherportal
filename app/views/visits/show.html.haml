@@ -9,6 +9,7 @@
     
   %ol
     - flats.reverse.each do |flat|
+      - flat = FlatDecorator.decorate(flat) # HACK!
       %li{:class => (flat.visit_passed?) ? 'passed' : nil}
         %time= l(flat.visit_at, :format => "%H:%M")
         = render :partial => "flat", :locals => { :flat => flat }

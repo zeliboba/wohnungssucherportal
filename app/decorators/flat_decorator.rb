@@ -45,7 +45,7 @@ class FlatDecorator < ApplicationDecorator
   end
   
   # overwrites the attribute
-  def visit_at
+  def visit_at_with_distance
     return unless model.visit_at
     s = I18n.l(model.visit_at, :format => :german)
     s << " (%s)" % h.content_tag('i', h.distance_of_time_in_words_to_now(model.visit_at))
@@ -57,7 +57,7 @@ class FlatDecorator < ApplicationDecorator
   end
   
   def contact
-    h.auto_link("#{model.contact_person} #{model.phone}")
+    h.auto_link("#{model.contact_person || '(no contact given)'}, #{model.phone || '(no phone given)'}")
   end
   
   def subtitle_with_contact
