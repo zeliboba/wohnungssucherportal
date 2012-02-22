@@ -1,6 +1,6 @@
-== Installation notes
+# Installation notes
 
-=== Ubuntu 10.04
+## Ubuntu 10.04
 
 Following the guide on https://help.ubuntu.com/community/RubyOnRails install
 the required packages for MySQL:
