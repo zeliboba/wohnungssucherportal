@@ -9,7 +9,6 @@ class CreateFlats < ActiveRecord::Migration
       t.string :url
       t.date :available_on
       t.date :available_until
-      t.text :notes
       t.string :phone
 
       t.timestamps
