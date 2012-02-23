@@ -47,5 +47,8 @@ module Wohnungssucherportal
     #
     #   On config/application.rb forcing your application to not access the DB
     #   or load models when precompiling your assets.
+
+    # path to generated devise views
+    config.paths["app/views"] << "app/views/devise"
   end
 end

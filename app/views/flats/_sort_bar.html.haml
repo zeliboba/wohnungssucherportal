@@ -9,3 +9,5 @@
     =raw "(" + link_to("show all #{current_user.flats.count}", all_flats_path) + ")"
   | 
   = link_to('Sign out', destroy_user_session_path, :method => :delete, :class => 'sign-out')
+  | 
+  = link_to('Edit', edit_user_registration_path)
