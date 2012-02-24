@@ -56,10 +56,6 @@ class Flat < ActiveRecord::Base
     visit_at < Time.now
   end
   
-  def country
-    "Deutschland"
-  end
-  
   class << self
     
     def from_url(url)

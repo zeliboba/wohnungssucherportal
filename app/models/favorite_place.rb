@@ -11,8 +11,4 @@ class FavoritePlace < ActiveRecord::Base
   end
   alias :gmaps4rails_address :full_address
   
-  def country
-    "Deutschland"
-  end
-  
 end

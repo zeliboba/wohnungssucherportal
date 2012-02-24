@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120223203646) do
+ActiveRecord::Schema.define(:version => 20120224211601) do
 
   create_table "favorite_places", :force => true do |t|
     t.string   "name"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20120223203646) do
     t.float    "longitude"
     t.boolean  "gmaps"
     t.integer  "user_id"
+    t.string   "country"
   end
 
   create_table "flats", :force => true do |t|
@@ -52,6 +53,7 @@ ActiveRecord::Schema.define(:version => 20120223203646) do
     t.string   "city"
     t.string   "subtitle"
     t.integer  "user_id"
+    t.string   "country"
   end
 
   add_index "flats", ["state"], :name => "index_flats_on_state"
