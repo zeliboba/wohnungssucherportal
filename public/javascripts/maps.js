@@ -21,8 +21,8 @@ function icon(color) {
   );
 }
 
-function centerMap(map, geocoder) {
-  geocoder.geocode({'address': 'Marienplatz, München'}, function(results, status) {
+function centerMap(map, geocoder, address) {
+  geocoder.geocode({'address': address}, function(results, status) {
     map.setCenter(results[0].geometry.location);
   });
 }

@@ -2,7 +2,7 @@ class Flat < ActiveRecord::Base
   
   include Flat::Options
   
-  validates_presence_of :price, :available_on, :priority, :user_id
+  validates_presence_of :price, :available_on, :priority, :user_id, :city
   validates_numericality_of :square_meters, :price
   validates_length_of :subtitle, :maximum => 100
   
@@ -54,10 +54,6 @@ class Flat < ActiveRecord::Base
   
   def visit_passed?
     visit_at < Time.now
-  end
-  
-  def city
-    "München"
   end
   
   def country

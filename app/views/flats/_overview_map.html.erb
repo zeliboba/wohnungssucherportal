@@ -13,7 +13,7 @@ function initialize() {
   // set center
   var geocoder = new google.maps.Geocoder();
 
-  centerMap(map, geocoder);  
+  centerMap(map, geocoder, <%=raw current_user.city.to_json %>);  
   
   // pass server data to js
   var favoritePlaces = <%=raw current_user.favorite_places.to_json %>;

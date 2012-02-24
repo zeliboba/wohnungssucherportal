@@ -10,7 +10,7 @@
   
       var geocoder = new google.maps.Geocoder();
   
-      centerMap(map, geocoder);
+      centerMap(map, geocoder, '<%= "#{flat.street}, #{flat.city}" %>');
       placeMarkers(<%=raw current_user.favorite_places.to_json %>, 'green');
       placeMarkers([<%=raw flat.model.to_json %>], 'red');
   }

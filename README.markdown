@@ -4,7 +4,9 @@
 
 The user profile can be changed using the `Edit` link located next to the
 `Sign out` link at the bottom of the page.  It allows to change the email,
-password and the default location (city and country).
+password and the default location (city and country).  These values are used
+centering the map, also the country is required for finding the appropriate
+city on the map.
 
 
 # Installation notes
