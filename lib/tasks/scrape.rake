@@ -18,10 +18,12 @@ namespace :scrape do
     minPrice = 0     # EUR
     maxPrice = 3000  # EUR
     rooms    = 2
-    place    = "Dordrecht" # FIXME: take from user profile
+    # FIXME: next settings should be take from user profile
+    city     = "Dordrecht"
+    country  = "Netherlands"
     email    = "zeliboba@mail.ru"
 
-    url = "#{url_base}/huur/#{place}/+#{distance}km/#{minPrice}-#{maxPrice}/#{rooms}+kamers"
+    url = "#{url_base}/huur/#{city}/+#{distance}km/#{minPrice}-#{maxPrice}/#{rooms}+kamers"
     puts "scrape from #{url}"
     agent = Mechanize.new
     agent.get("#{url}")
@@ -32,19 +34,16 @@ namespace :scrape do
     until n > nPages
       page = agent.page
       page.search("ul.object-list div.specs").each do |o|
-        flat_street = o.at_css("h3 a").text.gsub(/\*\.$/, "").gsub(/[Hh][Uu][Uu][Rr]$/, "").strip
+        flat_street = o.at_css("h3 a").text.gsub(/[\*\.]$/, "").gsub(/[Hh][Uu][Uu][Rr]$/, "").strip
         flat_url    = o.at_css("h3 a")[:href]
         properties  = o.css("ul.properties-list li")
         location    = properties[0].child.text.split()
-        begin
-          # try to parse post code and city
-          flat_postal_code   = location[0..1].join(" ")
-          flat_city          = location[2,10].join(" ")
-        rescue
-          # put entire string to city if failed
-          flat_postal_code   = nil
-          flat_city          = location.join(" ")
-        end
+        # try to parse post code
+        flat_postal_code   = nil
+        flat_postal_code   = location.shift + " " if /\d{4}/   === location[0]
+        flat_postal_code  += location.shift       if /^\w{2}$/ === location[0]
+        # put the rest to the city
+        flat_city          = location.join(" ")
         flat_square_meters = properties[1].css("[title='Woonoppervlakte']").text.to_i
         flat_rooms         = properties[1].css("[title='Aantal kamers']").text.to_i
         # price can contain range (to_i takes first), can have sell price
@@ -55,7 +54,7 @@ namespace :scrape do
         
         # create or modify with scraped data
         flat = Flat.find_or_create_by_street("#{flat_street}")
-        flat.url = flat_url
+        flat.url = "#{url_base}" + flat_url
         flat.postal_code = flat_postal_code
         flat.city = flat_city
         flat.square_meters = flat_square_meters
@@ -68,12 +67,14 @@ namespace :scrape do
         flat.available_on = Date.today
         flat.priority = 2 # 1 great, 2 ok, 3 so-so
         flat.user = User.find_by_email(email)        
+        flat.country = country
 
         # save and display message
         if flat.save
-          puts "done: #{flat.street}, #{flat.postal_code} #{flat.city}"
+          puts "done: #{flat.full_address}"
         else
-          puts "fail: #{flat.street}, #{flat.postal_code} #{flat.city}"
+          puts "fail: #{flat.full_address}"
+          puts "      #{flat.url}"
           puts flat.errors.full_messages
         end
 
