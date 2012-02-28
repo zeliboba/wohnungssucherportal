@@ -8,7 +8,65 @@ require 'open-uri'
 namespace :scrape do
   desc "Scrape marktplaats.nl for data"
   task :marktplaats => :environment do
-    puts "TODO"
+    url_base = "http://kopen.marktplaats.nl"
+    distance = 50000 # m
+    # FIXME: next settings should be take from user profile (see also below)
+    city     = "Dordrecht"
+    country  = "Netherlands"
+    email    = "zeliboba@mail.ru"
+
+    url = "#{url_base}/search.php?postcode=#{city}&distance=#{distance}&g=1032"
+    puts "scrape from #{url}"
+    agent = Mechanize.new
+    agent.get("#{url}")
+    agent.get(agent.page.search("a.txtBrowsePageAttributesList")[0][:href]) # Aangeboden
+    agent.get(agent.page.search("span.bucketL2Item a")[0][:href]) # Huizen te huur
+    puts "scrape from #{agent.page.uri}"
+    # get the length of the rating from "XXX van YYY" string
+    nPages = agent.page.search("td.paginatorActive a")[-2].text.to_i
+
+    n = 1
+    until n > nPages
+      page = agent.page
+      page.search("a.ad_list_link").each do |t|
+        o = t.parent.parent.parent.parent
+        flat_description = t.text
+        flat_url = t[:href]
+        flat_city  = o.css("td div.text_margin")[4].text.split(",")[0].strip
+        flat_price = o.css("td div.text_margin")[1].text.strip.gsub(/[€ \.]/, "").to_i
+
+        # create or modify with scraped data
+        flat = Flat.find_or_create_by_url("#{flat_url}")
+        flat.city = flat_city
+        flat.price = flat_price
+        flat.description = flat_description
+        flat.square_meters = 0 # FIXME with additional scraper
+        # check and set state
+        flat.state = Flat::STATES.first if flat.state.nil?
+        # fill in the requred fields with default data
+        flat.available_on = Date.today
+        flat.priority = 2 # 1 great, 2 ok, 3 so-so
+        flat.user = User.find_by_email(email)        
+        flat.country = country
+
+        # save and display message
+        if flat.save
+          puts "done: #{flat.full_address}"
+        else
+          puts "fail: #{flat.full_address}"
+          puts "      #{flat.url}"
+          puts flat.errors.full_messages
+        end
+        sleep(1)
+
+      end
+      # go to next page
+      puts "page #{n} done"
+      n += 1
+      p = page.search("td#paginator_cell_#{n}").at_css("a")
+      agent.get("#{p[:href]}") if !p.nil?
+    end
+
   end
 
   desc "Scrape funda.nl for data"
