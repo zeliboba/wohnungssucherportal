@@ -5,7 +5,7 @@ class FlatsController < ApplicationController
   end
   
   def index
-    @flats = FlatDecorator.decorate(current_user.flats.for_index.ordered(params[:order]))
+    @flats = FlatDecorator.decorate(current_user.flats.for_index.ordered(params[:order]).page(params[:page]))
   end
   
   def all

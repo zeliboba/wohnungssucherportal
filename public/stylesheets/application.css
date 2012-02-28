@@ -8,6 +8,10 @@ body, a, p, ol, ul, td, input, select, textarea {
   color: #444;
 }
 
+nav {
+    display: inline;
+}
+
 textarea {
   width: 400px;
   border: 1px solid #bbb;

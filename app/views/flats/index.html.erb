@@ -5,6 +5,9 @@
 <%= link_to 'Add flat', '/flats/prefill_url_form' %> | 
 <%= link_to 'Visits', visits_path %> | 
 <%= link_to 'Edit favorite places', favorite_places_path %> | 
+<% if controller.action_name == 'index' %>
+<%= paginate @flats %>
+<% end %>
 
 
 <h1 style="display: none;">Flats</h1>

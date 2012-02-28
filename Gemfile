@@ -20,6 +20,7 @@ gem "rspec-rails"
 gem "haml-rails"
 gem "sass"
 gem "devise"
+gem "kaminari"
 
 group :test do
   gem "fuubar" # better rspec output formatter and immediate test result output
