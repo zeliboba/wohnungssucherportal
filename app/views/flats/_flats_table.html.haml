@@ -2,6 +2,7 @@
   %tr
     %th.state
       %h2= flats.first.state.humanize
+    %th URL
     %th €
     %th m²
     %th.rooms rooms
@@ -13,9 +14,10 @@
       %td.street
         .overflow
           = link_to(edit_flat_path(flat), :class => "street-name") do
-            = h(flat.street_with_neighbourhood)
+            = h(flat.city_with_street)
             %small= flat.subtitle_with_contact
 
+      %td= flat.url ? link_to('link', flat.url) : 'N/A'
       %td= flat.price
       %td= flat.square_meters
       %td= flat.rooms ? flat.rooms : 'WG'

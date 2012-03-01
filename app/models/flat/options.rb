@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 module Flat::Options
   STATES = %w(
     new
@@ -12,6 +13,7 @@ module Flat::Options
   )
   
   # should this be in the model?
+  # TODO put his into user preferences?
   SORT_OPTIONS = [
     ['added on', 'created_at DESC'],
     ['available on', 'available_on ASC'],
@@ -19,7 +21,7 @@ module Flat::Options
     ['m²', 'square_meters DESC'],
     ['price', 'price DESC'],
     ['priority', 'priority ASC'],
-    ['street', 'street ASC'],
+    ['city', 'city ASC'],
   ]
   
   DEFAULT_PRIORITY = 2

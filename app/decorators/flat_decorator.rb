@@ -85,6 +85,12 @@ class FlatDecorator < ApplicationDecorator
     s 
   end
   
+  def city_with_street
+    s = model.city
+    s << ", #{model.street.present? ? model.street : "?"}"
+    s 
+  end
+  
   def start_date_with_duration
     s = I18n.l(available_on, :format => "%d.%m.")
     unless available_months == "unlimited"
