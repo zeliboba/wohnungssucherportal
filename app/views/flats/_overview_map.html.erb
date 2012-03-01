@@ -10,6 +10,11 @@ function initialize() {
   };  
   map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
   
+  // initialize one infobox
+  var infowindow = new google.maps.InfoWindow({
+    	content: 'empty at the start'
+    });		
+
   // set center
   var geocoder = new google.maps.Geocoder();
 
@@ -19,8 +24,8 @@ function initialize() {
   var favoritePlaces = <%=raw current_user.favorite_places.to_json %>;
   var addresses      = [<%=raw @flats.map(&:to_json).join(', ') %>];
   
-  placeMarkers(favoritePlaces, 'green');
-  var flatMarkers = placeMarkers(addresses, 'red');
+  placeMarkers(favoritePlaces, 'green', infowindow);
+  var flatMarkers = placeMarkers(addresses, 'red', infowindow);
 
   initMarkerHighlighting(flatMarkers);
 }

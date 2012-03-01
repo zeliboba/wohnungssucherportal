@@ -72,7 +72,7 @@ class FlatDecorator < ApplicationDecorator
   
   def to_json
     model.to_json(
-      :only => [:id, :latitude, :longitude], 
+      :only => [:id, :latitude, :longitude, :url, :price, :square_meters, :rooms], 
       :methods => :full_address
     )
   end

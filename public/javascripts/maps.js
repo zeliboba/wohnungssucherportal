@@ -1,4 +1,4 @@
-function placeMarkers(addresses, markerColor) {
+function placeMarkers(addresses, markerColor, infowindow) {
   var markers = {};
   $(addresses).each(function(index, flat) {
     var markerOptions = {
@@ -8,6 +8,16 @@ function placeMarkers(addresses, markerColor) {
       'map': map
     };
     var marker = new google.maps.Marker(markerOptions);
+    var contentString = '<a href="/flats/' + flat.id + '/edit">' + // FIXME hardwired for flats
+	                flat.full_address + '</a> <br>' +
+		        flat.price + ' € <br>' + 
+		        flat.square_meters + ' m² <br>' + 
+		        flat.rooms + ' rooms <br>' +
+	                '<a href="' + flat.url + '">link</a>';
+    google.maps.event.addListener(marker, 'click', function() {
+        infowindow.setContent(contentString);
+        infowindow.open(map,marker);
+    });
     markers[flat.id] = marker;
   });
   console.log(markers);
