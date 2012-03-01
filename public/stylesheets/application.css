@@ -103,12 +103,6 @@ fieldset {
   border: none;
 }
 
-fieldset#process_data {
-  position: absolute;
-  left: 20px;
-  top: 90px;
-}
-
 fieldset#base_data p,
 fieldset#base_data label,
 fieldset#base_data input,
@@ -117,10 +111,7 @@ fieldset#base_data textarea {
 }
 
 fieldset#base_data {
-  position:absolute;
   background-color: #eee;
-  left:500px;
-  top:90px;
 }
 
 div#map_canvas {

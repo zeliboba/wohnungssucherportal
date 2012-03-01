@@ -33,7 +33,7 @@ class FlatsController < ApplicationController
   end
 
   def edit
-    @flat = current_user.flats.find(params[:id])
+    @flat = FlatDecorator.decorate(current_user.flats.find(params[:id]))
   end
 
   def create

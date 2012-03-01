@@ -1,9 +1,43 @@
+<% @initialize = true %>
+
+<div id="navigation">
 <%= link_to 'Back to list', flats_path %> |
 <%= link_to 'Show', @flat %> |
 <%= link_to 'Destroy', @flat, :confirm => 'Are you sure?', :method => :delete %>
+</div>
+
+<div id="left_col">
+  <div id="infos">
+    
+    <h1><%= @flat.full_address %></h1>
+    
+    <table id="flat-data">
+    <% for name in @flat.attribute_names.sort.each %>
+      <% if !(@flat[name].blank? || ["created_at", "gmaps", "id", "latitude", "longitude", "updated_at", "user_id"].include?(name)) %>
+        <% if name == "url" %>
+	  <tr>
+            <th><%=       name  %></th>
+            <td><%= link_to('link', @flat.url) %></td>
+	  </tr>
+        <% else %>
+	  <tr>
+            <th><%=       name  %></th>
+            <td><%= @flat[name] %></td>
+	  </tr>
+        <% end %>
+      <% end %>
+    <% end %>
+    </table>
+    
+  </div>
 
 <h1>Editing flat</h1>
 
 <%= form_for(@flat) do |f| %>
   <%= render :partial => 'form', :locals => { :f => f } %>
 <% end %>
+
+</div>
+
+<%= render :partial => 'one_flat_map', :locals => { :flat => @flat } %>
+
