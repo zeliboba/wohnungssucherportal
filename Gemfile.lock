@@ -114,6 +114,8 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    mechanize (1.0.0)
+      nokogiri (>= 1.2.1)
     mime-types (1.16)
     multi_json (1.0.3)
     mysql2 (0.3.7)
@@ -220,6 +222,7 @@ DEPENDENCIES
   htmlentities (= 4.3.0)
   kaminari
   launchy
+  mechanize
   mysql2 (~> 0.3.0)
   rails (= 3.1.1)
   rails_autolink (= 1.0.4)

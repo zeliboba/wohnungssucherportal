@@ -20,6 +20,7 @@ gem "rspec-rails"
 gem "haml-rails"
 gem "sass"
 gem "devise"
+gem "mechanize"
 gem "kaminari"
 
 group :test do
