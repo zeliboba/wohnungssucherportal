@@ -5,7 +5,9 @@ class FlatsController < ApplicationController
   end
   
   def index
-    @flats = FlatDecorator.decorate(current_user.flats.for_index.ordered(params[:order]).page(params[:page]))
+    session[:page]  = params[:page]  || session[:page]  || 1
+    session[:order] = params[:order] || session[:order] || "state, created_at DESC"
+    @flats = FlatDecorator.decorate(current_user.flats.for_index.ordered(session[:order]).page(session[:page]))
   end
   
   def all
