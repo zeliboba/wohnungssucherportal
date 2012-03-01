@@ -1,9 +1,6 @@
 # -*- coding: utf-8; mode: ruby; -*-
 
 require 'mechanize'
-# FIXME: check all require, probably mechanize supersedes all
-require 'nokogiri'
-require 'open-uri'
 
 namespace :scrape do
   desc "Scrape marktplaats.nl for data"
@@ -24,6 +21,7 @@ namespace :scrape do
     puts "scrape from #{agent.page.uri}"
     # get the length of the rating from "XXX van YYY" string
     nPages = agent.page.search("td.paginatorActive a")[-2].text.to_i
+    puts "there are #{nPages} pages to scrape"
 
     n = 1
     until n > nPages
@@ -49,6 +47,9 @@ namespace :scrape do
         flat.user = User.find_by_email(email)        
         flat.country = country
 
+        # avoid unnecessary validations on gmaps (there is query limit) if the
+        # flat is already saved in the database and has an id
+        if flat.id.nil?
         # save and display message
         if flat.save
           puts "done: #{flat.full_address}"
@@ -58,6 +59,9 @@ namespace :scrape do
           puts flat.errors.full_messages
         end
         sleep(1)
+        else
+          puts "flat #{flat.full_address} #{flat.id} exist"
+        end
 
       end
       # go to next page
@@ -81,12 +85,13 @@ namespace :scrape do
     country  = "Netherlands"
     email    = "zeliboba@mail.ru"
 
-    url = "#{url_base}/huur/#{city}/+#{distance}km/#{minPrice}-#{maxPrice}/#{rooms}+kamers"
+    url = "#{url_base}/huur/#{city}/+#{distance}km/#{minPrice}-#{maxPrice}/#{rooms}+kamers/3-dagen"
     puts "scrape from #{url}"
     agent = Mechanize.new
     agent.get("#{url}")
-    # get the length of the rating from "XXX van YYY" string
-    nPages = agent.page.search(".paging-list").text.split("van")[1].to_i
+    # get the length of the rating as last element of the string
+    nPages = agent.page.search(".paging-list").text.split[-1].to_i
+    puts "there are #{nPages} pages to scrape"
 
     n = 1
     until n > nPages
@@ -107,7 +112,7 @@ namespace :scrape do
         # price can contain range (to_i takes first), can have sell price
         # (always first hopefully), and thousands are delimited by dots
         price = o.css("span.price")
-        flat_comment = "sell price is" + o.css("span.price").first.text if price.count > 1
+        flat_description = "sell price is" + o.css("span.price").first.text if price.count > 1
         flat_price = price.last.text.gsub(/[€ \.]/, "").to_i
         
         # create or modify with scraped data
@@ -118,7 +123,7 @@ namespace :scrape do
         flat.square_meters = flat_square_meters
         flat.rooms = flat_rooms
         flat.price = flat_price
-        flat.comment = flat_comment
+        flat.description = flat_description
         # check and set state
         flat.state = Flat::STATES.first if flat.state.nil?
         # fill in the requred fields with default data
@@ -135,6 +140,7 @@ namespace :scrape do
           puts "      #{flat.url}"
           puts flat.errors.full_messages
         end
+        sleep(1)
 
       end
       # go to next page
