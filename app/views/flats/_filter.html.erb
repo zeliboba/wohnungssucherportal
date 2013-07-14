@@ -1,0 +1,12 @@
+<div>
+<%= form_tag do %>
+  max: 
+  price
+  <%= select_tag(:max_price, options_for_select((300..2000).step(100))) %>
+  area
+  <%= select_tag(:max_area,  options_for_select((40..200).step(10))) %>
+  rooms
+  <%= select_tag(:max_rooms, options_for_select((1..9))) %>
+  <%= submit_tag("filter", :style => "width: 100px;") %>
+<% end %>
+</div>

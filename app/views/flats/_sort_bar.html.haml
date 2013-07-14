@@ -1,4 +1,4 @@
-%p#sort-bar
+%div#sort-bar
   sort by: 
   %span#sort-options
     - Flat::SORT_OPTIONS.each do |name, value|
@@ -11,3 +11,5 @@
   = link_to('Sign out', destroy_user_session_path, :method => :delete, :class => 'sign-out')
   | 
   = link_to('Edit', edit_user_registration_path)
+  
+  = render :partial => "filter"
